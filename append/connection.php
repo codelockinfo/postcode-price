@@ -15,7 +15,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('SITE_CLIENT_URL', 'http://localhost/postcode-price/user/');
     define('CLS_TRACK_PATH', $_SERVER['DOCUMENT_ROOT']);
     define('SITE_ADMIN_URL', 'http://localhost/postcode-price/admin/');
-}elseif ($_SERVER['SERVER_NAME'] == 'codelocksolutions.in') {
+}elseif ($_SERVER['SERVER_NAME'] == 'postcode.codelocksolutions.com/') {
     define("DB_SERVER", "localhost");
     define("DB_DATABASE", "u402017191_postcode_price");
     define("DB_USERNAME", "u402017191_postcode_root");
@@ -23,11 +23,11 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define("DB_OBJECT", "mysql");
     define('MODE', 'live');
     define('ABS_PATH', dirname(dirname(__FILE__)));
-    define('MAIN_URL', 'https://codelocksolutions.in/postcode-price/');
-    define('CLS_SITE_URL', 'https://codelocksolutions.in/postcode-price/');
+    define('MAIN_URL', 'https://postcode.codelocksolutions.com/postcode-price/');
+    define('CLS_SITE_URL', 'https://postcode.codelocksolutions.com/postcode-price/');
      define('CLS_TRACK_PATH', $_SERVER['DOCUMENT_ROOT']);
-    define('SITE_CLIENT_URL', 'https://codelocksolutions.in/postcode-price/user/');
-    define('SITE_ADMIN_URL', 'https://codelocksolutions.in/postcode-price/admin/');
+    define('SITE_CLIENT_URL', 'https://postcode.codelocksolutions.com/postcode-price/user/');
+    define('SITE_ADMIN_URL', 'https://postcode.codelocksolutions.com/postcode-price/admin/');
 } else {
     echo 'Undefine host';
     exit;
