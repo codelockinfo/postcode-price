@@ -18,7 +18,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('SITE_CLIENT_URL', 'http://localhost/postcode-price/user/');
     define('CLS_TRACK_PATH', $_SERVER['DOCUMENT_ROOT']);
     define('SITE_ADMIN_URL', 'http://localhost/postcode-price/admin/');
-}elseif ($_SERVER['SERVER_NAME'] == 'postcode.codelocksolutions.com/') {
+}elseif ($_SERVER['SERVER_NAME'] == 'postcode.codelocksolutions.com') {
     define("DB_SERVER", "localhost");
     define("DB_DATABASE", "u402017191_postcode_price");
     define("DB_USERNAME", "u402017191_postcode_root");
