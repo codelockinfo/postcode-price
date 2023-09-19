@@ -3,8 +3,6 @@ error_reporting(E_ALL);
 ini_set("error_reporting", E_ALL);
  session_start();
 
- print_r($_SERVER['SERVER_NAME']);
- die;
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define("DB_SERVER", "localhost");
     define("DB_DATABASE", "postcode_price");
