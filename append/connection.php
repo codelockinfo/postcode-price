@@ -24,11 +24,11 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define("DB_OBJECT", "mysql");
     define('MODE', 'live');
     define('ABS_PATH', dirname(dirname(__FILE__)));
-    define('MAIN_URL', 'https://postcode.codelocksolutions.com/postcode-price/');
-    define('CLS_SITE_URL', 'https://postcode.codelocksolutions.com/postcode-price/');
+    define('MAIN_URL', 'https://postcode.codelocksolutions.com/');
+    define('CLS_SITE_URL', 'https://postcode.codelocksolutions.com/');
      define('CLS_TRACK_PATH', $_SERVER['DOCUMENT_ROOT']);
-    define('SITE_CLIENT_URL', 'https://postcode.codelocksolutions.com/postcode-price/user/');
-    define('SITE_ADMIN_URL', 'https://postcode.codelocksolutions.com/postcode-price/admin/');
+    define('SITE_CLIENT_URL', 'https://postcode.codelocksolutions.com/user/');
+    define('SITE_ADMIN_URL', 'https://postcode.codelocksolutions.com/admin/');
 } else {
     echo 'Undefine host';
     exit;
