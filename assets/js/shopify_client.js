@@ -211,6 +211,7 @@ $.urlParam = function (name) {
         return results[1] || 0;
     }
 }
+
 $(document).ready(function () {
     $('#rating').rating({
         min: 0,
@@ -219,14 +220,17 @@ $(document).ready(function () {
         size: 'xs',
         showClear: false
     });
+
     $(".star").hover(function () {
         $(".rate-our-app").show();
         $(".dismiss-button-rating").hide();
     });
+
     $('table[data-listing="true"]').each(function () {
         var tableId = $(this).attr('id');
         js_loadShopifyDATA(tableId);
     });
+
     var flashmessage = getCookie("flash_message");
     var flashClass = getCookie("flash_class");
     if (flashmessage != '') {
@@ -234,25 +238,30 @@ $(document).ready(function () {
         setCookie('flash_message', '', -2);
         flashNotice(flashmessage, flashClass);
     }
+
     $(".spectrumColor").spectrum({
         showButtons: false
     });
+
     $(".spectrumColor").on('move.spectrum', function (e, color) {
         var id = $(this).data('id');
         var hexVal = color.toHexString();
         $("[data-id='" + id + "']").val(hexVal);
     });
+
     /*Transparent colorpicker Start*/
     $(".spectrumTransparentColor").spectrum({
         showButtons: false,
         showAlpha: true
     });
+
     $(".spectrumTransparentColor").on('move.spectrum', function (e, color) {
         showAlpha: true
         var id = $(this).data('id');
         var hexVal = color.toRgbString();
         $("[data-id='" + id + "']").val(hexVal);
     });
+
     /*Transparent colorpicker End*/
     $(document).on("submit", "#imageExmapleFrm", function (e) {
         e.preventDefault();
@@ -344,6 +353,7 @@ $(document).ready(function () {
         });
     });
 });
+
 function btn_enable_disable(){
 $.ajax({
         url: "ajax_call.php",
@@ -363,6 +373,7 @@ $.ajax({
             }
     });
 }
+
 function seeting_enable_disable(){
     $.ajax({
         url: "ajax_call.php",
@@ -402,9 +413,11 @@ function seeting_enable_disable(){
         }
     });
 }
+
 setTimeout(function(){
     seeting_enable_disable();
 },50);
+
 function readURL(input) {
 $(".imagesBlock").css("display","block");
     if (input.files && input.files[0]) {
@@ -416,6 +429,7 @@ $(".imagesBlock").css("display","block");
         reader.readAsDataURL(input.files[0]);
     }
 }
+
 function preview_image(selector,page)
 {    $('.imagesBlock').css({display: 'block'});
     $('.imagesBlockEdit').css({display: 'block'});
@@ -512,6 +526,7 @@ function preview_image(selector,page)
 
 
 }
+
 function app_enable_disable(btnval,call_from){
     $.ajax({
         url: "ajax_call.php",
@@ -562,6 +577,7 @@ function app_enable_disable(btnval,call_from){
         }
     });
 }
+
 $(document).on("click","#toggleButton",function() {
     $(this).toggleClass("on");
     const value = $(this).hasClass("on") ? 1 : 0;
@@ -581,6 +597,7 @@ function cookies_bar_setting_save_first(){
         }
     });
 }
+
 $(document).on("submit", "#cookies_bar_setting_save", function (e) {
     e.preventDefault();       
     console.log("COKKIES BAR....");
@@ -606,11 +623,13 @@ $(document).on("submit", "#cookies_bar_setting_save", function (e) {
         }
     });
 });
+
 $(document).on("click", ".cancelBtn", function (e) {
     e.preventDefault();   
     console.log("cancelBtn ...");
     $("#cookies_bar_setting_save")[0].reset()
 });
+
 $(document).on('change','.layoutSelect2',function () {
     var layout_change = $('.layoutSelect2 option').filter(':selected').val();
     console.log("ON CHANGE EEVEBNT");
@@ -638,6 +657,7 @@ $(document).on('change','.layoutSelect2',function () {
         }
     });
 });
+
 function cookies_bar_setting_select(){
     $.ajax({
         url: "ajax_call.php",
@@ -716,4 +736,64 @@ function cookies_bar_setting_select(){
             }
         }
     });
+}
+
+$(document).on("submit", "#addbzone_frm", function(ent) {
+    ent.preventDefault();       
+    var form_data = $("#addbzone_frm")[0];
+    var form_data = new FormData(form_data);
+    form_data.append('store',store); 
+    form_data.append('routine_name','addzone');      
+    $.ajax({
+        url: "ajax_call.php",
+        type: "post",
+        dataType: "json",
+        contentType: false,
+        processData: false,
+        data: form_data, 
+         beforeSend: function () {
+            loading_show('.save_loader_show');
+        },
+        success: function (response) {
+            var response = JSON.parse(response);
+             if (response['code'] != undefined && response['code'] == '403') {
+                redirect403();
+            } 
+            else if(response['data'] == "fail"){
+                var exist_codes = '';
+                if(response["msg"]["zonearea_exist"] != undefined){
+                    exist_codes = response["msg"]["zonearea_exist"].toString();
+                }
+                response["msg"]["zonename"] !== undefined ? $(".zonename").html (response["msg"]["zonename"]) : $(".zonename").html("");
+                 response["msg"]["zonearea"] !== undefined ? $(".zonearea").html (exist_codes +" "+response["msg"]["zonearea"]) : $(".zonearea").html("");
+                 response["msg"]["zoneprice"] !== undefined ? $(".zoneprice").html (response["msg"]["zoneprice"]) : $(".zoneprice").html("");
+            }else{
+                $(".title").html("");
+               window.location.href = "zonetable.php?store="+ store;
+            }
+            loading_hide('.save_loader_show','Save');
+        }
+    });
+});
+
+function get_zoneform_value(routine_name,store,id,for_data){
+$.ajax({
+    url: "ajax_call.php",
+    type: "post",
+    dataType: "json",
+    data: {'routine_name': routine_name , store: store, 'id'  : id,'for_data' : for_data},
+    success: function (comeback) {
+            if (comeback['code'] != undefined && comeback['code'] == '403') {
+                  redirect403();
+            }else if (comeback['outcome'] == 'true') {
+                console.log(comeback['data']);
+                $('#zonename').val(comeback['data']['zonename']);
+                    $('#zonestatus').val(comeback['data']['zonestatus']);
+                    $('#zonearea').val(comeback['data']['zonearea']);
+                    $('#zoneprice').val(comeback['data']['zoneprice']);
+            } else {
+            }
+              loading_hide('.save_loader_show','save');
+        }
+});
 }
