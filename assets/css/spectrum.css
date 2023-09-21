@@ -1,3 +1,9 @@
+/***
+Spectrum Colorpicker v1.8.0
+https://github.com/bgrins/spectrum
+Author: Brian Grinstead
+License: MIT
+***/
 
 .sp-container {
     position:absolute;
@@ -6,18 +12,23 @@
     display:inline-block;
     *display: inline;
     *zoom: 1;
+    /* https://github.com/bgrins/spectrum/issues/40 */
     z-index: 9999994;
     overflow: hidden;
 }
 .sp-container.sp-flat {
     position: relative;
 }
+
+/* Fix for * { box-sizing: border-box; } */
 .sp-container,
 .sp-container * {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
+
+/* http://ansciath.tumblr.com/post/7347495869/css-aspect-ratio */
 .sp-top {
     position:relative;
     width: 100%;
@@ -114,6 +125,7 @@
     height: 28px;
 }
 
+/* Don't allow text selection */
 .sp-container, .sp-replacer, .sp-preview, .sp-dragger, .sp-slider, .sp-alpha, .sp-clear, .sp-alpha-handle, .sp-container.sp-dragging .sp-input, .sp-container button  {
     -webkit-user-select:none;
     -moz-user-select: -moz-none;
@@ -141,6 +153,8 @@
     display: none;
 }
 
+
+/* Gradients for hue, saturation and value instead of images.  Not pretty... but it works */
 .sp-sat {
     background-image: -webkit-gradient(linear,  0 0, 100% 0, from(#FFF), to(rgba(204, 154, 129, 0)));
     background-image: -webkit-linear-gradient(left, #FFF, rgba(204, 154, 129, 0));
@@ -171,6 +185,10 @@
     background: linear-gradient(to bottom, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
 }
 
+/* IE filters do not support multiple color stops.
+   Generate 6 divs, line them up, and do two color gradients for each.
+   Yes, really.
+*/
 .sp-1 {
     height:17%;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#ffff00');
@@ -200,11 +218,12 @@
     display: none !important;
 }
 
+/* Clearfix hack */
 .sp-cf:before, .sp-cf:after { content: ""; display: table; }
 .sp-cf:after { clear: both; }
 .sp-cf { *zoom: 1; }
 
-
+/* Mobile devices, make hue slider bigger so it is easier to slide */
 @media (max-device-width: 480px) {
     .sp-color { right: 40%; }
     .sp-hue { left: 63%; }
@@ -237,6 +256,12 @@
     border-radius: 3px;
 }
 
+/*
+Theme authors:
+Here are the basic themeable display options (colors, fonts, global widths).
+See http://bgrins.github.io/spectrum/themes/ for instructions.
+*/
+
 .sp-container {
     background-color: #ffffff;
     border: 1px solid #c0c0c0;
@@ -262,6 +287,7 @@
     border: none;
 }
 
+/* Input */
 .sp-input-container {
     float:right;
     width: 150px;
@@ -300,7 +326,7 @@
     border: 0;
 }
 
-
+/* Palettes */
 .sp-palette-container {
     border-right: solid 1px #ccc;
 }
@@ -326,7 +352,7 @@
     position:relative;
 }
 
-
+/* Initial */
 .sp-initial {
     float: left;
     border: none;
@@ -353,12 +379,13 @@
     background-position: center;
 }
 
-
+/* Buttons */
 .sp-palette-button-container,
 .sp-button-container {
     float: right;
 }
 
+/* Replacer (the little preview div that shows up instead of the <input>) */
 .sp-replacer {
     border: 1px solid #ccc;
     border-left: 0;
@@ -425,6 +452,8 @@
     padding-bottom:0;
 }
 
+
+/* Buttons: http://hellohappy.org/css3-buttons/ */
 .sp-container button {
     background-color: #eeeeee;
     background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);

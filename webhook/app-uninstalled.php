@@ -8,7 +8,7 @@ $shop = $_SERVER['HTTP_X_SHOPIFY_SHOP_DOMAIN'];
 $hmac_header = $_SERVER['HTTP_X_SHOPIFY_HMAC_SHA256'];
 
 $cls_functions = new Client_functions($shop);
-
+generate_log('uninstall-webhook' , "STEP1");
 function verify_webhook($data, $hmac_header, $cls_functions)
 {
     $where_query = array(["", "status", "=", "1"]);

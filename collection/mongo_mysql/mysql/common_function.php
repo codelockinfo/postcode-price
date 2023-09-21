@@ -177,6 +177,7 @@ include dirname(dirname(__FILE__)). "/base_function.php";
                 $limit = " LIMIT 1";
             }
             $sql = "UPDATE $tbl_name SET " . rtrim($columns, ",") . " $where_query $limit";
+            generate_log('user_index' , $sql  . " ... sql");
             $sql = str_replace(array("'NULL'", "'null'"), 'NULL', $sql);
             $query = $this->db_connection->prepare($sql);
             $query->execute();

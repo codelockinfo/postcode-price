@@ -3,7 +3,7 @@
     include_once('dashboard_header.php');   
 ?>
 <body>
-    <div class="Polaris-Page">
+    <div class="Polaris-Page pagemargin max_width_change bodycontainer">
         <div class="Polaris-Page__Content">
             <div class="Polaris-Layout">
                 <div class="Polaris-Layout__AnnotatedSection">
@@ -46,10 +46,16 @@
                                         <img class="pricingIcon" src="https://cdn.shopify.com/s/files/1/0070/3666/5911/files/tick_minor_1.png?v=1584070573" alt="Tick mark">More to sell
                                     </div>
                                     <div class="Polaris-TextContainer">
-                                        <img class="pricingIcon" src="https://cdn.shopify.com/s/files/1/0070/3666/5911/files/tick_minor_1.png?v=1584070573" alt="Tick mark">Write beautiful blog
+                                        <img class="pricingIcon" src="https://cdn.shopify.com/s/files/1/0070/3666/5911/files/tick_minor_1.png?v=1584070573" alt="Tick mark">Easily create a link to your privacy policy page on your GDPR cookie banner
                                     </div>
                                     <div class="Polaris-TextContainer">
-                                        <img class="pricingIcon" src="https://cdn.shopify.com/s/files/1/0070/3666/5911/files/tick_minor_1.png?v=1584070573" alt="Tick mark">Cool product description
+                                        <img class="pricingIcon" src="https://cdn.shopify.com/s/files/1/0070/3666/5911/files/tick_minor_1.png?v=1584070573" alt="Tick mark">Flexible control of desktop and mobile placements of your GDPR cookie bar
+                                    </div>
+                                    <div class="Polaris-TextContainer">
+                                        <img class="pricingIcon" src="https://cdn.shopify.com/s/files/1/0070/3666/5911/files/tick_minor_1.png?v=1584070573" alt="Tick mark">Complete design control to perfectly match the GDPR cookie banner to your brand
+                                    </div>
+                                    <div class="Polaris-TextContainer">
+                                        <img class="pricingIcon" src="https://cdn.shopify.com/s/files/1/0070/3666/5911/files/tick_minor_1.png?v=1584070573" alt="Tick mark">Show GDPR cookie bar exclusively to EU store visitors or show it to all visitors
                                     </div>
                                     <!--<div class="Polaris-TextContainer">-->
                                     <!--    <img class="pricingIcon" src="https://cdn.shopify.com/s/files/1/0070/3666/5911/files/tick_minor_1.png?v=1584070573" alt="Tick mark">Add table-->

@@ -1181,8 +1181,7 @@ p {
 }
 
 .Polaris-Card__Header {
-	padding: 2rem 2rem 2rem;
-		/* padding: 2rem 0rem */
+	padding: 2rem 2rem 0
 }
 
 .Polaris-Card__Section {
@@ -1620,7 +1619,7 @@ p {
 
 .Polaris-Banner--withinPage {
 	border-radius: 0 0 3px 3px;
-	padding: 1.3rem;
+	padding: 1.6rem;
 	transition: box-shadow .2s cubic-bezier(.64, 0, .35, 1);
 	transition-delay: .1s;
 	box-shadow: inset 0 3px 0 0 #637381, inset 0 0 0 0 transparent, 0 0 0 1px rgba(63, 63, 68, .05), 0 1px 3px 0 rgba(63, 63, 68, .15);
@@ -1839,21 +1838,11 @@ p {
 }
 
 .Polaris-CalloutCard__Title {
-	/* margin-bottom: 2rem */
+	margin-bottom: 2rem
 }
 
 .Polaris-CalloutCard__Buttons {
-	/* margin-top: 2rem; */
-
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.min_height120 .Polaris-Heading{
-	/* min-height: 140px; */
-}
-.min_height120 .Polaris-Heading p{
-	text-align: justify;
+	margin-top: 2rem
 }
 
 .Polaris-Caption {
@@ -1862,6 +1851,7 @@ p {
 	line-height: 2rem;
 	margin: 0
 }
+
 @media (min-width:40em) {
 	.Polaris-Caption {
 		font-size: 1.2rem;
@@ -2965,9 +2955,7 @@ p {
 }
 
 .Polaris-DropZone--sizeExtraLarge {
-	min-height: 20.5rem;
-	display: flex;
-    align-items: center;
+	min-height: 20.5rem
 }
 
 .Polaris-DropZone--sizeLarge {
@@ -3472,8 +3460,7 @@ p {
 	-ms-flex-align: start;
 	align-items: flex-start;
 	margin-top: -2rem;
-	margin-left: -2rem;
-	margin-bottom: 2rem;
+	margin-left: -2rem
 }
 
 .Polaris-Layout__Section {
@@ -5387,7 +5374,7 @@ html {
 	letter-spacing: normal;
 	position: relative;
 	z-index: 4;
-	width: 85%;
+	width: 100%;
 	min-height: 3.6rem;
 	margin: 0;
 	padding: .5rem 2.8rem .5rem 1.2rem;
@@ -7288,34 +7275,3 @@ html {
 	padding: 0!important;
 	border: 0!important
 }
-.logoheader{
-	padding-bottom: 1rem;
-	padding-top: 1rem;
-	box-shadow: 0px 1px #dfe3e8;
-}
-.pagemargin{
-	margin-top: 3%;
-}
-.Polaris-Button--custom-purple{
-	background: #6C7BCF;
-    color: #fff;
-}
-.color_green_home{
-	background-color: #007a5c;
-}
-.font_weight_sp > span > span{
-	font-weight: 600;
-}
-.Polaris-Page-Header .polaris-nav-menu .cls_menu_mobile{
-	display: none !important;
-}
-.Polaris-Page-Header  .cls_enbledisable_btn ,.shopifybtn{
-	width: 15%;
-}
-.Polaris-Page-Header .cls_header_logo_image{
-	width: 20%;
-}
-.Polaris-Page-Header  .cls_enbledisable_msg{
-	width: 50%;
-}
-

@@ -242,36 +242,18 @@ $(document).ready(function () {
         var hexVal = color.toHexString();
         $("[data-id='" + id + "']").val(hexVal);
     });
-    $(document).on("submit", "#addClientstore_settingFrm", function (e) {
-        e.preventDefault();
-        var frmData = $(this).serialize();
-        frmData += '&' + $.param({"method_name": 'set_store_settings', 'shop': shop});
-        $.ajax({
-            url: "responce.php",
-            type: "post",
-            dataType: "json",
-            data: frmData,
-            beforeSend: function () {
-                loading_show('save_loader_show');
-            },
-            success: function (response) {
-                if (response['code'] != undefined && response['code'] == '403') {
-                    redirect403();
-                } else if (response['result'] == 'success') {
-                    $("#errorsmsgBlock").hide();
-                    flashNotice(response['message']);
-                } else if (response['msg_contented'] != undefined && response['msg_manage'] != undefined) {
-                    $("#errorBlockInfo").html(response['msg_contented']);
-                    $("#errorBlockManage").html(response['msg_manage']);
-                    $("#errorsmsgBlock").show();
-                    $("html, body").animate({scrollTop: 0}, "slow");
-                } else {
-                    flashNotice(response['message']);
-                }
-                loading_hide('save_loader_show', 'Save');
-            }
-        });
+    /*Transparent colorpicker Start*/
+    $(".spectrumTransparentColor").spectrum({
+        showButtons: false,
+        showAlpha: true
     });
+    $(".spectrumTransparentColor").on('move.spectrum', function (e, color) {
+        showAlpha: true
+        var id = $(this).data('id');
+        var hexVal = color.toRgbString();
+        $("[data-id='" + id + "']").val(hexVal);
+    });
+    /*Transparent colorpicker End*/
     $(document).on("submit", "#imageExmapleFrm", function (e) {
         e.preventDefault();
         var frmData = new FormData($(this)[0]);
@@ -305,29 +287,28 @@ $(document).ready(function () {
             }
         });
     });
-$(document).on("click", ".logout", function(event) {
-     event.preventDefault();
-        logout();
+    $(document).on("click", ".logout", function(event) {
+        event.preventDefault();
+            logout();
     });
-function logout()
-{
-	$.ajax({
-		url:"ajax_call.php",
-		type:'POST',
-		data:{
-			action:'logout'
-		},
-		success:function(response)
-		{
-			if(response.trim() == 'success')
-			{
-				window.location.href = 'index.php';
-			}
-		}
+    function logout(){
+        $.ajax({
+            url:"ajax_call.php",
+            type:'POST',
+            data:{
+                action:'logout'
+            },
+            success:function(response)
+            {
+                if(response.trim() == 'success')
+                {
+                    window.location.href = 'index.php';
+                }
+            }
 
-	});
-}
-$(document).on("submit", "#register_frm", function (e) {
+        });
+    }
+    $(document).on("submit", "#register_frm", function (e) {
         e.preventDefault(); 
         var frmData = new FormData($(this)[0]);
         frmData.append('store',store); 
@@ -363,31 +344,12 @@ $(document).on("submit", "#register_frm", function (e) {
         });
     });
 });
-function get_textarea_value(routine_name,store,id,for_data){
-$.ajax({
-        url: "ajax_call.php",
-        type: "post",
-        dataType: "json",
-        data: {'routine_name': routine_name , store: store, 'id'  : id,'for_data' : for_data},
-        success: function (comeback) {
-                if (comeback['code'] != undefined && comeback['code'] == '403') {
-                      redirect403();
-                }else if (comeback['outcome'] == 'true') {
-                        $('#title').val(comeback['data']['title']);
-                        $('#ImagePreview').attr("src",comeback['data']['image']);
-                        $('.textdetails').val(comeback['data']['description']);
-                } else {
-                }
-                  loading_hide('.save_loader_show','save');
-            }
-    });
-}
 function btn_enable_disable(){
 $.ajax({
         url: "ajax_call.php",
         type: "post",
         dataType: "json",
-        data: {'routine_name': 'btn_enable_disable' , store: store},
+        data: {'routine_name': 'appstatus' , store: store},
         success: function (comeback) {
             console.log(comeback +  "status");
                 if (comeback['outcome']['data']['status'] != undefined && comeback['outcome']['data']['status'] == 0) {
@@ -406,11 +368,11 @@ function seeting_enable_disable(){
         url: "ajax_call.php",
         type: "post",
         dataType: "json",
-        data: {'routine_name': 'btn_enable_disable' ,'store' : store},
+        data: {'routine_name': 'appstatus' ,'store' : store},
         success: function (comeback)
         {
-            if (comeback['outcome']['data']['0']['status'] != undefined && comeback['outcome']['data']['0']['status'] == "0") {
-                $(".clsdesign_for_msg .Polaris-Heading").html("ReWriter app is disabled");
+            if (comeback['outcome']['data']['0']['application_status'] != undefined && comeback['outcome']['data']['0']['application_status'] == "0") {
+                $(".clsdesign_for_msg .Polaris-Heading").html("Please active cookie bar.");
                 $(".app-setting-msg").show();
                 $(".enable-btn").val(1);
                 $(".enable-btn").html("Enable");
@@ -424,8 +386,9 @@ function seeting_enable_disable(){
                 $(".enable-btn").addClass(" Polaris-Button--success")
 
             } else { 
-                $(".clsdesign_for_msg .Polaris-Heading").html("ReWriter app is enabled");
-                $(".enable-btn").val(0);
+                $(".clsdesign_for_msg .Polaris-Heading.desktopview").html("Activated Cookie Bar: Update colour settings and click Activate button to activated Cookie bar on your website.");
+                $(".clsdesign_for_msg .Polaris-Heading.mobileview").html("Cookie Bar is Activated.");
+               $(".enable-btn").val(0);
                 $(".enable-btn").html("Disable");
                 $(".app-setting-msg .Polaris-Icon").addClass("Polaris-Icon--colorGreenDark");
                 $(".app-setting-msg .Polaris-Icon").removeClass("Polaris-Icon--colorYellowDark");
@@ -442,169 +405,6 @@ function seeting_enable_disable(){
 setTimeout(function(){
     seeting_enable_disable();
 },50);
-
-function get_api_data(routineName,shopify_api){
-    var routineName = routineName;
-    var shopify_api = shopify_api;
-    $.ajax({
-        url: "ajax_call.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            routine_name: routineName,
-            shopify_api: shopify_api,
-            store: store,
-        },
-        success: function ($response) {
-                if ($response['code'] != undefined && $response['code'] == '403') {
-                    redirect403();
-                } else if ($response['data'] == 'true') {
-                    $('.numberConvertBlog').html($response["total_record_blog"]);
-                    $('.numberConvertCollection').html($response["total_record_collection"]);
-                    $('.numberConvertProduct').html($response["total_record_product"]);
-                    $('.numberConvertPages').html($response["total_record_pages"]);
-                } else {
-                }
-            }
-    })
-}
-
-$(document).on("click",".cancelRequest",function(e){
-    e.preventDefault();
-    var return_page = $(this).data("page");
-    window.location.href = return_page+".php?store="+ store;
-    return false;
-})
-
-$(document).on("submit", "#addblog_frm", function (e) {
-        e.preventDefault();       
-        var form_data = $("#addblog_frm")[0];
-        var form_data = new FormData(form_data);
-        form_data.append('images',$("#ImagePreview").attr("src"));
-        form_data.append('store',store); 
-        form_data.append('routine_name','addblog');      
-        $.ajax({
-            url: "ajax_call.php",
-            type: "post",
-            dataType: "json",
-            contentType: false,
-            processData: false,
-            data: form_data, 
-             beforeSend: function () {
-                loading_show('.saveBtn.save_loader_show');
-            },
-            success: function (response) {
-                var response = JSON.parse(response);
-                 if (response['code'] != undefined && response['code'] == '403') {
-                    redirect403();
-                } 
-                else if(response['data'] == "fail"){
-                    response["msg"]["title"] !== undefined ? $(".title").html (response["msg"]["title"]) : $(".title").html("");
-                }else{
-                    $(".title").html("");
-                   window.location.href = "blog_post.php?store="+ store;
-                }
-                loading_hide('.saveBtn.save_loader_show','Save');
-            }
-        });
-});
-
-$(document).on("submit", "#addproduct_frm", function (e) {
-        e.preventDefault();       
-        var form_data = $("#addproduct_frm")[0];
-        var form_data = new FormData(form_data);
-        
-        form_data.append('images',$("#ImagePreview").attr("src"));
-        form_data.append('store',store); 
-        form_data.append('routine_name','addproduct');      
-        $.ajax({
-            url: "ajax_call.php",
-            type: "post",
-            dataType: "json",
-            contentType: false,
-            processData: false,
-            data: form_data, 
-              beforeSend: function () {
-                loading_show('.saveBtn.save_loader_show');
-            },
-            success: function (response) {
-                  var response = JSON.parse(response);
-                 if (response['code'] != undefined && response['code'] == '403') {
-                    redirect403();
-                } 
-                else if(response['data'] == "fail"){
-                    response["msg"]["title"] !== undefined ? $(".title").html (response["msg"]["title"]) : $(".title").html("");
-                }else{
-                    $(".title").html("");
-                   window.location.href = "products.php?store="+ store;
-                }
-                loading_hide('.saveBtn.save_loader_show', 'Save');
-            }
-        });
-});
-$(document).on("submit", "#addpages_frm", function (e) {
-        e.preventDefault();       
-        var form_data = $("#addpages_frm")[0];
-        var form_data = new FormData(form_data);
-        form_data.append('store',store); 
-        form_data.append('routine_name','addpages');      
-        $.ajax({
-            url: "ajax_call.php",
-            type: "post",
-            dataType: "json",
-            contentType: false,
-            processData: false,
-            data: form_data, 
-              beforeSend: function () {
-                loading_show('.saveBtn.save_loader_show');
-            },
-            success: function (response) {
-                 var response = JSON.parse(response);
-                 if (response['code'] != undefined && response['code'] == '403') {
-                    redirect403();
-                } 
-                else if(response['data'] == "fail"){
-                    response["msg"]["title"] !== undefined ? $(".title").html (response["msg"]["title"]) : $(".title").html("");
-                }else{
-                    $(".title").html("");
-                   window.location.href = "pages.php?store="+ store;
-                }
-                loading_hide('.saveBtn.save_loader_show', 'Save');
-            }
-        });
-});
-$(document).on("submit", "#addcollection_frm", function (e) {
-        e.preventDefault();       
-        var form_data = $("#addcollection_frm")[0];
-        var form_data = new FormData(form_data);
-        form_data.append('images',$("#ImagePreview").attr("src"));
-        form_data.append('store',store); 
-        form_data.append('routine_name','addcollections');      
-        $.ajax({
-            url: "ajax_call.php",
-            type: "post",
-            dataType: "json",
-            contentType: false,
-            processData: false,
-            data: form_data, 
-              beforeSend: function () {
-                loading_show('.saveBtn.save_loader_show');
-            },
-            success: function (response) {
-                  var response = JSON.parse(response);
-                 if (response['code'] != undefined && response['code'] == '403') {
-                    redirect403();
-                } 
-                else if(response['data'] == "fail"){
-                    response["msg"]["title"] !== undefined ? $(".title").html (response["msg"]["title"]) : $(".title").html("");
-                }else{
-                    $(".title").html("");
-                   window.location.href = "collection.php?store="+ store;
-                }
-                loading_hide('.saveBtn.save_loader_show', 'Save');
-            }
-        });
-});
 function readURL(input) {
 $(".imagesBlock").css("display","block");
     if (input.files && input.files[0]) {
@@ -712,12 +512,6 @@ function preview_image(selector,page)
 
 
 }
-$(document).on("click", ".enable-btn", function(event) {
-    event.preventDefault();
-    var btnval = $(this).val();
-    app_enable_disable(btnval,1);
-});
-
 function app_enable_disable(btnval,call_from){
     $.ajax({
         url: "ajax_call.php",
@@ -742,14 +536,15 @@ function app_enable_disable(btnval,call_from){
                     $(".app-setting-msg .Polaris-Banner").addClass("Polaris-Banner--statusWarning");
                     $(".app-setting-msg .Polaris-Banner").removeClass("Polaris-Banner--statusSuccess");
                     $(".clsdesign_for_msg").css("background-color","#fdf7e3");
-                    $(".clsdesign_for_msg .Polaris-Heading").html("ReWriter app is disabled");
+                    $(".clsdesign_for_msg .Polaris-Heading").html("Please active cookie bar.");
                     $("#toggleButton").removeClass('on');
                     $(".enable-btn").removeClass("Polaris-Button--destructive");
                     $(".enable-btn").addClass(" Polaris-Button--success")
                     
                 } else {
-                    $(".clsdesign_for_msg .Polaris-Heading").html("ReWriter app is enabled");
-                    $(".enable-btn").val(0);
+                    $(".clsdesign_for_msg .Polaris-Heading.desktopview").html("Activated Cookie Bar: Update colour settings and click Activate button to activated Cookie bar on your website.");
+                    $(".clsdesign_for_msg .Polaris-Heading.mobileview").html("Cookie Bar is Activated.");
+                   $(".enable-btn").val(0);
                     $(".enable-btn").html("Disable");
                     $(".app-setting-msg .Polaris-Icon").addClass("Polaris-Icon--colorGreenDark");
                     $(".app-setting-msg .Polaris-Icon").removeClass("Polaris-Icon--colorYellowDark");
@@ -767,46 +562,158 @@ function app_enable_disable(btnval,call_from){
         }
     });
 }
+$(document).on("click","#toggleButton",function() {
+    $(this).toggleClass("on");
+    const value = $(this).hasClass("on") ? 1 : 0;
+    $("#toggleValue").val(value);
+    app_enable_disable(value);
+});
 
-$(document).on("click", ".chatGPTBtn", function(event) {
-    event.preventDefault();
-    var chatGPT_Prerequest = $(".chatGPT_Prerequest").val();
-    var chatgptreq = $(this).closest(".Polaris-Connected").find("#chatgptinput").val();
+
+function cookies_bar_setting_save_first(){
     $.ajax({
         url: "ajax_call.php",
         type: "post",
         dataType: "json",
-        data: {'store': store,'routine_name' : 'chatgpt_req_res','chatgptreq':chatgptreq,'chatGPT_Prerequest':chatGPT_Prerequest}, 
-            beforeSend: function () {
-            loading_show('.chatGPTBtn.save_loader_show');
+        data: {'routine_name': 'cookies_bar_setting_save_first' ,'store' : store},
+        success: function (comeback){
+            console.log(comeback);
+        }
+    });
+}
+$(document).on("submit", "#cookies_bar_setting_save", function (e) {
+    e.preventDefault();       
+    console.log("COKKIES BAR....");
+    var form_data = $("#cookies_bar_setting_save")[0];
+    var form_data = new FormData(form_data);
+    form_data.append('store',store); 
+    form_data.append('routine_name','cookies_bar_setting_save');      
+    $.ajax({
+        url: "ajax_call.php",
+        type: "post",
+        dataType: "json",
+        contentType: false,
+        processData: false,
+        data: form_data, 
+          beforeSend: function () {
+            loading_show('.save_loader_show');
         },
         success: function (response) {
-            console.log(response);
-            console.log(response['data']);
-            console.log(response['outcome']);
-                if (response['code'] != undefined && response['code'] == '403') {
+             if (response['code'] != undefined && response['code'] == '403') {
                 redirect403();
-            }else if(response['data'] == "success"){
-                $(".chatgpterror").html("");
-                var activeEditor = tinyMCE.get('description').getContent();
-                console.log(activeEditor);
-                tinyMCE.activeEditor.setContent(response['outcome']);
-            }else{ 
-                response['outcome']['chatgpt'] !== undefined ? $(".chatgpterror").html(response['outcome']['chatgpt']) : $(".chatgpterror").html(response['outcome']);
-            }
-            loading_hide('.chatGPTBtn.save_loader_show','save');
+            } 
+            loading_hide('.save_loader_show', 'Save');
         }
-    })
-});
-$(document).on("click",".get_content_drop",function(){
-    console.log("start chat gpt");
-    $(".content_gtp").toggleClass("content_gtp_block");
-});
-$(document).ready(function() {
-    $("#toggleButton").on("click", function() {
-        $(this).toggleClass("on");
-        const value = $(this).hasClass("on") ? 1 : 0;
-        $("#toggleValue").val(value);
-        app_enable_disable(value);
     });
 });
+$(document).on("click", ".cancelBtn", function (e) {
+    e.preventDefault();   
+    console.log("cancelBtn ...");
+    $("#cookies_bar_setting_save")[0].reset()
+});
+$(document).on('change','.layoutSelect2',function () {
+    var layout_change = $('.layoutSelect2 option').filter(':selected').val();
+    console.log("ON CHANGE EEVEBNT");
+    $.ajax({
+        url: "ajax_call.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            'store': store,
+            'routine_name': 'cookies_bar_setting_select'
+        },
+        success: function(comeback) {
+            if(comeback  != undefined){
+            var comeback = JSON.parse(comeback);
+                console.log(comeback);
+                console.log(comeback.outcome.layout);
+                if(layout_change == 1){
+                    $('.Polaris-TextField__Input[name="banner_height"]').val(comeback.outcome.popup_height);
+                    $(".preview_set").css("height",comeback.outcome.popup_height+"px");
+                }else{
+                    $('.Polaris-TextField__Input[name="banner_height"]').val(comeback.outcome.banner_height);
+                    $(".preview_set").css("height",comeback.outcome.banner_height+"px");
+                }
+            }
+        }
+    });
+});
+function cookies_bar_setting_select(){
+    $.ajax({
+        url: "ajax_call.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            'store': store,
+            'routine_name': 'cookies_bar_setting_select'
+        },
+        success: function(comeback) {
+            if(comeback  != undefined){
+            var comeback = JSON.parse(comeback);
+                console.log(comeback);
+                console.log(comeback.outcome.showon  +".............");
+                var privacyURL = comeback.outcome.privacy_policy_url !== '' ? comeback.outcome.privacy_policy_url : "#";
+                var decline_text = comeback.outcome.decline_text !== '' ? comeback.outcome.decline_text : "Decline";
+                var agreement_text = comeback.outcome.agreement_text !== '' ? comeback.outcome.agreement_text : "Agree";
+                var position = comeback.outcome.position == 1 ? "top" : "bottom";
+                console.log(position);
+                $('.radio-input[name="showon"][value="'+ comeback.outcome.showon +'"]').attr("checked", "checked");
+
+                $('.Polaris-TextField__Input[name="message"]').val(comeback.outcome.message);
+                $('.bar-message').html(comeback.outcome.message);
+
+                $('.Polaris-TextField__Input[name="privacy_policy_url"]').val(comeback.outcome.privacy_policy_url);
+                $('.cc-link').attr("href",privacyURL);
+                
+                $('.Polaris-TextField__Input[name="agreement_text"]').val(comeback.outcome.agreement_text);
+                $('.Polaris-TextField__Input[name="decline_text"]').val(comeback.outcome.decline_text);
+                $('.Polaris-TextField__Input[name="privacy_policy_url_text"]').val(comeback.outcome.privacy_policy_url_text);
+                // $('.Polaris-TextField__Input[name="banner_height"]').val(comeback.outcome.banner_height);
+                $('.preview_set').css("height",comeback.outcome.banner_height);
+                $('.preview_set').css(position,0);
+
+                $('.Polaris-Select__Input[name="banner_fontsize"]').val(comeback.outcome.banner_fontsize);
+                $('.bar-message').css("font-size",comeback.outcome.banner_fontsize);
+                
+                $('.Polaris-Select__Input[name="position"]').val(comeback.outcome.position);
+                $('.Polaris-Select__Input[name="layout"]').val(comeback.outcome.layout);
+                if(comeback.outcome.layout == 1){
+                    $(".preview-cookie-bar").addClass("modal-wrapper open");
+                    $(".preview_set").addClass("modal_preview");
+                    $('.Polaris-TextField__Input[name="banner_height"]').val(comeback.outcome.popup_height);
+                }else{
+                    $('.Polaris-TextField__Input[name="banner_height"]').val(comeback.outcome.banner_height);
+
+                }
+                $('.Polaris-TextField__Input[name="button_border_radius"]').val(comeback.outcome.button_border_radius);
+                $('.cc-dismiss').css("border-radius",comeback.outcome.button_border_radius+"px");
+                
+                $('.Polaris-TextField__Input[name="button_border_width"]').val(comeback.outcome.button_border_width);
+                $('.cc-dismiss').css("border",comeback.outcome.button_border_width+"px solid");
+
+                $('.color_circle[name="color_banner"]').val(comeback.outcome.color_banner);
+                $(".preview_set").css("background-color",comeback.outcome.color_banner);
+
+                $('.color_circle[name="color_banner_text"]').val(comeback.outcome.color_banner_text);
+                $(".preview_set").css("color",comeback.outcome.color_banner_text);
+
+                $('.color_circle[name="color_banner_link"]').val(comeback.outcome.color_banner_link);
+                $(".cc-link").css("color",comeback.outcome.color_banner_link);
+                
+                $('.color_circle[name="color_button"]').val(comeback.outcome.color_button);
+                $(".cc-dismiss").css("background-color",comeback.outcome.color_banner_link);
+                $(".cc-close").css("color",comeback.outcome.color_banner_link);
+                
+                $('.color_circle[name="color_button_text"]').val(comeback.outcome.color_button_text);
+                $(".cc-dismiss").css("color",comeback.outcome.color_button_text);
+                
+                $('.color_circle[name="color_button_border"]').val(comeback.outcome.color_button_border);
+                $(".cc-dismiss").css("border-color",comeback.outcome.color_button_border);
+
+                $(".cc-dismiss.deny").html(decline_text);
+                $(".cc-dismiss.allow").html(agreement_text);
+
+            }
+        }
+    });
+}
