@@ -44,14 +44,15 @@ $store = (isset($_GET['store']) && $_GET['store'] != '') ? $_GET['store'] : "man
                                         <span class="Polaris-Button__Text">Dashboard</span>
                                     </span>
                                 </a>
-                                <a href="addzone.php?store=<?php echo $store; ?>"  class="Polaris-Button" style="text-decoration: none;">
-                                    <span class="Polaris-Button__Content">
-                                        <span>Zones & Rates</span>
-                                    </span>
-                                </a>
+                                
                                 <a href="setting.php?store=<?php echo $store; ?>"  class="Polaris-Button" style="text-decoration: none;">
                                     <span class="Polaris-Button__Content">
                                         <span>Settings</span>
+                                    </span>
+                                </a>
+                                <a href=""  class="Polaris-Button" style="text-decoration: none;">
+                                    <span class="Polaris-Button__Content">
+                                        <span>Faq</span>
                                     </span>
                                 </a>
                                 <a href="support.php?store=<?php echo $store; ?>"  class="Polaris-Button  Polaris-Button--success" style="text-decoration: none;" >
