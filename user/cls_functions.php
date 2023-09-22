@@ -252,6 +252,59 @@ class Client_functions extends common_function {
         }
         return $response;
     }
+    function make_table_data_zoneData($table_data_arr, $pageno, $table_name) {
+        $shopinfo = $this->current_store_obj;
+        $shopinfo = (object)$shopinfo;
+           $total_record = $table_data_arr->num_rows;
+           $tr_html = '<tr class="Polaris-ResourceList__ItemWrapper"> <td colspan="7"><center><p class="Polaris-ResourceList__AttributeOne Records-Not-Found">Records not found</p></center></td></tr>';
+           if ($table_data_arr->num_rows > 0) {
+               $tr_html = '';
+               foreach ($table_data_arr as $dataObj) {
+                   $dataObj = (object) $dataObj;
+                   $zonestatus = (isset($dataObj->zonestatus) && $dataObj->zonestatus == '0') ? 'Disable' : 'Enable';
+                   $tr_html.='<tr class="Polaris-ResourceList__ItemWrapper trhover">';
+                   $tr_html.='<td>' . $dataObj->id . '</td>';
+                   $tr_html .= '<td>' . $dataObj->zonename . '</td>';
+                   $tr_html.='<td>' . $dataObj->zoneprice . '</td>';
+                   $tr_html.='<td>' . $zonestatus . '</td>';
+                   $after_delete_pageno = $pageno;
+                   if ($dataObj->status == '1') {
+                       $svg_icon_status = CLS_SVG_EYE;
+                       $data_hover = 'View';
+                   }
+                   if ($total_record == 1) {
+                       $after_delete_pageno = $pageno - 1;
+                   }
+   
+                   $tr_html.='
+                       <td>
+               <div class="Polaris-ButtonGroup Polaris-ButtonGroup--segmented highlight-text">                   
+             
+               <div class="Polaris-ButtonGroup Polaris-ButtonGroup--segmented highlight-text">                   
+                 <div class="Polaris-ButtonGroup__Item highlight-text">
+                   <span class="Polaris-Button Polaris-Button--sizeSlim tip loader_show" data-hover="Edit">
+                         <a href="zonerate.php?id=' . $dataObj->id . '&store=' . $shopinfo->shop_name . '" >
+                           <span class="Polaris-custom-icon Polaris-Icon Polaris-Icon--hasBackdrop">
+                               ' . CLS_SVG_EDIT . '
+                           </span>
+                       </a>
+                   </span>
+               </div>
+                 <div class="Polaris-ButtonGroup__Item highlight-text">
+                       <span class="Polaris-Button Polaris-Button--sizeSlim tip " data-hover="Delete" onclick="removeFromTable(\'' . TABLE_ZONE_MASTER . '\',' . $dataObj->store_user_id . ',' . $dataObj->id . ',' . $after_delete_pageno . ', \'zoneData\',\'zonerate\' ,this)">
+                           <a class="history-link" href="javascript:void(0)">
+                               <span class="Polaris-custom-icon Polaris-Icon Polaris-Icon--hasBackdrop save_loader_show' . $dataObj->id . '    ">
+                                   ' . CLS_SVG_DELETE . '
+                               </span>
+                           </a>
+                       </span>
+                   </div>';
+                   $tr_html.='</div></td></tr>';
+                   }
+           }
+       
+           return $tr_html;
+    }
 
     function appstatus(){
         $response_data = array('result' => 'fail', 'msg' => __('Something went wrong'));
@@ -367,12 +420,12 @@ class Client_functions extends common_function {
             if (isset($_POST['store']) && $_POST['store'] != '') {
                 $api_fields = $error_array = $response_data = array();
                 $shopinfo = $this->current_store_obj;
-            
+                $shopinfo = (object)$shopinfo;
                 $zonearea = isset($_POST['zonearea']) ? $_POST['zonearea'] : '';
-                $zone_array = explode(",",$zonearea);
-                
-                $already_exist = $existing_zipcode = array();
+               
                 if(!empty($zone_array)){
+                    $zone_array = explode(",",$zonearea);
+                    $already_exist = $existing_zipcode = array();
                     foreach($zone_array as $zones){
                         $where_query = array(["", "zonearea",'LIKE','BOTH', "$zones"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"]);
                         $already_exist = $this->select_result(TABLE_ZONE_MASTER,'*', $where_query);
@@ -394,7 +447,6 @@ class Client_functions extends common_function {
                 if (isset($_POST['zoneprice']) && $_POST['zoneprice'] == '') {
                     $error_array['zoneprice'] = "Please Enter zoneprice";
                 }
-            
                 if(isset($_POST['id']) && $_POST['id'] != '' ){
                     $fields = array(
                         '`zonename`' => $_POST['zonename'] ,
@@ -429,19 +481,19 @@ class Client_functions extends common_function {
     }
 
     function zone_select(){
-    $comeback = array('result' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
+            $comeback = array('result' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
+            $shopinfo = $this->current_store_obj;
+            $shopinfo = (object)$shopinfo;
             $id = isset($_POST['id']) ? $_POST['id'] : '';
-            $where_query_arr = array(["", "id", "=", "$id"]);
+            $where_query_arr = array(["", "id", "=", "$id"],["AND", "store_user_id", "=", $shopinfo->store_user_id]);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query_arr);
             if (!empty($comeback)) {
-                $zonename = isset($comeback['data']->zonename) ? $comeback['data']->zonename : '';
-                $zonearea = isset($comeback['data']->zonearea) ? $comeback['data']->zonearea : '';
-                $zonestatus = isset($comeback['data']->zonestatus) ? $comeback['data']->zonestatus : '';
-                $zoneprice = isset($comeback['data']->zoneprice) ? $comeback['data']->zoneprice : '';
-                $return_arary["zonename"] = $zonename;
-                $return_arary["zonearea"] = $zonearea;
-                $return_arary["zonestatus"] = $zonestatus;
-                $return_arary["zoneprice"] = $zoneprice;
+                $comebackdata = isset($comeback['data'][0]) ? $comeback['data'][0] : '';
+                $comeback = (object)$comebackdata; 
+                $return_arary["zonename"] = isset($comeback->zonename) ? $comeback->zonename : '';
+                $return_arary["zonearea"] = isset($comeback->zonearea) ? $comeback->zonearea : '';
+                $return_arary["zonestatus"] = isset($comeback->zonestatus) ? $comeback->zonestatus : '';
+                $return_arary["zoneprice"] = isset($comeback->zoneprice) ? $comeback->zoneprice : '';
                 $comeback = array("outcome" => "true", "data" => $return_arary);
             }
             return $comeback; 

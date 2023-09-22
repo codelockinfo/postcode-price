@@ -283,8 +283,3 @@ if (isset($_GET['store']) && $_GET['store'] != '') {
 </html> 
 
 <?php include_once('dashboard_footer.php'); ?>
-<script>
-    cookies_bar_setting_save_first();
-    cookies_bar_setting_select();
-    console.log("On load dashbaord page");
-</script>

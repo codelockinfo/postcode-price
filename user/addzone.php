@@ -1,6 +1,7 @@
 <?php 
     include "cls_header.php";
     include_once('dashboard_header.php');   
+    $id = isset($_GET['id']) ? $_GET['id'] : '';
 ?>
 <body>
     <div class="Polaris-Page pagemargin max_width_change bodycontainer">
@@ -36,7 +37,7 @@
                         </div>
                     </div>
                     <form class="m-t" id="addbzone_frm" name="zone_frm" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="id" class="hiddenid" value="1">
+                        <input type="hidden" name="id" class="hiddenid"  value="<?php echo $id; ?>">
                         <div class="Polaris-Page--divider">
                             <div class="Polaris-Layout">
                                 <div class="Polaris-Layout__AnnotatedSection">
