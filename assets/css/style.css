@@ -1,4 +1,4 @@
-body {
+/* body {
   padding: 5px;
 }
 .bodycontainer.Polaris-Page {
@@ -7,7 +7,6 @@ body {
 .Polaris-Banner.Polaris-Banner--statusSuccess.Polaris-Banner--withinPage {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 }
 .cookiebanner{
   display: flex;
@@ -130,9 +129,6 @@ button, input {
 .colorflex {
   display: flex;
   align-items: center;
-  /* margin-left: unset;
-  max-width: unset;
-  min-width: unset; */
 }
 hr{
   border-width: 0;
@@ -142,17 +138,14 @@ hr{
 hr.hrline {
   margin: 4% 0;
 }
-/* popup start */
 .modal-wrapper {
   display: flex;
   z-index: 999;
   width: 100%;
   height: 100%;
-  /* position: fixed; */
   visibility: hidden;
   top: 0;
   left: 0;
-  /* background: rgba(25, 18, 12, 0.3); */
   opacity: 0;
   filter: alpha(opacity=0);
   -webkit-transition: all 0.3s ease-in-out;
@@ -205,7 +198,6 @@ hr.hrline {
     height: 300px;
     position: absolute;
     flex-direction: column;
-    /* height: auto; */
 }
 .fcolor button {
   border: none;
@@ -217,16 +209,8 @@ hr.hrline {
     width: 30px;
     height: 30px;
 }
-.bannerlayout img{
-  /* width:100%;
-  height: 80px; */
-}
-.bannerlayout{
-  /* width: 24%; */
-}
 .bodycontainer .buttonbottom{
   padding-top: 1%;
-  /* margin-bottom: 2%; */
   justify-content:end;
 }
 .bannerbackground {
@@ -234,7 +218,6 @@ hr.hrline {
 }
 .bannerflex{
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -299,23 +282,12 @@ input[type="color"]::-webkit-color-swatch {
 .sectionmessage{
   margin-top: -1.6rem;
 }
-/* popup end */
 @media screen and (max-width: 803px) {
   .preview-cookie-bar{
     height: 400px;
   }
 }
 
-/* setting page start */
-
-.disp_fle_ju {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.Polaris-Card__Header.disp_fle_ju{
-  padding: 2rem 2rem 2rem;
-}
 .headingplanprice {
   padding-bottom: 5px;
 }
@@ -334,8 +306,7 @@ input[type="color"]::-webkit-color-swatch {
     vertical-align: middle;
     border-style: none;
 }
-/* setting page end */
-/* feature page start */
+
 .div_evowap_btn {
   position: fixed;
   bottom: 2%;
@@ -432,8 +403,6 @@ body .space-y-4 > * + * {
   color: #000!important;
 }
 
-/* feature page end */
-/* help page start */
 .accordion .card-header {
   background-color: #6C7BCF;
   color: #fff;
@@ -465,8 +434,7 @@ body .space-y-4 > * + * {
   width: 100%;
   height: auto;
 }
-/* help page end */
-/* header start */
+
 .cls_enbledisable_btn, .shopifybtn {
   margin-top: 1%;
 }
@@ -488,7 +456,6 @@ body .space-y-4 > * + * {
 }
 .Polaris-Page-Header .cls_header_logo_image {
   width: 20%;
-  /* width: 26%; */
 }
 .cls_enbledisable_btn, .shopifybtn {
   margin-top: 1%;
@@ -559,7 +526,7 @@ body .space-y-4 > * + * {
 .app-setting-msg .msgwidth{
   width: 100%;
 }
-/* header end */
+
 @media (max-width: 1640px) {
   .Polaris-Page-Header .cls_header_logo_image{
       width:15%;
@@ -718,11 +685,7 @@ width: 50px;
   flex-wrap: wrap;	
 }
   }
-  @media (max-width:620px) {
-    /* #toggleButton.on {
-      width: 200px;
-  } */
-}
+  
 @media (max-width:420px) {
   .Polaris-Banner.Polaris-Banner--withinPage.clsdesign_for_msg.Polaris-Banner--statusWarning ,
   .Polaris-Banner.Polaris-Banner--withinPage.clsdesign_for_msg.Polaris-Banner--statusSuccess{
@@ -736,7 +699,7 @@ width: 50px;
   margin-left:0;
 }
 }
-/* cls015 start */
+
 .pricewidth  .Polaris-Card__Header .Polaris-TextContainer {
   display: flex;
   align-items: center;
@@ -747,8 +710,7 @@ width: 50px;
 .bannerlayout .bannerbackground ,.color_circle ,.layoutSelect2 {
   cursor: pointer;
 }
-/* cls015 end */
-/* accordian start */
+
  .acc {
 	 margin: 0 auto;
 	 max-width: 1000px;
@@ -792,7 +754,6 @@ width: 50px;
 	 text-align: left;
 }
  
-/* accordian end */
 .acc__panel img{
   width:100%;
 }
@@ -832,4 +793,517 @@ width: 50px;
   .app-setting-msg .clsdesign_for_msg {
     padding: 1rem;
   }
+} */
+/* postcode start */
+
+*{ 
+  margin: 0px;
 }
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.appdetail{
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+}
+.appdetail img {
+  width: 50px;
+}
+#sidebar {
+  margin-left: 10px;
+  margin-right: 10px;
+margin-top: 20px;  
+border-radius: 7px;  
+overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, .05), 0 1px 3px 0 rgba(63, 63, 68, .15);
+  border: 1px solid #dfe3e8;
+}
+.postmenu{
+  display: flex;
+}
+header {
+border-radius: 7px;
+}
+.postmenu ul li{
+      list-style: none;
+      padding: 15px;
+}
+.active{
+  border-bottom: 0.3rem solid #5c6ac4;    
+}
+.postmenu ul {
+  display: flex;
+}
+/* .Polaris-Icon_yj27d {
+  display: block;
+  height: 2.25rem;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+  width: 1.25rem;
+}
+.Polaris-Banner_z4w8k.Polaris-Banner--hasDismiss_kf0ua.Polaris-Banner--withinPage_kguwn {
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 0.1875rem 0.0625rem -0.0625rem #00000012;;
+  padding: 0;
+  position: relative;
+}
+.Polaris-Banner_z4w8k.Polaris-Banner--hasDismiss_kf0ua.Polaris-Banner--withinPage_kguwn:before {
+  border-radius: 0.75rem;
+  bottom: 0;
+  box-shadow: 0.0625rem 0rem 0rem 0rem #00000021 inset,-0.0625rem 0rem 0rem 0rem #00000021 inset,0rem -0.0625rem 0rem 0rem #0000002b inset,0rem 0.0625rem 0rem 0rem #cccccc80 inset;
+  content: "";
+  left: 0;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
+.Polaris-HorizontalStack_dv6q6 {
+  --pc-horizontal-stack-gap-xs: initial;
+  --pc-horizontal-stack-gap-sm: initial;
+  --pc-horizontal-stack-gap-md: initial;
+  --pc-horizontal-stack-gap-lg: initial;
+  --pc-horizontal-stack-gap-xl: initial;
+  align-items: var(--pc-horizontal-stack-block-align);
+  display: flex;
+  flex-wrap: var(--pc-horizontal-stack-wrap);
+  gap: var(--pc-horizontal-stack-gap-xs);
+  justify-content: var(--pc-horizontal-stack-align);
+}
+.Polaris-Banner-BannerExperimental--textWarningStrong_1asft.Polaris-Banner-BannerExperimental--textWarningStrong_1asft path, html[class~=Polaris-Summer-Editions-2023] .Polaris-Banner-BannerExperimental--textWarningStrong_1asft.Polaris-Banner-BannerExperimental--textWarningStrong_1asft svg {
+  fill: var(--p-color-text-warning-strong);
+}
+.Polaris-Text--root_yj4ah {
+  margin: 0;
+  text-align: inherit;
+}
+.Polaris-Text--visuallyHidden_yrtt6 {
+  border: 0!important;
+  clip-path: inset(50%)!important;
+  height: 0.0625rem!important;
+  margin: 0!important;
+  overflow: hidden!important;
+  padding: 0!important;
+  position: absolute!important;
+  top: 0;
+  white-space: nowrap!important;
+  width: 0.0625rem!important;
+}
+.Polaris-Text--headingSm_14l4b {
+  font-size: 13px;
+  line-height: var(--p-font-line-height-2);
+}
+.Polaris-Text--break_32vap {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.Polaris-Text--headingSm_14l4b {
+  font-weight: var(--p-font-weight-semibold);
+}
+.Polaris-Text--root_yj4ah {
+  margin: 0;
+  text-align: inherit;
+}
+
+.Polaris-Icon__Img_375hq, .Polaris-Icon__Svg_375hu {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+} */
+.appdetail a{
+  text-decoration: none;
+}
+.appdetail a span{
+  color:#000;
+}
+.clsdisplayspace {
+  justify-content: space-between;
+}
+.allist {
+  margin-left: 20px;
+  margin-right: 595px;
+}
+.article_contain .Polaris-Card__Header {
+  padding-top: 3rem;
+}
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+table {
+  border-collapse: collapse;
+}
+.mt-4, .my-4 {
+  margin-top: 1.5rem!important;
+}
+.table td, .table th {
+  border-top: none;
+  padding: 1.2rem 1.5rem;
+  vertical-align: middle;
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  text-align: left;
+}
+.cls-page-pagination {
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+}
+.mb-4, .my-4 {
+  margin-bottom: 1.5rem!important;
+}
+/* general setting css start */
+.zonset_container {
+  margin-top: 3%;
+}
+.zonset_container .Polaris-Layout {
+  margin-top: 0px;
+  margin-left: 0px;
+}
+.zonset_container .Polaris-Layout__AnnotationWrapper {
+  align-items: center;
+}
+p {
+  margin: 0;
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
+b, strong {
+  font-weight: bolder;
+}
+.Polaris-Button {
+  text-decoration: none !important;
+}
+/* general setting css end */
+/* Zones and rate start */
+.Polaris-Page2 {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+.clsdisflex.Polaris-Page-Header__Row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 0px;
+  align-items: end;
+  margin-left: 14px;
+}
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+.clsdisflex .Polaris-Breadcrumbs__Breadcrumb {
+  border: none;
+}
+.clsarrow.Polaris-Page-Header__BreadcrumbWrapper {
+  margin-right: 20px;
+}
+.clsdisflex .Polaris-Breadcrumbs__Breadcrumb:after {
+  border: 1px solid #c4cdd5;
+  padding: 14px;
+  left: -4px;
+}
+.clszonetitle.Polaris-Header-Title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 5%;
+}
+.clszonetitle.Polaris-Header-Title {
+  font-size: 20px;
+  color: #212b36;
+  font-weight: 500;
+}
+/* Zones and rate end */
+/* support start */
+.clsdogfile.Polaris-Page-Header__Row {
+  margin-bottom: 20px;
+}
+.clszonetitle.Polaris-Header-Title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 5%;
+  font-family: inherit;
+  line-height: 1.2;
+  color: #212b36;
+}
+.clstogflex .zapietAvatar img {
+  border-radius: 50%;
+  height: 52px;
+  width: 52px;
+}
+.clstogflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* support end */
+/* header start */
+
+.logoheader {
+  padding-bottom: 1rem !important;
+  padding-top: 1rem !important;
+  box-shadow: 0px 1px #dfe3e8;
+}
+.Polaris-Page-Header .cls_enbledisable_btn, .shopifybtn {
+  width: 25%;
+}
+.cls_enbledisable_btn, .shopifybtn {
+  margin-top: 1%;
+}
+.logoimg {
+  width: 50px;
+}
+.cls_enbledisable_msg {
+  margin-top: 2%;
+}
+.Polaris-Page-Header .cls_header_logo_image {
+  width: 20%;
+  /* width: 26%; */
+}
+.Polaris-Page-Header__TitleAndActions.cls_header_css {
+  display: flex;
+  align-items: center;
+}
+.mobileview {
+  display: none;
+}
+.clsdesign_for_msg {
+  margin-top: -3%;
+  margin-left: 12%;
+  width: 50%;
+}
+.Polaris-Page-Header .cls_enbledisable_msg {
+  width: 55%;
+}
+.cls_enbledisable_btn, .shopifybtn {
+  margin-top: 1%;
+}
+#toggleButton .handle {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2px;
+  transition: all 0.2s;
+}
+#toggleButton.on .handle {    
+  left: calc(100% - 22px);
+}
+
+#toggleButton.on {
+  width:60px;
+}
+#toggleButton {
+  width: 50px;
+  /* width:75px; */
+  height: 25px;
+  background-color: #e6391a;
+  border-radius: 25px;
+  cursor: pointer;
+  position: relative;
+  margin-left: 20%;
+}
+#toggleButton.on {
+  background-color: #5cb85c;
+}
+.shopifybtn .Polaris-Button--success, .cls_design_enaDisa .Polaris-Button--success {
+  background: linear-gradient(180deg, #007a5c, #007a5c);
+  border-color: #007a5c;
+  box-shadow: inset 0 1px 0 0 #007a5c, 0 1px 0 0 rgba(22, 29, 37, .05), 0 0 0 0 transparent;
+  color: #fff;
+  fill: #fff;
+}
+.Polaris-Page-Header .polaris-nav-menu .cls_menu_mobile {
+  display: none !important;
+}
+a.Polaris-Button.Polaris-Button--success:hover{
+  color:#000;
+  box-shadow: none;
+}
+/* header end */
+/* footer start */
+.footermargin {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+.footer_border {
+  border: 1px solid #dfe3e8;
+  border-radius: 999px;
+  padding: 10px 20px;
+}
+.footermargin {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+}   
+/* footer end */
+/* watsappbutton start */
+.div_evowap_btn {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  z-index: 999;
+}
+/* watsappbutton end */
+/* setting page start */
+.sectionmessage {
+  margin-top: -1.6rem;
+}
+.polarisboxshadow {
+  padding: 5% !important;
+}
+.Cookiesett {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.bodycontainer.Polaris-Page {
+  max-width: 117rem;
+}
+.colorflex {
+  display: flex;
+  align-items: center;
+}
+
+.bannerlayout .bannerbackground, .color_circle, .layoutSelect2 {
+  cursor: pointer;
+}
+.fcolor button {
+  border: none;
+  background-color: transparent;
+}
+.fcolor .color_circle {
+  border: none;
+  background: transparent;
+  width: 30px;
+  height: 30px;
+}
+.backimg {
+  background-image: url(images/bg.png);
+  text-align: center;
+  height: 100%;
+  overflow: auto;
+}
+.bodycontainer .buttonbottom {
+  padding-top: 1%;
+  justify-content: end;
+}
+span.bar-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+span.bar-text-wrapper {
+  text-align: left;
+}
+.modal_preview {
+  width: 600px;
+  height: 300px;
+  position: absolute;
+  flex-direction: column;
+  border: 1px solid #000;
+}
+.preview_set {
+  padding: 13px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+span.bar-message ,span.bar-subtitle  {
+  text-align: left;
+  display: flex;
+  margin-top: 20px;
+  line-height: 25px;
+}
+span.bar-message.change {
+  display: inline-block;
+}
+a.cc-dismiss.postcode {
+  padding: 10px 50px;
+}
+a.cc-dismiss.save {
+  margin-left: 2%;
+   cursor: pointer;
+  text-transform: uppercase;
+  line-height: 1.9;
+  padding: 6px 18px;
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+input#freightAreaZipcodePopup {
+  font-size: 16px;
+  font-family: Helvetica,Helvetica Neue,Arial,Lucida Grande,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.6;
+  padding: 6px 5px;
+}
+input#freightAreaZipcodePopup:focus-visible {
+  outline: none;
+}
+.cc-close {
+  font-size: 20px;
+  font-weight: 700;
+}
+.modal_preview .cc-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+span.bar-subtitle.change {
+  display: inline-block;
+}
+.preview-cookie-bar.modal-wrapper   {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.radiobutton .globo-list-control {
+  list-style: none;
+}
+.radiobutton {
+  padding-left: 0;
+  padding-top: 10px;
+}
+.disp_fle_ju {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+/* setting page end */
+.zonerat_contain button.Polaris-Breadcrumbs__Breadcrumb{
+  cursor: pointer;
+}
+/* postcode end */
+

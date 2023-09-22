@@ -10,19 +10,7 @@ $store = (isset($_GET['store']) && $_GET['store'] != '') ? $_GET['store'] : "man
                     <div class="Polaris-Page-Header__MainContent polaris-nav-menu">
                         <div class="Polaris-Page-Header__TitleAndActions cls_header_css">
                             <div class="Polaris-Page__Title cls_header_logo_image">
-                                <a href="index.php?store=<?php echo $_SESSION['store']; ?>" class="Polaris-DisplayText Polaris-DisplayText--sizeLarge">  <img  src="<?php echo CLS_SITE_URL; ?>/assets/images/logo1.png" alt="your image" class="logoimg" /></a>
-                            </div>
-                            <div class="shopifybtn">
-                                <!-- <a  href="https://<?php echo $store; ?>/admin" class="Polaris-Button  Polaris-Button--success" type="button" target="_blank">
-                                    <span class="Polaris-Button__Content">
-                                        <span class="Polaris-Button__Text">Shopify Admin</span>
-                                    </span>
-                                </a> -->
-                                <a  href="index.php?store=<?php echo $store; ?>" class="Polaris-Button desktopview" type="button">
-                                    <span class="Polaris-Button__Content">
-                                        <span class="Polaris-Button__Text">Home</span>
-                                    </span>
-                                </a>
+                                <a href="index.php?store=<?php echo $_SESSION['store']; ?>" class="Polaris-DisplayText Polaris-DisplayText--sizeLarge">  <img  src="<?php echo CLS_SITE_URL; ?>/assets/images/post/app.png" alt="your image" class="logoimg" /></a>
                             </div>
                             <div class=" cls_enbledisable_msg">
                                 <div class="Polaris-Page__Title cls_msg_enadisa_for_mobile">
@@ -39,9 +27,8 @@ $store = (isset($_GET['store']) && $_GET['store'] != '') ? $_GET['store'] : "man
                                                 </a>
                                             </div>
                                             <div class="Polaris-Banner__Heading msgwidth" id="Banner7Heading">
-                                                <!-- <p class="Polaris-Heading">Activate Cookie Bar </p> -->
-                                                <p class="Polaris-Heading desktopview">Activate Cookie Bar: Update color settings and click "Activate" button to activate Cookie bar on your website. </p>
-                                                <p class="Polaris-Heading mobileview"> The cookie bar is activated. </p>
+                                                <p class="Polaris-Heading desktopview">Delivery Rates by Zip Code is Enable  </p>
+                                                <p class="Polaris-Heading mobileview"> Delivery Rates by Zip Code is Disable </p>
                                            </div>
                                             <div id="toggleButton" class="on">
                                                 <div class="handle"></div>
@@ -52,19 +39,24 @@ $store = (isset($_GET['store']) && $_GET['store'] != '') ? $_GET['store'] : "man
                                 </div>
                             </div>
                             <div class="cls_enbledisable_btn shopifybtn">
-                                <a  href="index.php?store=<?php echo $store; ?>" class="Polaris-Button mobileview" type="button">
+                                <a  href="index.php?store=<?php echo $store; ?>" class="Polaris-Button " type="button">
                                     <span class="Polaris-Button__Content">
-                                        <span class="Polaris-Button__Text">Home</span>
+                                        <span class="Polaris-Button__Text">Dashboard</span>
+                                    </span>
+                                </a>
+                                <a href="help.php?store=<?php echo $store; ?>"  class="Polaris-Button" style="text-decoration: none;">
+                                    <span class="Polaris-Button__Content">
+                                        <span>Zones & Rates</span>
                                     </span>
                                 </a>
                                 <a href="setting.php?store=<?php echo $store; ?>"  class="Polaris-Button" style="text-decoration: none;">
                                     <span class="Polaris-Button__Content">
-                                        <span>Setting</span>
+                                        <span>Settings</span>
                                     </span>
                                 </a>
-                                <a href="help.php?store=<?php echo $store; ?>"  class="Polaris-Button  Polaris-Button--success" style="text-decoration: none;" >
+                                <a href="support.php?store=<?php echo $store; ?>"  class="Polaris-Button  Polaris-Button--success" style="text-decoration: none;" >
                                     <span class="Polaris-Button__Content">
-                                    <span>Help </span>
+                                    <span>Supports </span>
                                     </span>
                                 </a>
                                 <!-- <a href="feature.php?store=<?php echo $store; ?>"  class="Polaris-Button  Polaris-Button--success" style="text-decoration: none;" >

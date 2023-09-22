@@ -1,86 +1,86 @@
 $(document).ready(function () {
-    $(document).on('click', '.down', function (e) {
-        e.preventDefault();
-        var value = $("#myNumber").val();
-        if (value != '') {
-            value = parseInt(value) - 1;
-        } else {
-            value = -1;
-        }
-        $("#myNumber").val(value);
-        var borderheightval = $("#myNumber").val(); 
-        var border_height= $('.pagemargin ').find('.preview_set ');
-        border_height.css("height", borderheightval + "px");
-    });
-    $(document).on('click', '.up', function (e) {
-        e.preventDefault();
-        var value = $("#myNumber").val();
-        if (value != '') {
-            value = parseInt(value) + 1;
-        } else {
-            value = 0;
-        }
-        $("#myNumber").val(value);
-        var borderheightval = $("#myNumber").val();
-        var border_height= $('.pagemargin ').find('.preview_set ');
-        border_height.css("height", borderheightval + "px");
-    });
-    $(document).on('click', '.bdown', function (e) {
-        e.preventDefault();
-        var value = $("#borderrad").val();
-       if (value != '') {
-            value = parseInt(value) - 1;
-        } else {
-            value = -1;
-        }
-        $("#borderrad").val(value);
-        var borderval = $("#borderrad").val();
-        var border_rad= $('.pagemargin ').find('.preview_set .cc-dismiss');
-        border_rad.css("border-radius", borderval + "px");
-    });
-    $(document).on('click', '.bup', function (e) {
-        e.preventDefault();
-        var value = $("#borderrad").val();
-        if (value != '') {
-            value = parseInt(value) + 1;
-        } else {
-            value = 0;
+    // $(document).on('click', '.down', function (e) {
+    //     e.preventDefault();
+    //     var value = $("#myNumber").val();
+    //     if (value != '') {
+    //         value = parseInt(value) - 1;
+    //     } else {
+    //         value = -1;
+    //     }
+    //     $("#myNumber").val(value);
+    //     var borderheightval = $("#myNumber").val(); 
+    //     var border_height= $('.pagemargin ').find('.preview_set ');
+    //     border_height.css("height", borderheightval + "px");
+    // });
+    // $(document).on('click', '.up', function (e) {
+    //     e.preventDefault();
+    //     var value = $("#myNumber").val();
+    //     if (value != '') {
+    //         value = parseInt(value) + 1;
+    //     } else {
+    //         value = 0;
+    //     }
+    //     $("#myNumber").val(value);
+    //     var borderheightval = $("#myNumber").val();
+    //     var border_height= $('.pagemargin ').find('.preview_set ');
+    //     border_height.css("height", borderheightval + "px");
+    // });
+    // $(document).on('click', '.bdown', function (e) {
+    //     e.preventDefault();
+    //     var value = $("#borderrad").val();
+    //    if (value != '') {
+    //         value = parseInt(value) - 1;
+    //     } else {
+    //         value = -1;
+    //     }
+    //     $("#borderrad").val(value);
+    //     var borderval = $("#borderrad").val();
+    //     var border_rad= $('.pagemargin ').find('.preview_set .cc-dismiss');
+    //     border_rad.css("border-radius", borderval + "px");
+    // });
+    // $(document).on('click', '.bup', function (e) {
+    //     e.preventDefault();
+    //     var value = $("#borderrad").val();
+    //     if (value != '') {
+    //         value = parseInt(value) + 1;
+    //     } else {
+    //         value = 0;
     
-        }
-        $("#borderrad").val(value)
-        var borderval = $("#borderrad").val();
-        var border_rad= $('.pagemargin ').find('.preview_set .cc-dismiss');
-        border_rad.css("border-radius", borderval + "px");
-    });
-    $(document).on('click', '.bwdown', function (e) {
-        e.preventDefault();
-        var value = $("#borwidth").val();
-        if (value != '') {
-            value = parseInt(value) - 1;
-        } else {
-            value = -1;
-        }
-        $("#borwidth").val(value);
-        var borderwidthval = $("#borwidth").val();
-        var border_width= $('.pagemargin ').find('.preview_set .cc-dismiss');
-        border_width.css("border-width", borderwidthval + "px");
-        border_width.css("border-style", "solid");
-    });
-    $(document).on('click', '.bwup', function (e) {
-        e.preventDefault();
-        var value = $("#borwidth").val();
-        if (value != '') {
-            value = parseInt(value) + 1;
-        }
-        else {
-            value = 0;
-        }
-        $("#borwidth").val(value);
-        var borderwidthval = $("#borwidth").val();
-        var border_width= $('.pagemargin ').find('.preview_set .cc-dismiss');
-        border_width.css("border-width", borderwidthval + "px");
-        border_width.css("border-style", "solid");
-    });
+    //     }
+    //     $("#borderrad").val(value)
+    //     var borderval = $("#borderrad").val();
+    //     var border_rad= $('.pagemargin ').find('.preview_set .cc-dismiss');
+    //     border_rad.css("border-radius", borderval + "px");
+    // });
+    // $(document).on('click', '.bwdown', function (e) {
+    //     e.preventDefault();
+    //     var value = $("#borwidth").val();
+    //     if (value != '') {
+    //         value = parseInt(value) - 1;
+    //     } else {
+    //         value = -1;
+    //     }
+    //     $("#borwidth").val(value);
+    //     var borderwidthval = $("#borwidth").val();
+    //     var border_width= $('.pagemargin ').find('.preview_set .cc-dismiss');
+    //     border_width.css("border-width", borderwidthval + "px");
+    //     border_width.css("border-style", "solid");
+    // });
+    // $(document).on('click', '.bwup', function (e) {
+    //     e.preventDefault();
+    //     var value = $("#borwidth").val();
+    //     if (value != '') {
+    //         value = parseInt(value) + 1;
+    //     }
+    //     else {
+    //         value = 0;
+    //     }
+    //     $("#borwidth").val(value);
+    //     var borderwidthval = $("#borwidth").val();
+    //     var border_width= $('.pagemargin ').find('.preview_set .cc-dismiss');
+    //     border_width.css("border-width", borderwidthval + "px");
+    //     border_width.css("border-style", "solid");
+    // });
 
 
 

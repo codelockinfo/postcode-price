@@ -383,7 +383,7 @@ function seeting_enable_disable(){
         success: function (comeback)
         {
             if (comeback['outcome']['data']['0']['application_status'] != undefined && comeback['outcome']['data']['0']['application_status'] == "0") {
-                $(".clsdesign_for_msg .Polaris-Heading").html("Please active cookie bar.");
+                $(".clsdesign_for_msg .Polaris-Heading").html("Delivery Rates by Zip Code is Disable ");
                 $(".app-setting-msg").show();
                 $(".enable-btn").val(1);
                 $(".enable-btn").html("Enable");
@@ -397,8 +397,8 @@ function seeting_enable_disable(){
                 $(".enable-btn").addClass(" Polaris-Button--success")
 
             } else { 
-                $(".clsdesign_for_msg .Polaris-Heading.desktopview").html("Activated Cookie Bar: Update colour settings and click Activate button to activated Cookie bar on your website.");
-                $(".clsdesign_for_msg .Polaris-Heading.mobileview").html("Cookie Bar is Activated.");
+                $(".clsdesign_for_msg .Polaris-Heading.desktopview").html("Delivery Rates by Zip Code is Enable.");
+                $(".clsdesign_for_msg .Polaris-Heading.mobileview").html("Delivery Rates by Zip Code is Enable .");
                $(".enable-btn").val(0);
                 $(".enable-btn").html("Disable");
                 $(".app-setting-msg .Polaris-Icon").addClass("Polaris-Icon--colorGreenDark");
@@ -551,14 +551,14 @@ function app_enable_disable(btnval,call_from){
                     $(".app-setting-msg .Polaris-Banner").addClass("Polaris-Banner--statusWarning");
                     $(".app-setting-msg .Polaris-Banner").removeClass("Polaris-Banner--statusSuccess");
                     $(".clsdesign_for_msg").css("background-color","#fdf7e3");
-                    $(".clsdesign_for_msg .Polaris-Heading").html("Please active cookie bar.");
+                    $(".clsdesign_for_msg .Polaris-Heading").html("Delivery Rates by Zip Code is Disable ");
                     $("#toggleButton").removeClass('on');
                     $(".enable-btn").removeClass("Polaris-Button--destructive");
                     $(".enable-btn").addClass(" Polaris-Button--success")
                     
                 } else {
-                    $(".clsdesign_for_msg .Polaris-Heading.desktopview").html("Activated Cookie Bar: Update colour settings and click Activate button to activated Cookie bar on your website.");
-                    $(".clsdesign_for_msg .Polaris-Heading.mobileview").html("Cookie Bar is Activated.");
+                    $(".clsdesign_for_msg .Polaris-Heading.desktopview").html("Delivery Rates by Zip Code is Enable");
+                    $(".clsdesign_for_msg .Polaris-Heading.mobileview").html("Delivery Rates by Zip Code is Enable");
                    $(".enable-btn").val(0);
                     $(".enable-btn").html("Disable");
                     $(".app-setting-msg .Polaris-Icon").addClass("Polaris-Icon--colorGreenDark");
