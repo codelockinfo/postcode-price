@@ -1,11 +1,5 @@
 $(document).ready(function(){
-    $(document).on("click","#toggleButton",function() {
-      $(this).toggleClass("on");
-      const value = $(this).hasClass("on") ? 1 : 0;
-      $("#toggleValue").val(value);
-      app_enable_disable(value);
-    });
-
+    
       // get value of massage
       $('input[name="title"]').on('keydown, keyup', function () {
         var texInputValue = $('#titleText').val();
@@ -182,19 +176,6 @@ $(document).ready(function(){
         $(".bar-message").css("font-size", select);
         $(".bar-subtitle").css("font-size", select);
       });
-
-      // position change
-      $(document).on("change",".positionSelect2",function(){
-        var select=$(this).find(':selected').val();    
-        console.log(select);
-        var select_text = select == 1 ? "top" : "";
-        if(select_text == ""){
-            $(".modal_preview").css({"bottom": "0","top":"unset"});
-        }else{
-            $(".modal_preview").css("top", "0");
-        }
-      });
-
 
       // banner background color
     
