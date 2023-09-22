@@ -490,7 +490,7 @@
                                                                 </div>
                                                         </div>
                                                     </div>
-                                                    <div class="Polaris-Layout__AnnotationContent" style="position:relative;">
+                                                    <div class="Polaris-Layout__AnnotationContent popview" style="position:relative;">
                                                         <div class="Polaris-Card" style="height:100%;">
                                                             <div class="backimg">
                                                                 <div class="preview-cookie-bar modal-wrapper open">

@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="<?php echo main_url('assets/css/spectrum.css'); ?>" rel="stylesheet">
         <link rel="stylesheet" href="<?php echo main_url('assets/css/font-awesome/css/font-awesome.css'); ?>" rel="stylesheet">
         <link rel="stylesheet" href="<?php echo main_url('assets/css/select2.min.css'); ?>" rel="stylesheet"> 
-        <link rel="stylesheet" href="<?php echo main_url('assets/css/style.css'); ?>" rel="stylesheet"> 
+        <link rel="stylesheet" href="<?php echo main_url('assets/css/custom_style.css'); ?>" rel="stylesheet"> 
        
         <script> var store = "<?php echo $store; ?>"; </script>
         <?php  $_SESSION['store'] = $store; ?>

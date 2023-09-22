@@ -1061,6 +1061,9 @@ span.bar-subtitle.change {
   .Polaris-Page-Header .cls_enbledisable_btn, .shopifybtn {
     width: 46%;
   }
+  .modal_preview{
+    width: auto;
+  }
 }
 /* @media (max-width: 991px) {
   .clsdesign_for_msg {
@@ -1149,6 +1152,11 @@ width: 50px;
   flex-wrap: wrap;
 }
 }	
+@media (max-width:803px) {
+  #cookies_bar_setting_save .Polaris-Layout__AnnotationContent.popview{
+    height: 500px;
+  }
+}
 @media (max-width:547px) {	
 .cls_enbledisable_btn.shopifybtn  .Polaris-Button {	
   width: 46%;	
@@ -1187,6 +1195,9 @@ width: 50px;
   }
 #toggleButton {
   margin-left:0;
+}
+.preview_set {
+  padding: 13px 10px;
 }
 }
 .errorcolor{
