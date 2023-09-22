@@ -362,7 +362,7 @@ $.ajax({
         data: {'routine_name': 'appstatus' , store: store},
         success: function (comeback) {
             console.log(comeback +  "status");
-                if (comeback['outcome']['data']['status'] != undefined && comeback['outcome']['data']['status'] == 0) {
+                if (comeback['outcome']['data']['application_status'] != undefined && comeback['outcome']['data']['application_status'] == 0) {
                      $("#register_frm_btn").attr('disabled',true);
                      $(".app-setting-msg").show();
                     
