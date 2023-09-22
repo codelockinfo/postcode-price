@@ -44,7 +44,7 @@ $store = (isset($_GET['store']) && $_GET['store'] != '') ? $_GET['store'] : "man
                                         <span class="Polaris-Button__Text">Dashboard</span>
                                     </span>
                                 </a>
-                                <a href="help.php?store=<?php echo $store; ?>"  class="Polaris-Button" style="text-decoration: none;">
+                                <a href="addzone.php?store=<?php echo $store; ?>"  class="Polaris-Button" style="text-decoration: none;">
                                     <span class="Polaris-Button__Content">
                                         <span>Zones & Rates</span>
                                     </span>
