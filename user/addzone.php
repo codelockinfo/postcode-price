@@ -101,16 +101,19 @@
                                                                         class="Polaris-Connected__Item Polaris-Connected__Item--primary">
                                                                         <div
                                                                             class="Polaris-TextField Polaris-TextField--multiline">
-                                                                            <textarea id="zonearea" autocomplete="off"
+                                                                            <!-- <textarea id="zonearea" autocomplete="off"
                                                                                 class="Polaris-TextField__Input"
                                                                                 type="text" rows="2"
                                                                                 aria-describedby="PolarisTextField3HelpText"
                                                                                 aria-labelledby="PolarisTextField3Label"
                                                                                 style="height: 58px;"
-                                                                                name="zonearea"></textarea>
-                                                                            <div class="Polaris-TextField__Backdrop">
-                                                                            </div>
-                                                                            <div aria-hidden="true"
+                                                                                name="zonearea"></textarea> -->
+                                                                                <select multiple>
+                                                                                    <option selected>Pizza</option>
+                                                                                </select>
+                                                                            <!-- <div class="Polaris-TextField__Backdrop">
+                                                                            </div> -->
+                                                                            <!-- <div aria-hidden="true"
                                                                                 class="Polaris-TextField__Resizer">
                                                                                 <div
                                                                                     class="Polaris-TextField__DummyInput">
@@ -120,7 +123,7 @@
                                                                                     class="Polaris-TextField__DummyInput">
                                                                                     <br><br>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> -->
                                                                         </div>
                                                                         <div class="zonearea errorcolor"></div>
                                                                     </div>

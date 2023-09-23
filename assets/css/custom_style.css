@@ -1065,21 +1065,6 @@ span.bar-subtitle.change {
     width: auto;
   }
 }
-/* @media (max-width: 991px) {
-  .clsdesign_for_msg {
-      margin-left: 0%;
-      width: 90%;
-  }
-  .Polaris-Page-Header .cls_header_logo_image{
-      width:10%;
-  }
-  .Polaris-Page-Header .cls_enbledisable_msg {
-      width: 45%;
-  }
-  .Polaris-Page-Header .cls_enbledisable_btn, .shopifybtn {
-      width: 35%;
-  }
-} */
 @media (max-width:991px) {
   .shopifybtn  a.Polaris-Button {	
     margin: 0.5rem;	
@@ -1203,3 +1188,37 @@ width: 50px;
 .errorcolor{
   color:red;
   }
+  select {
+    width: 100%;
+}
+.select2-container--default .select2-selection--multiple {
+    border: 0;
+    padding: 5px 10px;
+}
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    background-color: #ffd4bf;
+    border: none;
+}
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__remove {
+    margin-right: 5px;
+    color: #640e0e;
+}
+span.select2-selection.select2-selection--multiple {
+  padding: 0;
+}
+.select2:focus-visible{
+  outline: none;
+}
+.select2-container{
+  width: 100% !important;
+}
+.clsarrow .Polaris-Breadcrumbs__Breadcrumb{
+  padding: 0%;
+}
+.clsarrow .Polaris-Breadcrumbs__Icon{
+  margin: 0;
+}

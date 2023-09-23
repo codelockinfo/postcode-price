@@ -21,6 +21,13 @@ $(document).ready(function(){
         $(".bar-text-wrapper ").find(".bar_btn .cc-dismiss ").html(btnInputValue);
       });
 
+      $("select").select2({
+        tags: true
+      });
+      
+      $("ul.select2-selection__rendered").sortable({
+        containment: 'parent'
+      });
       // set height
 
       
