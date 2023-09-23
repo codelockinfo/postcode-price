@@ -99,7 +99,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="Polaris-FormLayout__Item" style="margin-top: 0.4rem;">
+                                                                        <div class="Polaris-FormLayout__Item">
                                                                             <div class="">
                                                                                 <div class="Polaris-Labelled__LabelWrapper">
                                                                                     <div class="Polaris-Label">

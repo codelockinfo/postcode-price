@@ -102,7 +102,7 @@
                                                                         <div
                                                                             class="Polaris-TextField Polaris-TextField--multiline">
                                                                             
-                                                                                <select multiple>
+                                                                                <select multiple class="multipleselect  ">
                                                                                     <!-- <option selected>Pizza</option> -->
                                                                                 </select>
                                                                             

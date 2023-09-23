@@ -21,13 +21,7 @@ $(document).ready(function(){
         $(".bar-text-wrapper ").find(".bar_btn .cc-dismiss ").html(btnInputValue);
       });
 
-      $("select").select2({
-        tags: true
-      });
       
-      $("ul.select2-selection__rendered").sortable({
-        containment: 'parent'
-      });
       // set height
 
       
@@ -184,6 +178,19 @@ $(document).ready(function(){
         $(".bar-subtitle").css("font-size", select);
       });
 
+      $(".multipleselect").select2({
+        tags: true
+      });
+      
+      $("ul.select2-selection__rendered").sortable({
+        containment: 'parent'
+      });
+      $(document).on('keypress', '.select2-search__field', function () {
+        $(this).val($(this).val().replace(/[^\d].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+          event.preventDefault();
+        }
+      });
       // banner background color
     
       const body1 = document.querySelector(".preview_set");
@@ -205,7 +212,6 @@ $(document).ready(function(){
       input2.addEventListener("input", setColor2);
       function setColor2() {
           body2.style.color = input2.value;
-          // colorCode2.innerHTML = input2.value;
       }
 
       // message  color
@@ -222,7 +228,6 @@ $(document).ready(function(){
       }
 
         // button background color
-    
         const body5 = document.querySelector("a.cc-dismiss.save");
         const input5 = document.getElementById("buttonbackcolor");
         const colorCode5 = document.getElementById("buttoncolor");
@@ -234,7 +239,6 @@ $(document).ready(function(){
         }
 
          // button text  color
-    
       const body6 = document.querySelector("a.cc-dismiss.save ");
       const input6 = document.getElementById("buttontextcolor");
       const colorCode6 = document.getElementById("buttontext");
@@ -294,4 +298,7 @@ $(document).ready(function(){
              body11.style.backgroundColor = input11.value;
              colorCode11.innerHTML = input11.value;
          }
+
+
+      
 });

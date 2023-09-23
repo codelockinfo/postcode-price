@@ -1222,3 +1222,6 @@ span.select2-selection.select2-selection--multiple {
 .clsarrow .Polaris-Breadcrumbs__Icon{
   margin: 0;
 }
+.polarisboxshadow .Polaris-FormLayout{
+  margin-top: 0;
+}
