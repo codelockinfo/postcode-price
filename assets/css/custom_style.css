@@ -1225,3 +1225,48 @@ span.select2-selection.select2-selection--multiple {
 .polarisboxshadow .Polaris-FormLayout{
   margin-top: 0;
 }
+.fea_con {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  align-items: center;
+}
+.col-md-1 {
+  flex: 0 0 8.333333%;
+  max-width: 8.333333%;
+}
+.col-md-11 {
+  flex: 0 0 91.666667%;
+  max-width: 91.666667%;
+}
+.cus_help{
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  border: 0;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 6px;
+  color: #333333;
+  background: #fff;
+  width: 100%;
+
+}
+@media (max-width:1200px) {
+  .cus_help{
+    width: auto;
+    margin: 20px;
+  }
+}
+@media (max-width:620px) {
+  .fea_con {
+    flex-wrap: nowrap;
+  }
+  .col-md-1 {
+    flex: none;
+    max-width: none;
+}
+.col-md-11 {
+  flex: auto;
+}
+
+}
