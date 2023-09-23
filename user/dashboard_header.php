@@ -50,7 +50,7 @@ $store = (isset($_GET['store']) && $_GET['store'] != '') ? $_GET['store'] : "man
                                         <span>Settings</span>
                                     </span>
                                 </a>
-                                <a href=""  class="Polaris-Button" style="text-decoration: none;">
+                                <a href="help.php?store=<?php echo $store; ?>"  class="Polaris-Button" style="text-decoration: none;">
                                     <span class="Polaris-Button__Content">
                                         <span>Faq</span>
                                     </span>

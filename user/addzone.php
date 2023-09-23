@@ -102,26 +102,11 @@
                                                                         class="Polaris-Connected__Item Polaris-Connected__Item--primary">
                                                                         <div
                                                                             class="Polaris-TextField Polaris-TextField--multiline">
-                                                                            <textarea id="zonearea" autocomplete="off"
-                                                                                class="Polaris-TextField__Input"
-                                                                                type="text" rows="2"
-                                                                                aria-describedby="PolarisTextField3HelpText"
-                                                                                aria-labelledby="PolarisTextField3Label"
-                                                                                style="height: 58px;"
-                                                                                name="zonearea"></textarea>
-                                                                            <div class="Polaris-TextField__Backdrop">
-                                                                            </div>
-                                                                            <div aria-hidden="true"
-                                                                                class="Polaris-TextField__Resizer">
-                                                                                <div
-                                                                                    class="Polaris-TextField__DummyInput">
-                                                                                    <br>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="Polaris-TextField__DummyInput">
-                                                                                    <br><br>
-                                                                                </div>
-                                                                            </div>
+                                                                            
+                                                                                <select multiple class="multipleselect  ">
+                                                                                    <!-- <option selected>Pizza</option> -->
+                                                                                </select>
+                                                                            
                                                                         </div>
                                                                         <div class="zonearea errorcolor"></div>
                                                                     </div>

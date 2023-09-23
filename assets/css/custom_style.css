@@ -1065,21 +1065,6 @@ span.bar-subtitle.change {
     width: auto;
   }
 }
-/* @media (max-width: 991px) {
-  .clsdesign_for_msg {
-      margin-left: 0%;
-      width: 90%;
-  }
-  .Polaris-Page-Header .cls_header_logo_image{
-      width:10%;
-  }
-  .Polaris-Page-Header .cls_enbledisable_msg {
-      width: 45%;
-  }
-  .Polaris-Page-Header .cls_enbledisable_btn, .shopifybtn {
-      width: 35%;
-  }
-} */
 @media (max-width:991px) {
   .shopifybtn  a.Polaris-Button {	
     margin: 0.5rem;	
@@ -1203,3 +1188,85 @@ width: 50px;
 .errorcolor{
   color:red;
   }
+  select {
+    width: 100%;
+}
+.select2-container--default .select2-selection--multiple {
+    border: 0;
+    padding: 5px 10px;
+}
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    background-color: #ffd4bf;
+    border: none;
+}
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__remove {
+    margin-right: 5px;
+    color: #640e0e;
+}
+span.select2-selection.select2-selection--multiple {
+  padding: 0;
+}
+.select2:focus-visible{
+  outline: none;
+}
+.select2-container{
+  width: 100% !important;
+}
+.clsarrow .Polaris-Breadcrumbs__Breadcrumb{
+  padding: 0%;
+}
+.clsarrow .Polaris-Breadcrumbs__Icon{
+  margin: 0;
+}
+.polarisboxshadow .Polaris-FormLayout{
+  margin-top: 0;
+}
+.fea_con {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  align-items: center;
+}
+.col-md-1 {
+  flex: 0 0 8.333333%;
+  max-width: 8.333333%;
+}
+.col-md-11 {
+  flex: 0 0 91.666667%;
+  max-width: 91.666667%;
+}
+.cus_help{
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  border: 0;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 6px;
+  color: #333333;
+  background: #fff;
+  width: 100%;
+
+}
+@media (max-width:1200px) {
+  .cus_help{
+    width: auto;
+    margin: 20px;
+  }
+}
+@media (max-width:620px) {
+  .fea_con {
+    flex-wrap: nowrap;
+  }
+  .col-md-1 {
+    flex: none;
+    max-width: none;
+}
+.col-md-11 {
+  flex: auto;
+}
+
+}
