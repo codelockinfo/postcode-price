@@ -435,7 +435,7 @@
                                                                                         <div>
                                                                                             <button class="MuiButtonBase-root MuiButton-root fs-14 MuiButton-sizeSmall MuiButton-disableElevation cls-color color-btn c_btn" tabindex="0" type="button" href="">
                                                                                                 <span class="MuiTouchRipple-root"></span>
-                                                                                                <input type="color" name="zipcodeback" value="#FFFFFF" id="zipbuttonbackcolor" class="color_circle" colorpick-eyedropper-active="true">
+                                                                                                <input type="color" name="color_zipcode_button" value="#FFFFFF" id="zipbuttonbackcolor" class="color_circle" colorpick-eyedropper-active="true">
                                                                                                 <input type="hidden" id="Zipcode">
                                                                                             </button>
                                                                                         </div>
@@ -455,7 +455,7 @@
                                                                                         <div>
                                                                                             <button class="MuiButtonBase-root MuiButton-root fs-14 MuiButton-sizeSmall MuiButton-disableElevation cls-color color-btn c_btn" tabindex="0" type="button" href="">
                                                                                                 <span class="MuiTouchRipple-root"></span>
-                                                                                                <input type="color" value="#000000" name="color_button_text" id="zipcodetextcolor" class="color_circle" colorpick-eyedropper-active="true">
+                                                                                                <input type="color" value="#000000" name="color_zipcode_text" id="zipcodetextcolor" class="color_circle" colorpick-eyedropper-active="true">
                                                                                                 <input type="hidden" id="zipcodetext">
                                                                                             </button>
                                                                                         </div>
@@ -472,7 +472,7 @@
                                                                                         <div>
                                                                                             <button class="MuiButtonBase-root MuiButton-root fs-14 MuiButton-sizeSmall MuiButton-disableElevation cls-color color-btn c_btn" tabindex="0" type="button" href="">
                                                                                                 <span class="MuiTouchRipple-root"></span>
-                                                                                                <input type="color" value="#000000" name="color_button_border" id="zipcodebordercolor" class="color_circle" colorpick-eyedropper-active="true">
+                                                                                                <input type="color" value="#000000" name="color_zipcode_border" id="zipcodebordercolor" class="color_circle" colorpick-eyedropper-active="true">
                                                                                                 <input type="hidden" id="zipcodeborder">
                                                                                             </button>
                                                                                         </div>
