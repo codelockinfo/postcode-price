@@ -797,3 +797,133 @@ $.ajax({
         }
 });
 }
+$(".resetForm").on("click",function(){
+    $("#addbzone_frm")[0].reset();
+});
+
+function popup_setting_save_first(){
+    $.ajax({
+        url: "ajax_call.php",
+        type: "post",
+        dataType: "json",
+        data: {'routine_name': 'popup_setting_save_first' ,'store' : store},
+        success: function (comeback){
+            console.log(comeback);
+        }
+    });
+}
+
+
+function popup_setting_select(){
+    $.ajax({
+        url: "ajax_call.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            'store': store,
+            'routine_name': 'popup_setting_select'
+        },
+        success: function(comeback) {
+            if(comeback  != undefined){
+            var comeback = JSON.parse(comeback);
+            console.log(comeback);
+                console.log(comeback.outcome.title_fontsize);
+                var agreement_text = comeback.outcome.agreement_text !== '' ? comeback.outcome.agreement_text : "Save";
+                var position = comeback.outcome.position == 1 ? "top" : "bottom";
+                console.log(position);
+                $('.Polaris-TextField__Input[name="message"]').val(comeback.outcome.message);
+                $('.bar-message').html(comeback.outcome.message);
+                
+                $('.Polaris-TextField__Input[name="title"]').val(comeback.outcome.title);
+                $('.bar-title').html(comeback.outcome.title);
+                
+                $('.Polaris-TextField__Input[name="maintitle"]').val(comeback.outcome.maintitle);
+                $('.bar-subtitle').html(comeback.outcome.maintitle);
+                
+                $('.Polaris-TextField__Input[name="agreement_text"]').val(comeback.outcome.agreement_text);
+                $('.cc-dismiss.save').html(comeback.outcome.agreement_text);
+                
+                $('.Polaris-TextField__Input[name="popup_height"]').val(comeback.outcome.popup_height);
+                $('.preview_set').css("height",comeback.outcome.popup_height);     
+                
+                $('.Polaris-Select__Input[name="title_fontsize"]').val(comeback.outcome.title_fontsize);
+                $('.bar-title').css("font-size",comeback.outcome.title_fontsize);
+                
+                $('.Polaris-Select__Input[name="message_fontsize"]').val(comeback.outcome.message_fontsize);
+                $('.bar-title').css("font-size",comeback.outcome.message_fontsize);
+                $('.bar-message').css("font-size",comeback.outcome.message_fontsize);
+                $('.bar-subtitle').css("font-size",comeback.outcome.message_fontsize);
+                
+                $('.Polaris-TextField__Input[name="button_border_radius"]').val(comeback.outcome.button_border_radius);
+                $('.cc-dismiss').css("border-radius",comeback.outcome.button_border_radius+"px");
+                
+                $('.Polaris-TextField__Input[name="zipcode_border_radius"]').val(comeback.outcome.zipcode_border_radius);
+                $('.postcode').css("border-radius",comeback.outcome.zipcode_border_radius+"px");
+
+                $('.Polaris-Select__Input[name="position"]').val(comeback.outcome.position);
+                
+                $('.Polaris-TextField__Input[name="button_border_width"]').val(comeback.outcome.button_border_width);
+                $('.cc-dismiss').css("border",comeback.outcome.button_border_width+"px solid");
+                
+                $('.Polaris-TextField__Input[name="zipcode_border_width"]').val(comeback.outcome.zipcode_border_width);
+                $('.postcode').css("border",comeback.outcome.zipcode_border_width+"px solid");
+
+                $('.color_circle[name="color_banner"]').val(comeback.outcome.color_banner);
+                $(".preview_set").css("background-color",comeback.outcome.color_banner);
+
+                $('.color_circle[name="color_banner_text"]').val(comeback.outcome.color_banner_text);
+                $(".preview_set").css("color",comeback.outcome.color_banner_text);
+
+                $('.color_circle[name="color_banner_link"]').val(comeback.outcome.color_banner_link);
+                $(".cc-link").css("color",comeback.outcome.color_banner_link);
+                
+                $('.color_circle[name="color_button"]').val(comeback.outcome.color_button);
+                $(".cc-dismiss").css("background-color",comeback.outcome.color_banner_link);
+                $(".cc-close").css("color",comeback.outcome.color_banner_link);
+                
+                $('.color_circle[name="color_button_text"]').val(comeback.outcome.color_button_text);
+                $(".cc-dismiss").css("color",comeback.outcome.color_button_text);
+                
+                $('.color_circle[name="color_button_border"]').val(comeback.outcome.color_button_border);
+                $(".cc-dismiss").css("border-color",comeback.outcome.color_button_border);
+              
+                $('.color_circle[name="color_zipcode_button"]').val(comeback.outcome.color_zipcode_button);
+                $(".cc-dismiss").css("border-color",comeback.outcome.color_zipcode_button);
+              
+                $('.color_circle[name="color_zipcode_text"]').val(comeback.outcome.color_zipcode_text);
+                $(".cc-dismiss").css("border-color",comeback.outcome.color_zipcode_text);
+               
+                $('.color_circle[name="color_zipcode_border"]').val(comeback.outcome.color_zipcode_border);
+                $(".cc-dismiss").css("border-color",comeback.outcome.color_zipcode_border);
+
+                $('.preview_set').css(position,0);
+            }
+        }
+    });
+}
+
+$(document).on("submit", "#popup_setting_save", function (e) {
+    e.preventDefault();       
+    console.log("COKKIES BAR....");
+    var form_data = $("#popup_setting_save")[0];
+    var form_data = new FormData(form_data);
+    form_data.append('store',store); 
+    form_data.append('routine_name','popup_setting_save');      
+    $.ajax({
+        url: "ajax_call.php",
+        type: "post",
+        dataType: "json",
+        contentType: false,
+        processData: false,
+        data: form_data, 
+          beforeSend: function () {
+            loading_show('.save_loader_show');
+        },
+        success: function (response) {
+             if (response['code'] != undefined && response['code'] == '403') {
+                redirect403();
+            } 
+            loading_hide('.save_loader_show', 'Save');
+        }
+    });
+});

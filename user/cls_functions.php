@@ -704,4 +704,106 @@ class Client_functions extends common_function {
             }
         return $response_data; 
     }
+
+    function popup_setting_save_first(){
+        $response = array('result' => 'fail', 'msg' => __('Something went wrong'));
+        if (isset($_POST['store']) && $_POST['store'] != '' ) {
+                $fields_arr = array();
+                $shopinfo = $this->current_store_obj;
+                $shopinfo = (object)$shopinfo;
+                $where_query = array(["", "store_user_id", "=", $shopinfo->store_user_id]);
+                $comeback= $this->select_result(TABLE_POPUP_MASTER, '*', $where_query);
+                $mysql_date = date('Y-m-d H:i:s');
+                if(empty($comeback['data'])){
+                        $fields_arr = array(
+                            '`store_user_id`' => $shopinfo->store_user_id,
+                            '`title`' => 'Changing postcode or city:',
+                            '`message`' => 'To see prices in the shop, you must enter a postcode',
+                            '`maintitle`' => 'Changing postcode or city:',
+                            '`agreement_text`' =>'Save',
+                            '`popup_height`' => '300',
+                            '`title_fontsize`' => '20px',
+                            '`message_fontsize`' => '20px',
+                            '`button_border_radius`' => '20',
+                            '`button_border_width`' => '2',
+                            '`zipcode_border_radius`' => '2',
+                            '`zipcode_border_width`' => '2',
+                            '`position`' => '1',
+                            '`color_banner`' => '#ffffff',
+                            '`color_banner_text`' => '#000000',
+                            '`color_banner_link`' => '##000000',
+                            '`color_button`' => '#ffffff',
+                            '`color_button_text`' =>  '#000000',
+                            '`color_button_border`' =>'#000000',
+                            '`color_zipcode_button`' =>'#ffffff',
+                            '`color_zipcode_text`' =>'#000000',
+                            '`color_zipcode_border`' =>'#000000',
+                            '`created_at`' => $mysql_date,
+                            '`updated_at`' => $mysql_date
+                    );
+                    $response_data = $this->post_data(TABLE_POPUP_MASTER, array($fields_arr));
+                    $response = array('result' => 'success', 'msg' => "Setting add successfully");
+                }
+            }
+            return $response;
+    }
+
+    function popup_setting_select(){
+        $response_data = array('result' => 'fail', 'msg' => __('Something went wrong'));
+        if (isset($_POST['store']) && $_POST['store'] != '') {
+                $shopinfo = $this->current_store_obj;
+                $shopinfo = (object)$shopinfo;
+                $where_query = array(["", "store_user_id", "=", $shopinfo->store_user_id]);
+                $comeback= $this->select_result(TABLE_POPUP_MASTER, '*', $where_query);
+                $comebackdata = isset($comeback['data'][0]) ? $comeback['data'][0] : '';
+                $comeback = (object)$comebackdata;
+                $response_data = array('result' => 'success', 'outcome' => $comeback);
+        }
+        $response = json_encode($response_data);
+        return $response;
+    }
+
+    function popup_setting_save() {
+        $response = array('result' => 'fail', 'msg' => __('Something went wrong'));
+        if (isset($_POST['store']) && $_POST['store'] != '') {
+            $fields_arr = array();
+            $shopinfo = $this->current_store_obj;
+            $shopinfo = (object)$shopinfo;
+            $where_query = array(["", "store_user_id", "=", $shopinfo->store_user_id]);
+            $comeback= $this->select_result(TABLE_POPUP_MASTER, '*', $where_query);
+            $mysql_date = date('Y-m-d H:i:s');
+            if(!empty($comeback['data'])){
+                $where_query = array(
+                    ["", "store_user_id", "=", $shopinfo->store_user_id],
+                );
+                $fields_arr = array(
+                    '`title`' => $_POST["title"],
+                    '`message`' => $_POST["message"],
+                    '`maintitle`' => $_POST["maintitle"],
+                    '`agreement_text`' => $_POST["agreement_text"],
+                    '`popup_height`' => $_POST['popup_height'],
+                    '`title_fontsize`' => $_POST["title_fontsize"],
+                    '`message_fontsize`' => $_POST["message_fontsize"],
+                    '`button_border_radius`' => $_POST["button_border_radius"],
+                    '`button_border_width`' => $_POST["button_border_width"],
+                    '`zipcode_border_width`' => $_POST["zipcode_border_width"],
+                    '`zipcode_border_radius`' => $_POST["zipcode_border_radius"],
+                    '`position`' => $_POST["position"],
+                    '`color_banner`' => $_POST["color_banner"],
+                    '`color_banner_text`' => $_POST["color_banner_text"],
+                    '`color_banner_link`' => $_POST["color_banner_link"],
+                    '`color_button`' => $_POST["color_button"],
+                    '`color_button_text`' => $_POST["color_button_text"],
+                    '`color_button_border`' => $_POST["color_button_border"],
+                    '`color_zipcode_button`' => $_POST["color_zipcode_button"],
+                    '`color_zipcode_text`' => $_POST["color_zipcode_text"],
+                    '`color_zipcode_border`' => $_POST["color_zipcode_border"],
+                    '`updated_at`' => $mysql_date
+                );
+                $response_data = $this->put_data(TABLE_POPUP_MASTER, $fields_arr, $where_query);
+                $response = array('result' => 'success', 'msg' => "Setting update successfully");
+            }
+        }
+        return $response;
+    }
 }

@@ -283,3 +283,6 @@ if (isset($_GET['store']) && $_GET['store'] != '') {
 </html> 
 
 <?php include_once('dashboard_footer.php'); ?>
+<script>
+    popup_setting_save_first();
+</script>

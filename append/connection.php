@@ -84,7 +84,7 @@ class DB_Class {
         }
                 
 }
-define('CLS_SITE_NAME','CLS REWRITER');
+define('CLS_SITE_NAME','Postcode - Price');
 define('CLS_SITE_EMAIL', '#');
 define('CLS_NO_IMAGE','no-image.png');
 define('CHARGE', '0.99');
@@ -104,6 +104,7 @@ define('CLS_SVG_CIRCLE_MINUS', '<svg class="Polaris-Icon__Svg" viewBox="0 0 80 8
 define('TABLE_USER_SHOP', 'user_shops');
 define('TABLE_ZONE_MASTER', 'zone');
 define('TABLE_PRODUCT_MASTER', 'product');
+define('TABLE_POPUP_MASTER', 'popup_setting');
 
 define("CLS_API_VERSIION",'api/2022-10');
 define('CLS_TABLE_FONT_FAMILYS', 'font_family');

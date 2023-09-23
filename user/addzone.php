@@ -214,9 +214,9 @@
                                             <div class="Polaris-Stack__Item">
                                                 <div class="Polaris-ButtonGroup">
                                                     <div class="Polaris-ButtonGroup__Item"><button
-                                                            class="Polaris-Button" type="button">
-                                                            <span class="Polaris-Button__Content"><span
-                                                                    class="Polaris-Button__Text">Cancel</span>
+                                                            class="Polaris-Button resetForm" type="button">
+                                                            <span class="Polaris-Button__Content">
+                                                                <span class="Polaris-Button__Text">Cancel</span>
                                                             </span>
                                                         </button>
                                                     </div>

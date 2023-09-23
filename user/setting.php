@@ -22,7 +22,7 @@
                                     </div>
                                    
                             </div>
-                            <form method="POST" id="cookies_bar_setting_save" onsubmit="">
+                            <form method="POST" id="popup_setting_save" onsubmit="">
                                 <div class="Polaris-Page Polaris-Page--fullWidth" style="padding:0;">
                                     <div class="Polaris-Page__Content">
                                         <div class="Polaris-Layout">
@@ -150,7 +150,7 @@
                                                                             <div class="Polaris-Labelled__LabelWrapper">
                                                                                 <div class="Polaris-Label"><label class="Polaris-Label__Text">Pop-up height (px)</label></div>
                                                                             </div>
-                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="myNumber" name="banner_height" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false">
+                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="myNumber" name="popup_height" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false">
                                                                                 <div class="Polaris-TextField__Spinner" aria-hidden="true">
                                                                                     <button role="button" class="Polaris-TextField__Segment up" tabindex="-1">
                                                                                         <div class="Polaris-TextField__SpinnerIcon"><span class="Polaris-Icon tip" data-hover="Up"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M15 12l-5-5-5 5z"></path></svg></span></div>
@@ -435,7 +435,7 @@
                                                                                         <div>
                                                                                             <button class="MuiButtonBase-root MuiButton-root fs-14 MuiButton-sizeSmall MuiButton-disableElevation cls-color color-btn c_btn" tabindex="0" type="button" href="">
                                                                                                 <span class="MuiTouchRipple-root"></span>
-                                                                                                <input type="color" name="zipcodeback" value="#FFFFFF" id="zipbuttonbackcolor" class="color_circle" colorpick-eyedropper-active="true">
+                                                                                                <input type="color" name="color_zipcode_button" value="#FFFFFF" id="zipbuttonbackcolor" class="color_circle" colorpick-eyedropper-active="true">
                                                                                                 <input type="hidden" id="Zipcode">
                                                                                             </button>
                                                                                         </div>
@@ -455,7 +455,7 @@
                                                                                         <div>
                                                                                             <button class="MuiButtonBase-root MuiButton-root fs-14 MuiButton-sizeSmall MuiButton-disableElevation cls-color color-btn c_btn" tabindex="0" type="button" href="">
                                                                                                 <span class="MuiTouchRipple-root"></span>
-                                                                                                <input type="color" value="#000000" name="color_button_text" id="zipcodetextcolor" class="color_circle" colorpick-eyedropper-active="true">
+                                                                                                <input type="color" value="#000000" name="color_zipcode_text" id="zipcodetextcolor" class="color_circle" colorpick-eyedropper-active="true">
                                                                                                 <input type="hidden" id="zipcodetext">
                                                                                             </button>
                                                                                         </div>
@@ -472,7 +472,7 @@
                                                                                         <div>
                                                                                             <button class="MuiButtonBase-root MuiButton-root fs-14 MuiButton-sizeSmall MuiButton-disableElevation cls-color color-btn c_btn" tabindex="0" type="button" href="">
                                                                                                 <span class="MuiTouchRipple-root"></span>
-                                                                                                <input type="color" value="#000000" name="color_button_border" id="zipcodebordercolor" class="color_circle" colorpick-eyedropper-active="true">
+                                                                                                <input type="color" value="#000000" name="color_zipcode_border" id="zipcodebordercolor" class="color_circle" colorpick-eyedropper-active="true">
                                                                                                 <input type="hidden" id="zipcodeborder">
                                                                                             </button>
                                                                                         </div>
@@ -525,7 +525,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="Polaris-ButtonGroup__Item">
-                                                        <button class="Polaris-Button Polaris-Button--primary save_loader_show" type="submt">
+                                                        <button class="Polaris-Button Polaris-Button--primary save_loader_show" type="submit">
                                                         <span class="Polaris-Button__Content">
                                                             <span class="Polaris-Button__Text">Save</span>
                                                         </span>
@@ -546,3 +546,6 @@
 </body>
 </html> 
 <?php include_once('dashboard_footer.php'); ?>
+<script>
+    popup_setting_select();
+</script>
