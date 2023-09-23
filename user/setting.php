@@ -150,7 +150,8 @@
                                                                             <div class="Polaris-Labelled__LabelWrapper">
                                                                                 <div class="Polaris-Label"><label class="Polaris-Label__Text">Pop-up height (px)</label></div>
                                                                             </div>
-                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="myNumber" name="banner_height" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false">
+                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue">
+                                                                                <input id="myNumber" name="banner_height" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="250">
                                                                                 <div class="Polaris-TextField__Spinner" aria-hidden="true">
                                                                                     <button role="button" class="Polaris-TextField__Segment up" tabindex="-1">
                                                                                         <div class="Polaris-TextField__SpinnerIcon"><span class="Polaris-Icon tip" data-hover="Up"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M15 12l-5-5-5 5z"></path></svg></span></div>
@@ -218,7 +219,8 @@
                                                                             <div class="Polaris-Labelled__LabelWrapper">
                                                                                 <div class="Polaris-Label"><label class="Polaris-Label__Text">Button border radius (px)</label></div>
                                                                             </div>
-                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="borderrad" name="button_border_radius" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="">
+                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue">
+                                                                                <input id="borderrad" name="button_border_radius" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="0">
                                                                                 <div class="Polaris-TextField__Spinner" aria-hidden="true">
                                                                                     <button role="button" class="Polaris-TextField__Segment bup" tabindex="-1">
                                                                                         <div class="Polaris-TextField__SpinnerIcon"><span class="Polaris-Icon tip" data-hover="Up"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M15 12l-5-5-5 5z"></path></svg></span></div>
@@ -234,7 +236,7 @@
                                                                             <div class="Polaris-Labelled__LabelWrapper">
                                                                                 <div class="Polaris-Label"><label class="Polaris-Label__Text">Button border width (px)</label></div>
                                                                             </div>
-                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="borwidth" name="button_border_width" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="">
+                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="borwidth" name="button_border_width" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="2">
                                                                                 <div class="Polaris-TextField__Spinner" aria-hidden="true">
                                                                                     <button role="button" class="Polaris-TextField__Segment bwup" tabindex="-1">
                                                                                         <div class="Polaris-TextField__SpinnerIcon"><span class="Polaris-Icon tip" data-hover="Up"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M15 12l-5-5-5 5z"></path></svg></span></div>
@@ -250,7 +252,7 @@
                                                                             <div class="Polaris-Labelled__LabelWrapper">
                                                                                 <div class="Polaris-Label"><label class="Polaris-Label__Text">Zipcode border radius (px)</label></div>
                                                                             </div>
-                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="zipcoderd" name="zipcode_border_radius" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="">
+                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="zipcoderd" name="zipcode_border_radius" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="0">
                                                                                 <div class="Polaris-TextField__Spinner" aria-hidden="true">
                                                                                     <button role="button" class="Polaris-TextField__Segment zipup" tabindex="-1">
                                                                                         <div class="Polaris-TextField__SpinnerIcon"><span class="Polaris-Icon tip" data-hover="Up"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M15 12l-5-5-5 5z"></path></svg></span></div>
@@ -266,7 +268,7 @@
                                                                             <div class="Polaris-Labelled__LabelWrapper">
                                                                                 <div class="Polaris-Label"><label class="Polaris-Label__Text">Zipcode border width (px)</label></div>
                                                                             </div>
-                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="zipborwidth" name="zipcode_border_width" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="">
+                                                                            <div class="Polaris-TextField Polaris-TextField--hasValue"><input id="zipborwidth" name="zipcode_border_width" class="Polaris-TextField__Input" type="number" aria-labelledby="TextField32Label" aria-invalid="false" value="2">
                                                                                 <div class="Polaris-TextField__Spinner" aria-hidden="true">
                                                                                     <button role="button" class="Polaris-TextField__Segment zipwup" tabindex="-1">
                                                                                         <div class="Polaris-TextField__SpinnerIcon"><span class="Polaris-Icon tip" data-hover="Up"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M15 12l-5-5-5 5z"></path></svg></span></div>
