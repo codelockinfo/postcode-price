@@ -1251,6 +1251,9 @@ span.select2-selection.select2-selection--multiple {
   width: 100%;
 
 }
+.enable-btn{
+  cursor: text;
+}
 @media (max-width:1200px) {
   .cus_help{
     width: auto;
