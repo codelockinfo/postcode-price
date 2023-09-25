@@ -7,9 +7,9 @@
 <body>
     <div class="main-sec" style="max-width: 1140px;margin: auto;background-color: #ffff;border-radius: 30px;">
         <div class="mail-img" style="background-color: #fff;margin: auto;padding: 50px 100px;border-radius: 30px 30px 0px 0px;">
-            <img src="https://codelocksolutions.in/cls-rewriter/assets/images/thankemail_template/banner1.png" alt="" style="width: 75%;margin: 0 auto;display: flex;">
+            <img src="https://postcode.codelocksolutions.com/assets/images/thankemail_template/banner1.png" alt="" style="width: 75%;margin: 0 auto;display: flex;">
             <div class="details" style="text-align: center;">
-                <h3 style="font-size: 38px;margin-bottom: 15px;color: rgb(25, 25, 25);">Welcome to ReWriter!</h3>
+                <h3 style="font-size: 38px;margin-bottom: 15px;color: rgb(25, 25, 25);">Welcome to Postcode - price!</h3>
                 <p style="font-size: 25px;">Thank you for Installation!</p>
             </div>
         </div>

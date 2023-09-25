@@ -21,10 +21,7 @@ $__webhook_arr = array(
     'app/uninstalled',
     'products/create',
     'products/delete',
-    'products/update',
-    'collections/create',
-    'collections/update',
-    'collections/delete'
+    'products/update'
 );
 
 if ($_GET['shop'] != "") {
@@ -59,7 +56,7 @@ if ($_GET['shop'] != "") {
                 foreach ($__webhook_arr as $topic) {
                     $file_name = str_replace('/', '-', $topic) . '.php';
                     $params = '{"webhook": {"topic":"' . $topic . '",
-                               "address":"https://codelocksolutions.in/cls-rewriter/webhook/' . $file_name . '",
+                               "address":"https://postcode.codelocksolutions.com/webhook/' . $file_name . '",
                                 "format":"json"
 				}}';
                 $responce = $cls_functions->register_webhook($shopify_url, $params, $password);
@@ -68,7 +65,7 @@ if ($_GET['shop'] != "") {
             $asset = array("script_tag" =>
                 array(
                     "event" => "onload",
-                    "src" => "https://codelocksolutions.in/cls-rewriter/assets/js/shopify_front.js"
+                    "src" => "https://postcode.codelocksolutions.com/assets/js/shopify_front.js"
                 )
             );
             
@@ -93,7 +90,7 @@ if ($_GET['shop'] != "") {
            
             $message = file_get_contents('user/thankemail_template.php');
             $to = $shopuinfo->shop->email;	
-            $subject = "Rewriter App"; 
+            $subject = "Postcode - price App"; 
             $headers ="From:codelockinfo@gmail.com"." \r\n";     
             $headers = "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
