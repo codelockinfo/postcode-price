@@ -829,7 +829,7 @@ function popup_setting_select(){
             console.log(comeback);
                 console.log(comeback.outcome.title_fontsize);
                 var agreement_text = comeback.outcome.agreement_text !== '' ? comeback.outcome.agreement_text : "Save";
-                var position = comeback.outcome.position == 1 ? "top" : "bottom";
+                var position = comeback.outcome.position == 1 ? "top" : comeback.outcome.position == 2 ? "center" : "bottom" ;
                 console.log(position);
                 $('.Polaris-TextField__Input[name="message"]').val(comeback.outcome.message);
                 $('.bar-message').html(comeback.outcome.message);
@@ -888,15 +888,18 @@ function popup_setting_select(){
                 $(".cc-dismiss").css("border-color",comeback.outcome.color_button_border);
               
                 $('.color_circle[name="color_zipcode_button"]').val(comeback.outcome.color_zipcode_button);
-                $(".cc-dismiss").css("border-color",comeback.outcome.color_zipcode_button);
+                $(".cc-dismiss").css("background-color",comeback.outcome.color_zipcode_button);
               
                 $('.color_circle[name="color_zipcode_text"]').val(comeback.outcome.color_zipcode_text);
-                $(".cc-dismiss").css("border-color",comeback.outcome.color_zipcode_text);
+                $(".cc-dismiss").css("color",comeback.outcome.color_zipcode_text);
                
                 $('.color_circle[name="color_zipcode_border"]').val(comeback.outcome.color_zipcode_border);
                 $(".cc-dismiss").css("border-color",comeback.outcome.color_zipcode_border);
-
-                $('.preview_set').css(position,0);
+                if(position == "center"){
+                    $('.backimg').css({"display":"flex","justify-content":"center"});
+                }else{
+                    $('.preview_set').css(position,0);
+                }
             }
         }
     });

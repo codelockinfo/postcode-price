@@ -50,14 +50,17 @@ $(document).ready(function () {
         var select=$(this).find(':selected').val();    
         console.log(select);
         var select_text = select == 1 ? "top" : "";
-        if(select_text == ""){
+        if(select == "0"){
             $(".preview_set").css({"bottom": "0","top":"unset"});
-        }else{
+        }else if(select == "1"){
             $(".preview_set").css("top", "0");
+        }else{
+            $('.backimg').css({"display":"flex","justify-content":"center"});
+            $(".preview_set").css({"bottom": "unset","top":"unset"});
         }
     });
 
-    $('input[name="banner_height"]').on('change', function () {
+    $('input[name="popup_height"]').on('change', function () {
         var texInputValue = $('#myNumber').val();
        var border_height= $('.pagemargin ').find('.preview_set ');
         border_height.css("height", texInputValue + "px");

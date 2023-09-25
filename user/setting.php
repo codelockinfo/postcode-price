@@ -291,6 +291,7 @@
                                                                                 <div class="Polaris-Select Polaris-Select--placeholder">
                                                                                     <select class="Polaris-Select__Input positionSelect2" name="position">
                                                                                         <option value="1">Top</option>
+                                                                                        <option value="2">Center</option>
                                                                                         <option value="0">Bottom</option>
                                                                                     
                                                                                     </select>
@@ -496,7 +497,7 @@
                                                         <div class="Polaris-Card" style="height:100%;">
                                                             <div class="backimg">
                                                                 <div class="preview-cookie-bar modal-wrapper open">
-                                                                    <div class="preview_set modal_preview" style="background-color: rgb(0, 0, 0); color: rgb(250, 250, 250); height: 250px; bottom: 0px;    top: 0px; flex-direction: column;">
+                                                                    <div class="preview_set modal_preview">
                                                                         <div class="seven" style="width: 100%;">
                                                                             <span class="bar-text-wrapper">
                                                                                 <div><span class="bar-title">Changing postcode or city:</span></div>
