@@ -4,7 +4,7 @@ console.log("POSTCODE - PRICE");
 jQuery(document).ready(function(){
     var cookie_version_control = '---2018/5/11';
    
-    $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://www.happyeventsurat.com/postcode/assets/css/modal_front.css') );
+    $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://postcode.codelocksolutions.com/assets/css/modal_front.css') );
     $('head').append( $('<script  type="text/javascript" />').attr('src', 'https://code.jquery.com/jquery-3.6.0.min.js') );
     
 
