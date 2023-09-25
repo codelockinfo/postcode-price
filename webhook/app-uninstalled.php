@@ -26,6 +26,7 @@ if($verified == true){
         $shop = $_SERVER['HTTP_X_SHOPIFY_SHOP_DOMAIN'];
         $fields = array(
             'status' => '0',
+            'application_status' => '0',
             'is_demand_accept' => '0'
         );
         $where_query = array(["", "shop_name", "=",$shop]);
