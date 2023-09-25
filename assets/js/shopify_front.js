@@ -1,5 +1,5 @@
 
-console.log("shopify front filefff");
+console.log("POSTCODE - PRICE");
 
 jQuery(document).ready(function(){
     var cookie_version_control = '---2018/5/11';
