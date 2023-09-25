@@ -134,7 +134,7 @@ jQuery(document).ready(function(){
         getpostcode = (clsgetpostcode == undefined || clsgetpostcode == "" ) ? getCookie("postcodeval") : clsgetpostcode;
         console.log(getpostcode + "getpostcode   function .........");
         $.ajax({
-                url: "https://www.happyeventsurat.com/postcode/user/ajax_call.php",
+                url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                 type: "POST",
                 dataType: 'json',
                 data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode},
@@ -261,7 +261,7 @@ jQuery(document).ready(function(){
 
     $(document).on("change","#ProductSelect-product-template-option-0",function(){
             $.ajax({
-                    url: "https://www.happyeventsurat.com/postcode/user/ajax_call.php",
+                    url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
                     data: {'routine_name': 'check_app_status' ,'store': shop},
@@ -289,7 +289,7 @@ jQuery(document).ready(function(){
 
     $(document).on("change","#ProductSelect-product-template-option-1",function(){
         $.ajax({
-                    url: "https://www.happyeventsurat.com/postcode/user/ajax_call.php",
+                    url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
                     data: {'routine_name': 'check_app_status' ,'store': shop},
@@ -325,7 +325,7 @@ jQuery(document).ready(function(){
             $price = $("#ProductPrice").attr("data-price");
             var thisObj = this;
             $.ajax({
-                url: "https://www.happyeventsurat.com/postcode/user/ajax_call.php",
+                url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                 type: "POST",
                 dataType: 'json',
                 data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$data[1]},
@@ -409,7 +409,7 @@ jQuery(document).ready(function(){
         if (searchKEYLEN >= 3) {
             console.log( " 0 to 2 ");
                 $.ajax({
-                url: "https://www.happyeventsurat.com/postcode/user/ajax_call.php",
+                url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                 type: "POST",
                 dataType: 'json',
                 data: {'routine_name': 'search_postcode' ,'store': shop,'postcode':getpostcode},
