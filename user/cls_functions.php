@@ -501,6 +501,7 @@ class Client_functions extends common_function {
 
     function check_app_status(){
         $shopinfo = $this->current_store_obj;
+        $shopinfo = (object)$shopinfo;
         $error_array = array();
         $response_data = array('data' => 'fail', 'msg' => $error_array);
         if(!empty($shopinfo)){
@@ -514,6 +515,7 @@ class Client_functions extends common_function {
     function get_postcode(){
         $comeback = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
         $shopinfo = $this->current_store_obj;
+        $shopinfo = (object)$shopinfo;
         $api_fields = $error_array = $response_data = array();
         if (isset($_POST['postcode']) && $_POST['postcode'] == '') {
                 $error_array['postcode'] = "Indtast postnummer";
@@ -672,6 +674,7 @@ class Client_functions extends common_function {
     function search_postcode(){
         $comeback = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
         $shopinfo = $this->current_store_obj;
+        $shopinfo = (object)$shopinfo;
             $api_fields = $error_array = $response_data = array();
             if (isset($_POST['postcode']) && $_POST['postcode'] == '') {
                 $error_array['postcode'] = "Indtast postnummer";
