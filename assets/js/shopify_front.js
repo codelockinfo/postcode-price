@@ -1,7 +1,7 @@
 
 console.log("shopify front filefff");
 
-$(document).ready(function(){
+jQuery(document).ready(function(){
     var cookie_version_control = '---2018/5/11';
    
     $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://www.happyeventsurat.com/postcode/assets/css/modal_front.css') );
