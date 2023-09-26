@@ -930,8 +930,3 @@ $(document).on("submit", "#popup_setting_save", function (e) {
         }
     });
 });
-$(document).on("change", ".clspostcode", function () {
-    var selectedValue = $(this).val();
-    console.log(selectedValue);
-      $(".clspostcode").val(selectedValue);
-  });
