@@ -516,30 +516,29 @@ class Client_functions extends common_function {
         $comeback = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
         $shopinfo = $this->current_store_obj;
         $shopinfo = (object)$shopinfo;
-        $api_fields = $error_array = $return_arary =  $response_data = array();
+        $api_fields = $error_array = $response_data = array();
         if (isset($_POST['postcode']) && $_POST['postcode'] == '') {
                 $error_array['postcode'] = "Indtast postnummer";
         }
         if (empty($error_array)) {
             $zonearea = isset($_POST['postcode']) ? $_POST['postcode'] : '';
-            $where_query = array(["", "zonearea", "=", "$zonearea"],["AND", "store_user_id", "=", $shopinfo->store_user_id]);
+            //   echo "SELECT * FROM zone WHERE FIND_IN_SET($zonearea,zonearea) > 0";
+            //     $comeback = $this->db->query("SELECT * FROM zone WHERE FIND_IN_SET($zonearea,zonearea) > 0");
+        
+            $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
+            generate_log("Comeback",json_encode($comeback));
             echo "<pre>";
             print_r($comeback);
-            generate_log("Comeback",json_encode($comeback));
-            if (!empty($comeback["data"][0])) {
-                echo "<pre>";
-                print_r("if");
-                $data = (object)$comeback["data"][0];
-                echo "<pre>";
-                print_r($data);
-                $return_arary["zoneprice"] = isset($data->zoneprice) ? $data->zoneprice : '';
-                $return_arary["zonename"] = isset($data->zonename) ? $data->zonename : '';
-                $return_arary["zonearea"] = isset($data->zonearea) ? $data->zonearea : '';
+            if (!empty($comeback["data"])) {
+                $zoneprice = isset($comeback["data"]->zoneprice) ? $comeback["data"]->zoneprice : '';
+                $zonename = isset($comeback["data"]->zonename) ? $comeback["data"]->zonename : '';
+                $zonearea = isset($comeback["data"]->zonearea) ? $comeback["data"]->zonearea : '';
+                $return_arary["zoneprice"] = $zoneprice;
+                $return_arary["zonename"] = $zonename;
+                $return_arary["zonearea"] = $zonearea;
                 $response_data = array("outcome" => "true", "data" => $return_arary);
             }else{
-                echo "<pre>";
-                print_r("else");
                 $error_array['postcode'] = "Please enter a valid zip code";
                 $response_data = array('outcome' => 'fail', 'msg' => $error_array);
             }
