@@ -156,32 +156,15 @@ jQuery(document).ready(function(){
                                 $zonearea = (comeback.data['zonearea']);
                                 $currecySymbol = $ProductPriceSymbol.split(' ');
                                 $ProductPrice = $("#ProductPrice").attr("content");
-                                // $zoneprice = $zoneprice.toFixed(2);
                                 console.log($ProductPrice + " PRODUCT PRICE");
-                                $productpricehtml = $currecySymbol[0].replace(".","");
-                                $productpricehtml = $productpricehtml.replace(",",".");
-                                console.log($productpricehtml + "  $currecySymbol[0]");
                                 console.log($zoneprice + " ZONE PRICE");
-                                
-                                
-                                $totalPrice = parseFloat($productpricehtml) + parseFloat($zoneprice);
-                                console.log($totalPrice + " STEPPP777");
-                                $totalPrice = NOKformat($totalPrice);
-                                console.log($totalPrice + "STEPPP 8888");
-                                $replacestr = $totalPrice.replace('.', '@');
-                                console.log($replacestr + " FINAL @@@@");
-                                $replacestr = $replacestr.replace(',', '.');
-                                console.log($replacestr + " FINAL COMMMA");
-                                $replacestr  = $replacestr.replace('@', ',');
-                                
-                                console.log($replacestr + " FINAL PRICE");
-                                $("#ProductPrice").html($replacestr + "kr");
+                                $totalPrice = parseFloat($ProductPrice) + parseFloat($zoneprice);
+                                $replacestr = Shopify.formatMoney($totalPrice);
                                 $("#ProductPrice").attr("data-price",$replacestr);
                                 $(".clsProductPrice").css("display","block");
                                 $(".custom-model-main").removeClass("model-open");
                                 setCookie('postcodeval', $zonearea);
                                 setCookie('postcodename', $zonename);
-                                // Cookies.set("postcodeval", getpostcode);
                                 
                                 $(".single-option-selector").attr("disabled",false);
                                 $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
