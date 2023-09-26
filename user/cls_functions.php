@@ -525,7 +525,8 @@ class Client_functions extends common_function {
             //   echo "SELECT * FROM zone WHERE FIND_IN_SET($zonearea,zonearea) > 0";
             //     $comeback = $this->db->query("SELECT * FROM zone WHERE FIND_IN_SET($zonearea,zonearea) > 0");
         
-            $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
+           // $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
+           $where_query = array(["", "store_user_id", "=", $shopinfo->store_user_id],["","zonearea","=","$zonearea"]);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
             generate_log("Comeback",json_encode($comeback));
             echo "<pre>";
