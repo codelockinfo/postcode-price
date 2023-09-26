@@ -527,11 +527,6 @@ class Client_functions extends common_function {
         
            // $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
            $where_query = array(["", "store_user_id", "=", $shopinfo->store_user_id],["AND","zonearea","=","$zonearea"]);
-           echo "<pre>";
-           print_r($shopinfo->store_user_id);
-           print_r($zonearea);
-           print_r($where_query);
-           echo "</pre>";
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
             generate_log("Comeback",json_encode($comeback));
             echo "<pre>";
