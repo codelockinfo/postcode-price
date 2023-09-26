@@ -528,8 +528,8 @@ class Client_functions extends common_function {
             $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
             generate_log("Comeback",json_encode($comeback));
-            generate_log("Comeback",json_encode($comeback->data));
-            generate_log("Comeback",json_encode($comeback->data[0]->zoneprice));
+            echo "<pre>";
+            print_r($comeback);
             if (!empty($comeback["data"])) {
                 $zoneprice = isset($comeback["data"]->zoneprice) ? $comeback["data"]->zoneprice : '';
                 $zonename = isset($comeback["data"]->zonename) ? $comeback["data"]->zonename : '';
