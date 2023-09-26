@@ -194,7 +194,7 @@ function  generate_log($inventory = 'General', $log_information = 'test') {
 
   
     if (MODE == 'live') {
-       $log_filled_track = CLS_SITE_URL.'/logs/'. $inventory . '/'. date('Y-m-d') . ".txt";
+       $log_filled_track = CLS_TRACK_PATH.'/postcode-price/logs/'. $inventory . '/'. date('Y-m-d') . ".txt";
         $directoryname = dirname($log_filled_track);
         if (!is_dir($directoryname)) {
             mkdir($directoryname,0777, true);
