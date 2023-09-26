@@ -516,17 +516,13 @@ class Client_functions extends common_function {
         $comeback = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
         $shopinfo = $this->current_store_obj;
         $shopinfo = (object)$shopinfo;
-        $api_fields = $error_array = $response_data = array();
+        $api_fields = $error_array = $return_arary =  $response_data = array();
         if (isset($_POST['postcode']) && $_POST['postcode'] == '') {
                 $error_array['postcode'] = "Indtast postnummer";
         }
         if (empty($error_array)) {
             $zonearea = isset($_POST['postcode']) ? $_POST['postcode'] : '';
-            //   echo "SELECT * FROM zone WHERE FIND_IN_SET($zonearea,zonearea) > 0";
-            //     $comeback = $this->db->query("SELECT * FROM zone WHERE FIND_IN_SET($zonearea,zonearea) > 0");
-        
-           // $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
-           $where_query = array(["", "store_user_id", "=", $shopinfo->store_user_id],["AND","zonearea","=","$zonearea"]);
+           $where_query = array(["", "store_user_id", "=", $shopinfo->store_user_id],["AND","zonearea","=",$zonearea]);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
             generate_log("Comeback",json_encode($comeback));
             if (!empty($comeback["data"])) {
