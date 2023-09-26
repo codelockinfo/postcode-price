@@ -524,14 +524,22 @@ class Client_functions extends common_function {
             $zonearea = isset($_POST['postcode']) ? $_POST['postcode'] : '';
             $where_query = array(["", "zonearea", "=", "$zonearea"],["AND", "store_user_id", "=", $shopinfo->store_user_id]);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
+            echo "<pre>";
+            print_r($comeback);
             generate_log("Comeback",json_encode($comeback));
             if (!empty($comeback["data"][0])) {
+                echo "<pre>";
+                print_r("if");
                 $data = (object)$comeback["data"][0];
+                echo "<pre>";
+                print_r($data);
                 $return_arary["zoneprice"] = isset($data->zoneprice) ? $data->zoneprice : '';
                 $return_arary["zonename"] = isset($data->zonename) ? $data->zonename : '';
                 $return_arary["zonearea"] = isset($data->zonearea) ? $data->zonearea : '';
                 $response_data = array("outcome" => "true", "data" => $return_arary);
             }else{
+                echo "<pre>";
+                print_r("else");
                 $error_array['postcode'] = "Please enter a valid zip code";
                 $response_data = array('outcome' => 'fail', 'msg' => $error_array);
             }
