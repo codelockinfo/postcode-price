@@ -524,6 +524,8 @@ class Client_functions extends common_function {
             $zonearea = isset($_POST['postcode']) ? $_POST['postcode'] : '';
             $where_query = array(["", "zonearea", "=", "$zonearea"],["AND", "store_user_id", "=", $shopinfo->store_user_id]);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
+            echo "<pre>";
+            print_r($comeback);
             generate_log("Comeback",json_encode($comeback));
             if (!empty($comeback["data"])) {
                 $data = (object)$comeback["data"];
