@@ -65,7 +65,7 @@ include dirname(dirname(__FILE__)). "/base_function.php";
         $where_query = '';
         $groupBy = '';
         $orderBy = '';
-        if ($where_query_arr) {
+        if ($where_query_arr) {select_result
             $where_query_response = $this->build_where_clause($where_query_arr, $tbl_name);
             $where_query = $where_query_response[0];
             $groupBy = $where_query_response[1];
@@ -164,6 +164,7 @@ include dirname(dirname(__FILE__)). "/base_function.php";
         } elseif ($groupBy != '' && $orderBy != '') {
             $sql = "SELECT * FROM(SELECT $columns FROM $tbl_name $where_query $groupBy LIMIT $skip, $limit) AS TEMP_TBL $orderBy";
         } else {
+            echo "SELECT $columns FROM $tbl_name $where_query $groupBy $orderBy LIMIT $skip, $limit";
             $sql = $this->db_connection->query("SELECT $columns FROM $tbl_name $where_query $groupBy $orderBy LIMIT $skip, $limit");
         }
         // $result_row = $sql->fetch_object();
