@@ -530,7 +530,7 @@ class Client_functions extends common_function {
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
             generate_log("Comeback",json_encode($comeback));
             echo "<pre>";
-            print_r($comeback["data"]);
+            print_r($comeback);
             if (!empty($comeback["data"])) {
                 $data = (object)$comeback["data"];
                 echo "<pre>";
