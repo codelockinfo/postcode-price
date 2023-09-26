@@ -532,6 +532,8 @@ class Client_functions extends common_function {
             print_r($comeback["data"]);
             if (!empty($comeback["data"])) {
                 $data = (object)$comeback["data"];
+                echo "<pre>";
+                print_r($data);
                 $return_arary["zoneprice"] = isset($data->zoneprice) ? $data->zoneprice : '';
                 $return_arary["zonename"] = isset($data->zonename) ? $data->zonename : '';
                 $return_arary["zonearea"] = isset($data->zonearea) ? $data->zonearea : '';
