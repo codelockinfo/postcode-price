@@ -58,6 +58,7 @@ jQuery(document).ready(function(){
                                 $findbuynowbtn = setInterval(hasbuynowbtn, 1000); 
                                 setTimeout(function(){
                                     console.log("settimeout function calling ...");
+                                    console.log(getCookie("postcodeval") );
                                     if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == ""){
                                     $("body").append('<div class="custom-model-main model-open">'+
                                     '<div class="custom-model-inner" style="-webkit-transform: translate(0, -25%); -ms-transform: translate(0, -25%); transform: translate(0, -25%); -webkit-transition: -webkit-transform 0.3s ease-out; -o-transition: -o-transform 0.3s ease-out; transition: -webkit-transform 0.3s ease-out; -o-transition: transform 0.3s ease-out; transition: transform 0.3s ease-out; transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out; display: inline-block; vertical-align: middle; width: 600px; margin: 30px auto; max-width: 97%;">  '+     
