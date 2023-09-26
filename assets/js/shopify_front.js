@@ -137,7 +137,7 @@ jQuery(document).ready(function(){
                 url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                 type: "POST",
                 dataType: 'json',
-                data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode},
+                data: {'routine_name': 'zone_select' ,'store': shop,'postcode':getpostcode},
                     beforeSend: function () {
                         
                 },
