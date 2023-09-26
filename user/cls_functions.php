@@ -528,6 +528,8 @@ class Client_functions extends common_function {
             $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
             generate_log("Comeback",json_encode($comeback));
+            generate_log("Comeback",json_encode($comeback->data));
+            generate_log("Comeback",json_encode($comeback->data[0]->zoneprice));
             if (!empty($comeback["data"])) {
                 $zoneprice = isset($comeback["data"]->zoneprice) ? $comeback["data"]->zoneprice : '';
                 $zonename = isset($comeback["data"]->zonename) ? $comeback["data"]->zonename : '';
@@ -537,7 +539,7 @@ class Client_functions extends common_function {
                 $return_arary["zonearea"] = $zonearea;
                 $response_data = array("outcome" => "true", "data" => $return_arary);
             }else{
-                $error_array['postcode'] = "Indtast venligst et gyldigt postnummer";
+                $error_array['postcode'] = "Please enter a valid zip code";
                 $response_data = array('outcome' => 'fail', 'msg' => $error_array);
             }
         }else {
