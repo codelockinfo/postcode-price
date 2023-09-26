@@ -166,7 +166,7 @@ include dirname(dirname(__FILE__)). "/base_function.php";
         } else {
             $sql = $this->db_connection->query("SELECT $columns FROM $tbl_name $where_query $groupBy $orderBy LIMIT $skip, $limit");
         }
-        generate_log("selectquery",json_encode($sql));
+        generate_log("selectquery",$sql);
         // $result_row = $sql->fetch_object();
         $c = 0;
         while ($cls_rows = $sql->fetch_object()) {
