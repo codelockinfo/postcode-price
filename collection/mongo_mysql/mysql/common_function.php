@@ -127,6 +127,77 @@ include dirname(dirname(__FILE__)). "/base_function.php";
         }
         return $final_arr;
     }
+    public function select_results($tbl_name, $columns, $where_query_arr = array(), $options_arr = array()) {
+        $format = isset($options_arr['format']) ? $options_arr['format'] : 'array';
+        $skip = isset($options_arr['skip']) ? $options_arr['skip'] : 0;
+        $limit = isset($options_arr['limit']) ? $options_arr['limit'] : 20;
+        $single = isset($options_arr['single']) ? $options_arr['single'] : false;
+        $status = '1';
+        $return_data = array();
+        $where_query = '';
+        $groupBy = '';
+        $orderBy = '';
+        if ($where_query_arr) {
+            $where_query_response = $this->build_where_clause($where_query_arr, $tbl_name);
+            $where_query = $where_query_response[0];
+            $groupBy = $where_query_response[1];
+            $orderBy = $where_query_response[2];
+        }
+        if (is_array($tbl_name) && is_array($columns)) {
+            $cols = '';
+            $tbls = '';
+            foreach ($columns as $col_key => $col_value) {
+                $col_value = "$tbl_name[$col_key]." . $col_value;
+                $cols .= str_replace(",", ",$tbl_name[$col_key].", $col_value);
+                $cols .= ",";
+                $tbls .= $tbl_name[$col_key];
+                $tbls .= ",";
+            }
+            $cols = rtrim($cols, ",");
+            $tbls = rtrim($tbls, ",");
+            if ($where_query) {
+                $where_query .= " AND ";
+            } else {
+                $where_query .= " WHERE ";
+            }
+            $sql = "SELECT $cols FROM $tbls $where_query $tbl_name[0]." . $options_arr['tbl1_field'] . "=$tbl_name[1]." . $options_arr['tbl2_field'] . " $groupBy $orderBy LIMIT $skip, $limit";
+        } elseif ($groupBy != '' && $orderBy != '') {
+            $sql = "SELECT * FROM(SELECT $columns FROM $tbl_name $where_query $groupBy LIMIT $skip, $limit) AS TEMP_TBL $orderBy";
+        } else {
+            $sql = $this->db_connection->query("SELECT $columns FROM $tbl_name $where_query $groupBy $orderBy LIMIT $skip, $limit");
+        }
+        // $result_row = $sql->fetch_object();
+        $c = 0;
+        while ($cls_rows = $sql->fetch_object()) {
+                   if ($format == "object") {
+                if ($single) {
+                    $return_data = $cls_rows;
+               } else {
+                    $return_data->$c = $cls_rows;
+                }
+            } else {
+                if ($single) {
+                    foreach ($cls_rows as $key => $row) {
+                        $return_data[$row] = $row;
+                    }
+                    continue;
+                } else {
+                    foreach ($cls_rows as $key => $row) {
+                        $return_data[$c][$key] = $row;
+                    }
+                }
+            }
+            $c++;            
+        }
+        // if (!$result_row) {
+        //     $status = 0;
+        // }
+        $final_arr = array('status' => $status,'data' => $return_data);
+        if ($format == "object") {
+            return json_encode($final_arr);
+        }
+        return $final_arr;
+    }
     public function post_data($tbl_name, $fields_arr, $options_arr = array()) {
         $on_duplicate_update = isset($options_arr['on_duplicate_update']) ? $options_arr['on_duplicate_update'] : false;
         $status = '1';
