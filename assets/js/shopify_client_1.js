@@ -930,7 +930,7 @@ $(document).on("submit", "#popup_setting_save", function (e) {
         }
     });
 });
-$(".postman_select").change(function() {
+$(document).on("change", ".clspostcode", function () {
     var selectedValue = $(this).val();
     console.log(selectedValue);
       $(".clspostcode").val(selectedValue);
