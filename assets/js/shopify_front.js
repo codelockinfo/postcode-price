@@ -149,7 +149,7 @@ jQuery(document).ready(function(){
                         }else if (comeback['outcome'] == 'true') {
                                 $("#clsproductZipcodevalue").val(getpostcode);
                                 $ProductPriceSymbol =  $("#ProductPrice").html();
-                                $("#ProductPrice").text("");
+                                //$("#ProductPrice").text("");
                                 $(".chkpostcode").html("");
                                 $zonename = (comeback.data['zonename']);
                                 $zoneprice = (comeback.data['zoneprice']);
@@ -160,7 +160,7 @@ jQuery(document).ready(function(){
                                 console.log($zoneprice + " ZONE PRICE");
                                 $totalPrice = parseFloat($ProductPrice) + parseFloat($zoneprice);
                                 console.log($totalPrice);
-                                $replacestr = Shopify.formatMoney($totalPrice);
+                                $replacestr = Shopify.formatMoney($totalPrice,'Rs. {{amount}}');
                                 console.log($replacestr);
                                 $("#ProductPrice").attr("data-price",$replacestr);
                                 $(".clsProductPrice").css("display","block");
