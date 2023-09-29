@@ -160,7 +160,7 @@ jQuery(document).ready(function(){
                                 console.log($zoneprice + " ZONE PRICE");
                                 $totalPrice = parseFloat($ProductPrice) + parseFloat($zoneprice);
                                 console.log($totalPrice);
-                                $replacestr = Shopify.formatMoney($totalPrice,'Rs. {{amount}}');
+                                $replacestr = Shopify.formatMoney($totalPrice,'{{ shop.money_format }}');
                                 console.log($replacestr);
                                 $("#ProductPrice").attr("data-price",$replacestr);
                                 $(".clsProductPrice").css("display","block");
