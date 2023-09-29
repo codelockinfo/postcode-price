@@ -95,7 +95,6 @@ jQuery(document).ready(function(){
                                         console.log("onload event for pdppage");
                                         $(".product-single__policies.rte").append(
                                             '<div id="postalholder" style=" display:flex;   width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;">'+
-                        
                                     ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i></p> '+  
                                     '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
                                     '</div>');
@@ -109,6 +108,9 @@ jQuery(document).ready(function(){
                                 //     '<span id="clsbuynowText">Køb nu</span>'+
                                 //   '</a>'+
                                     '</div>');
+                                    $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
+                                    '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
+                                    '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
                                 getTotalprice();
                                     }
                                 },1000); 
@@ -160,8 +162,7 @@ jQuery(document).ready(function(){
                                 console.log($zoneprice + " ZONE PRICE");
                                 $totalPrice = parseFloat($ProductPrice) + parseFloat($zoneprice);
                                 console.log($totalPrice);
-                                console.log('{{ $totalPrice | money  }}');
-                                $replacestr = Shopify.formatMoney($totalPrice,'{{ shop.money_format }}');
+                                $replacestr = Shopify.formatMoney($totalPrice);
                                 console.log($replacestr);
                                 $("#ProductPrice").attr("data-price",$replacestr);
                                 $(".clsProductPrice").css("display","block");
