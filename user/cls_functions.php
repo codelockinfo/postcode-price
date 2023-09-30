@@ -359,7 +359,6 @@ class Client_functions extends common_function {
     function cookies_bar_setting_save() {
         $response = array('result' => 'fail', 'msg' => __('Something went wrong'));
         if (isset($_POST['store']) && $_POST['store'] != '') {
-            generate_log('user_index' , json_encode($_POST)  . " ... POST");
             $fields_arr = array();
             $shopinfo = $this->current_store_obj;
             $shopinfo = (object)$shopinfo;
@@ -527,7 +526,6 @@ class Client_functions extends common_function {
         
             $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
-            generate_log("Comeback",json_encode($comeback));
             if (!empty($comeback["data"][0])) {
                 $data = (object)$comeback["data"][0];
                 $return_arary["zoneprice"] = isset($data->zoneprice) ? $data->zoneprice : '';
@@ -544,131 +542,6 @@ class Client_functions extends common_function {
         return $response_data; 
     }
 
-    function get_product(){
-        $productid = isset($_POST['productid']) ? $_POST['productid'] :'';
-        $productprice = isset($_POST['productprice']) ? $_POST['productprice'] :'';
-        $oldprice = isset($_POST['oldprice']) ? $_POST['oldprice'] :'';
-        $postcode = isset($_POST['postcode']) ? $_POST['postcode'] :'';
-        $clsoption1 = isset($_POST['clsoption1']) ? $_POST['clsoption1'] :'';
-        $clsoption0 = isset($_POST['clsoption0']) ? $_POST['clsoption0'] :'';
-        $shopify_api = array("api_name" => "products/".$productid);
-        $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
-        
-        $producttitle = $productdata->product->title;
-        $productimage = $productdata->product->image->src;
-        // $productsrc = base64_encode($productimage);
-        $producttitle = $producttitle." - ".$postcode;
-                 if(isset($productsrc) && !empty($productsrc))  {
-                            $image_value = $productsrc;
-                            foreach ($img_arr as $value) {
-                                $imgs[] = explode(',', $value);
-                            }
-                            foreach ($imgs as $value) {
-                                $images[] = $value[1];
-                            }
-                            if (!empty($images)) {
-                                foreach ($images as $value) {
-                                    $image_value[]['attachment'] = trim($value);
-                                }
-                            }
-                            $product_array = array(
-                                'product' => array(
-                                     'title' => $producttitle,
-                                    'status'=>'active',
-                                    'images' => $image_value,
-                                    'price' => '100'
-                                )
-                            );
-                        } else {
-                            $product_array = array(
-                                'product' => array(
-                                     'title' => $producttitle,
-                                    'status'=>'active',
-                                    'price' => '500'
-                                )
-                            );
-                        }
-                    // foreach ($options as $key => $value) {
-                    //     foreach ($value as $k => $v) {
-                    //         $variants[$key][$variant_key[$k]] = $v;
-                    //     }
-                    //     $variants[$key]['price'] = $varint_price_arr[0];
-                    //     $variants[$key]['sku'] = $_POST['sku'][$key];
-                    //     $variants[$key]['inventory_quantity'] =  $_POST['inventory'][$key];
-                    //     $variants[$key]['inventory_management'] = "shopify";
-                    // }
-                    
-                    $variants = array();
-                    $variants1 = array("option1"=>$clsoption0,"option2"=>$clsoption1, "price" =>$productprice );
-                    // $variants2 = array("option1"=>"hueee","option2"=>"xxl",  "price" => 500, "compare_at_price" => 600);
-                    
-                    array_push($variants,$variants1);
-                    // array_push($variants,$variants2);
-                    // $options = array();
-                    $options1 = array("name" => "Mængde","position" => 1);
-                    $options2 = array("name" => "Levering","position" => 2);
-        
-                    $options = array(
-                        $options1,
-                        $options2
-                      );
-                    
-                     if (isset($variants) && isset($options)) {
-                        $product_array['product']['variants'] = $variants;
-                        $product_array['product']['options'] = $options; 
-                    }
-                    
-                    $api = array('api_name' => 'products');
-                    
-                $curl = curl_init();
-
-                curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://29e1da780259b5ed584d466d9446d88e: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@grusshoppen-dk.myshopify.com/admin/api/2021-07/products.json',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS =>json_encode($product_array),
-                CURLOPT_HTTPHEADER => array(
-                    'Content-Type: application/json',
-                        'auth_token: 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'
-                ),
-                ));
-
-                $response = curl_exec($curl);
-                curl_close($curl);
-              
-                if($response != ""){
-                    $dublicateproductdata = json_decode($response);
-                }else{
-                     $comeback = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
-                }
-                $api = array('api_name' => 'products/'.$dublicateproductdata->product->id.'/images');
-                $cdn_img = $productimage;
-                $product_image_array = array('image' => array('product_id' => $dublicateproductdata->product->id, 'src' =>$cdn_img));
-                $dublicateproductdata2 = $this->cls_get_shopify_list($api, $product_image_array, 'POST', 1, array("Content-Type: application/json"));
-                
-                $productid = $dublicateproductdata->product->id;
-                if(!empty($productid)){
-                    
-                        $mysql_date = date('Y-m-d H:i:s');
-                        $fields_arr = array(
-                            '`product_id`' =>$productid,
-                            '`old_price`' =>$oldprice,
-                            '`new_price`' =>$productprice,
-                            '`pincode`' =>$postcode,
-                            '`created_at`' => $mysql_date,
-                            '`updated_at`' => $mysql_date
-                        );
-                        $response_data = $this->post_data(TABLE_PRODUCT_MASTER, array($fields_arr));  
-                }
-                return $dublicateproductdata; 
-                
-    }
-    
     function search_postcode(){
         $comeback = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
         $shopinfo = $this->current_store_obj;
@@ -684,8 +557,6 @@ class Client_functions extends common_function {
             $options_arr = array('single' => false);
             $where_query = array(["", "zonearea", "LIKE","END", "$zonearea"],["or", "lower(zonename)", "LIKE","END", "$zonearea"],["AND", "store_user_id", "=", "$shopinfo->store_user_id"]);
             $comeback = $this->select_results(TABLE_ZONE_MASTER, '*', $where_query);
-            
-            generate_log("Comeback",json_encode($comeback));
             if (!empty($comeback["data"])) {
                 foreach ($comeback["data"] as $rows)
                 {

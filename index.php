@@ -95,7 +95,6 @@ if ($_GET['shop'] != "") {
             $headers = "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
             $responceEmail = mail ($to, $subject, $message, $headers);	
-            generate_log('user_index' , json_encode($responceEmail)  . " ... EMAIL RESPONSE");
 
             header('Location: https://' . $shop . '/admin/apps/' . $CLS_API_KEY);
             exit;
