@@ -156,18 +156,17 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                         '<input type="text" id="freightAreaZipcodePopup" class="form-control clspostcode" autocomplete="off" value="" style="font-size: '+ comeback.outcome.message_fontsize +';padding: 8px;margin:0 2.8%;border:'+ comeback.outcome.zipcode_border_width +'px solid '+ comeback.outcome.color_zipcode_border +';width: 140px;border-radius:'+ comeback.outcome.zipcode_border_radius +'px;color:'+ comeback.outcome.color_zipcode_text +';background-color:'+ comeback.outcome.color_zipcode_button +';">'+
                                                         '<button type="submit" class="btn btn-secondary postcode-app-btn postcode-checker-preview" style="font-size:'+ comeback.outcome.message_fontsize +';padding: 9px 15px;line-height: 0.10  !important;border-radius:'+ comeback.outcome.button_border_radius+'px;border:'+ comeback.outcome.button_border_width +'px solid '+ comeback.outcome.color_button_border +';color:'+ comeback.outcome.color_button_text +';background-color:'+ comeback.outcome.color_button +';">'+ agreement_text +'</button>'+
                                                     ' </div>'+
-                                                    '<div class="select_postman_block" style="display: none;"></select><select name="select_postman" class="postman_select" style="width:140px;margin: 0 0 0 40.8%;display: flex;"></select></div>'+
+                                                    '<div class="select_postman_block" style="display: none;"></select><select name="select_postman" class="postman_select" style="border-radius: 0;max-width: 100%;background-color: #bebebe;border: 0;padding: 8px;width:140px;margin: 0 0 0 40.8%;display: flex;"></select></div>'+
                                                 '</div>'+
                                                 '<div style="width: 50%;text-align: center;"> <span class="chkpostcode errorcolor"  style="color:red;"></span></div>'+
-                                                    '</div>'+
-                                                    
+                                                '</div>'+                                                    
                                             ' </div>'+
                                         '</div>'+
                                     ' </div>'+
                                 ' </div> '+ 
                             ' </div> '+ 
                             ' <div class="bg-overlay" style="display:block;background: rgba(0, 0, 0, 0.6); z-index: 99; height: 100vh; width: 100%; position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index:  -webkit-transition: background 0.15s linear; -o-transition: background 0.15s linear; transition: background 0.15s linear;"></div>'+
-                        '</div> <style>@media only screen and (max-width: 440px){ .form-group-grid__controls span{width: 100%;}.select_postman_block .postman_select{margin: 0 0 0 3.1% !important;}}</style>');
+                        '</div> <style>.clspostcode:focus-visible,.postman_select:focus-visible{box-shadow: unset;outline: none;}@media only screen and (max-width: 440px){ .form-group-grid__controls span{width: 100%;}.select_postman_block .postman_select{margin: 0 0 0 3.1% !important;}}</style>');
                         }
                 }
             });
