@@ -122,7 +122,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                 type: "POST",
                 dataType: 'json',
-                data: {'routine_name': 'popup_setting_select' ,'store': shop,'postcode':getpostcode},
+                data: {'routine_name': 'popup_setting_select' ,'store': shop},
                 success: function (comeback) {
                     if(comeback  != undefined){
                         var comeback = JSON.parse(comeback);
