@@ -77,37 +77,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         console.log("settimeout function calling ...");
                                         console.log(getCookie("postcodeval") );
                                         if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == ""){
-                                        $("body").append('<div class="custom-model-main model-open">'+
-                                        '<div class="custom-model-inner" style="-webkit-transform: translate(0, -25%); -ms-transform: translate(0, -25%); transform: translate(0, -25%); -webkit-transition: -webkit-transform 0.3s ease-out; -o-transition: -o-transform 0.3s ease-out; transition: -webkit-transform 0.3s ease-out; -o-transition: transform 0.3s ease-out; transition: transform 0.3s ease-out; transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out; display: inline-block; vertical-align: middle; width: 600px; margin: 30px auto; max-width: 97%;">  '+     
-                                        '<div class="close-btn" style="position: absolute; right: 7px; top: -12px; cursor: pointer; z-index: 99; font-size: 30px; color: #000;">×</div>'+
-                                            ' <div class="custom-model-wrap" style="display: block; width: 100%; position: relative; background-color: #fff; border: 1px solid #999; border: 1px solid rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); background-clip: padding-box; outline: 0; text-align: left; padding: 2rem; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;  box-sizing: border-box; max-height: calc(100vh - 70px);overflow-y: auto;">'+
-                                                ' <div class="pop-up-content-wrap">'+
-                                                    '<div class="postalcode-popup">'+
-                                                        '<div class="heading heading--submit-postalcode" style="margin-bottom: 1rem;">'+
-                                                            '<div class="heading__name" style="font-size: 20px;font-weight: 600;">Ændrer postnummer eller by:</div>'+
-                                                        '</div>'+
-                                                        '<div class="postalcode-panel">'+
-                                                            '<div class="postalcode-panel__description">'+
-                                                                '<span class="instruction">For at se priser på shoppen skal du angive et postnummer</span>'+
-                                                            
-                                                            '<div class="form-group-grid">'+
-                                                                ' <div class="form-group-grid__label">'+
-                                                            '    </div>'+
-                                                                '<div class="form-group-grid__controls" style="display: flex;flex-wrap: wrap;"><span>Ændrer postnummer eller by</span>'+
-                                                                    ' <input type="text" id="freightAreaZipcodePopup" class="form-control clspostcode" autocomplete="off" value="" style="margin:0 0 0 2.8%;border: 1px solid #595959;width: 140px;">'+
-                                                                    ' <button type="submit" class="btn btn-secondary postcode-app-btn postcode-checker-preview " style="line-height: 0.10  !important;">Gem</button>'+
-                                                                ' </div>'+
-                                                                    '<div class="select_postman_block" style="display: none;"></select><select name="select_postman" class="postman_select" style="width:140px;margin: 0 0 0 40.8%;display: flex;"></select></div>'+
-                                                            '</div>'+
-                                                                '</div>'+
-                                                                '<div style="width: 50%;text-align: center;"> <span class="chkpostcode errorcolor"  style="color:red;"></span></div>'+
-                                                        ' </div>'+
-                                                    '</div>'+
-                                                ' </div>'+
-                                            ' </div> '+ 
-                                        ' </div> '+ 
-                                        ' <div class="bg-overlay" style="background: rgba(0, 0, 0, 0.6); z-index: 99; height: 100vh; width: 100%; position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index:  -webkit-transition: background 0.15s linear; -o-transition: background 0.15s linear; transition: background 0.15s linear;"></div>'+
-                                    '</div> <style>@media only screen and (max-width: 440px){ .form-group-grid__controls span{width: 100%;}.select_postman_block .postman_select{margin: 0 0 0 3.1% !important;}}</style>');
+                                            popupHtml();
                                         }else{
                                             console.log("onload event for pdppage");
                                             $(".product-single__policies.rte").append(
@@ -146,6 +116,100 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 });
         }   
     
+        function popupHtml(){
+            console.log("function calling POPUPHTML");
+            $.ajax({
+                url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
+                type: "POST",
+                dataType: 'json',
+                data: {'routine_name': 'popup_setting_select' ,'store': shop,'postcode':getpostcode},
+                success: function (comeback) {
+                    if(comeback  != undefined){
+                        var comeback = JSON.parse(comeback);
+                        console.log(comeback);
+                            var agreement_text = comeback.outcome.agreement_text !== '' ? comeback.outcome.agreement_text : "Save";
+                            var position = comeback.outcome.position == 1 ? "top" : comeback.outcome.position == 2 ? "center" : "bottom" ;
+                            $('.bar-message').html(comeback.outcome.message);
+                            $('.bar-title').html(comeback.outcome.title);
+                            $('.bar-subtitle').html(comeback.outcome.maintitle);
+                            
+                            $('.cc-dismiss.save').html(comeback.outcome.agreement_text);
+                            
+                            $('.preview_set').css("height",comeback.outcome.popup_height);     
+                            
+                            $('.bar-title').css("font-size",comeback.outcome.title_fontsize);
+                            
+                            $('.bar-title').css("font-size",comeback.outcome.message_fontsize);
+                            $('.bar-message').css("font-size",comeback.outcome.message_fontsize);
+                            $('.bar-subtitle').css("font-size",comeback.outcome.message_fontsize);
+                            
+                            $('.cc-dismiss').css("border-radius",comeback.outcome.button_border_radius+"px");
+                            
+                            $('.postcode').css("border-radius",comeback.outcome.zipcode_border_radius+"px");
+                            
+                            $('.cc-dismiss').css("border",comeback.outcome.button_border_width+"px solid");
+                            
+                            $('.postcode').css("border",comeback.outcome.zipcode_border_width+"px solid");
+            
+                            $(".preview_set").css("background-color",comeback.outcome.color_banner);
+            
+                            $(".preview_set").css("color",comeback.outcome.color_banner_text);
+            
+                            $(".cc-link").css("color",comeback.outcome.color_banner_link);
+                            
+                            $(".cc-dismiss").css("background-color",comeback.outcome.color_banner_link);
+                            $(".cc-close").css("color",comeback.outcome.color_banner_link);
+                            
+                            $(".cc-dismiss").css("color",comeback.outcome.color_button_text);
+                            
+                            $(".cc-dismiss").css("border-color",comeback.outcome.color_button_border);
+                          
+                            $(".cc-dismiss").css("background-color",comeback.outcome.color_zipcode_button);
+                          
+                            $(".cc-dismiss").css("color",comeback.outcome.color_zipcode_text);
+                           
+                            $(".cc-dismiss").css("border-color",comeback.outcome.color_zipcode_border);
+                            if(position == "center"){
+                                $('.backimg').css({"display":"flex","justify-content":"center"});
+                            }else{
+                                $('.preview_set').css(position,0);
+                            }
+
+                            $("body").append('<div class="custom-model-main model-open">'+
+                            '<div class="custom-model-inner" style="-webkit-transform: translate(0, -25%); -ms-transform: translate(0, -25%); transform: translate(0, -25%); -webkit-transition: -webkit-transform 0.3s ease-out; -o-transition: -o-transform 0.3s ease-out; transition: -webkit-transform 0.3s ease-out; -o-transition: transform 0.3s ease-out; transition: transform 0.3s ease-out; transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out; display: inline-block; vertical-align: middle; width: 600px; margin: 30px auto; max-width: 97%;">  '+     
+                            '<div class="close-btn" style="position: absolute; right: 7px; top: -12px; cursor: pointer; z-index: 99; font-size: 30px; color:'+ comeback.outcome.color_banner_link +';border-color:'+ comeback.outcome.color_button_border +'">×</div>'+
+                                ' <div class="custom-model-wrap" style="height:'+comeback.outcome.popup_height+';display: block; width: 100%; position: relative; background-color:'+ comeback.outcome.color_banner +'; border: 1px solid #999; border: 1px solid rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); background-clip: padding-box; outline: 0; text-align: left; padding: 2rem; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;  box-sizing: border-box; max-height: calc(100vh - 70px);overflow-y: auto;color:'+ comeback.outcome.color_banner_text +'">'+
+                                    ' <div class="pop-up-content-wrap">'+
+                                        '<div class="postalcode-popup">'+
+                                            '<div class="heading heading--submit-postalcode" style="margin-bottom: 1rem;">'+
+                                                '<div class="heading__name" style="font-size: '+ comeback.outcome.title_fontsize +';color:'+ comeback.outcome.color_banner_text +'">'+ comeback.outcome.title +'</div>'+
+                                            '</div>'+
+                                            '<div class="postalcode-panel">'+
+                                                '<div class="postalcode-panel__description">'+
+                                                    '<span class="instruction" style="font-size: '+ comeback.outcome.message_fontsize +';color:'+ comeback.outcome.color_banner_link +';">'+ comeback.outcome.message +'</span>'+
+                                                '<div class="form-group-grid">'+
+                                                    '<div class="form-group-grid__label">'+
+                                                '</div>'+
+                                                    '<div class="form-group-grid__controls" style="display: flex;flex-wrap: wrap;font-size: '+ comeback.outcome.message_fontsize +';color:'+ comeback.outcome.color_banner_link +';"><span>'+comeback.outcome.maintitle+'</span>'+
+                                                        '<input type="text" id="freightAreaZipcodePopup" class="form-control clspostcode" autocomplete="off" value="" style="margin:0 0 0 2.8%;border:'+ comeback.outcome.zipcode_border_width +'px solid '+ comeback.outcome.color_zipcode_border +';width: 140px;border-radius:'+ comeback.outcome.zipcode_border_radius +'px;color:'+ comeback.outcome.color_zipcode_text +';background-color:'+ comeback.outcome.color_zipcode_button +';">'+
+                                                        '<button type="submit" class="btn btn-secondary postcode-app-btn postcode-checker-preview " style="line-height: 0.10  !important;border-radius:'+ comeback.outcome.button_border_radius+'px;border:'+ comeback.outcome.button_border_width +'px solid '+ comeback.outcome.color_button_border +';color:'+ comeback.outcome.color_button_text +';background-color:'+ comeback.outcome.color_button +';">'+ agreement_text +'</button>'+
+                                                    ' </div>'+
+                                                        '<div class="select_postman_block" style="display: none;"></select><select name="select_postman" class="postman_select" style="width:140px;margin: 0 0 0 40.8%;display: flex;"></select></div>'+
+                                                '</div>'+
+                                                    '</div>'+
+                                                    '<div style="width: 50%;text-align: center;"> <span class="chkpostcode errorcolor"  style="color:red;"></span></div>'+
+                                            ' </div>'+
+                                        '</div>'+
+                                    ' </div>'+
+                                ' </div> '+ 
+                            ' </div> '+ 
+                            ' <div class="bg-overlay" style="background: rgba(0, 0, 0, 0.6); z-index: 99; height: 100vh; width: 100%; position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index:  -webkit-transition: background 0.15s linear; -o-transition: background 0.15s linear; transition: background 0.15s linear;"></div>'+
+                        '</div> <style>@media only screen and (max-width: 440px){ .form-group-grid__controls span{width: 100%;}.select_postman_block .postman_select{margin: 0 0 0 3.1% !important;}}</style>');
+                        }
+                }
+            });
+        }
+
         check_app_status();
         function getTotalprice(){
             console.log("getTotalprice function calling ......");
@@ -174,6 +238,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $zoneprice = (comeback.data['zoneprice']);
                                     $zonearea = (comeback.data['zonearea']);
                                     $currecySymbol = $ProductPriceSymbol.split(' ');
+                                    console.log($currecySymbol);
                                     $ProductPrice = $("#ProductPrice").attr("content");
                                     console.log($ProductPrice + " PRODUCT PRICE");
                                     console.log($zoneprice + " ZONE PRICE");
@@ -195,7 +260,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         console.log("condition true");
                                             $(".product-single__policies.rte").append(
                                             '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
-                        
                                     ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
                                         '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
                                     '</div>');
@@ -205,9 +269,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     '</a>'+
                                     '</div></br>'+
                                     '<div>'+
-                                    //     '<a  name="clsbuynow" id="" class="clsshopify-payment-button__button" style="cursor: pointer;padding: 13px 86px;background-color: #f5db00;color: #ffffff;border: 2px solid #f5db00;">'+
-                                    //     '<span id="clsbuynowText">Køb nu</span>'+
-                                    //   '</a>'+
                                     '</div>');
                                     }
                                         
