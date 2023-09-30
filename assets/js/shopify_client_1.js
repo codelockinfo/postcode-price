@@ -213,13 +213,13 @@ $.urlParam = function (name) {
 }
 
 $(document).ready(function () {
-    $('#rating').rating({
-        min: 0,
-        max: 5,
-        step: 1,
-        size: 'xs',
-        showClear: false
-    });
+    // $('#rating').rating({
+    //     min: 0,
+    //     max: 5,
+    //     step: 1,
+    //     size: 'xs',
+    //     showClear: false
+    // });
 
     $(".star").hover(function () {
         $(".rate-our-app").show();
@@ -239,9 +239,9 @@ $(document).ready(function () {
         flashNotice(flashmessage, flashClass);
     }
 
-    $(".spectrumColor").spectrum({
-        showButtons: false
-    });
+    // $(".spectrumColor").spectrum({
+    //     showButtons: false
+    // });
 
     $(".spectrumColor").on('move.spectrum', function (e, color) {
         var id = $(this).data('id');
@@ -250,10 +250,10 @@ $(document).ready(function () {
     });
 
     /*Transparent colorpicker Start*/
-    $(".spectrumTransparentColor").spectrum({
-        showButtons: false,
-        showAlpha: true
-    });
+    // $(".spectrumTransparentColor").spectrum({
+    //     showButtons: false,
+    //     showAlpha: true
+    // });
 
     $(".spectrumTransparentColor").on('move.spectrum', function (e, color) {
         showAlpha: true
