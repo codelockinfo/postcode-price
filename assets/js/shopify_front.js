@@ -128,51 +128,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         var comeback = JSON.parse(comeback);
                         console.log(comeback);
                             var agreement_text = comeback.outcome.agreement_text !== '' ? comeback.outcome.agreement_text : "Save";
-                            var position = comeback.outcome.position == 1 ? "top" : comeback.outcome.position == 2 ? "center" : "bottom" ;
-                            $('.bar-message').html(comeback.outcome.message);
-                            $('.bar-title').html(comeback.outcome.title);
-                            $('.bar-subtitle').html(comeback.outcome.maintitle);
-                            
-                            $('.cc-dismiss.save').html(comeback.outcome.agreement_text);
-                            
-                            $('.preview_set').css("height",comeback.outcome.popup_height);     
-                            
-                            $('.bar-title').css("font-size",comeback.outcome.title_fontsize);
-                            
-                            $('.bar-title').css("font-size",comeback.outcome.message_fontsize);
-                            $('.bar-message').css("font-size",comeback.outcome.message_fontsize);
-                            $('.bar-subtitle').css("font-size",comeback.outcome.message_fontsize);
-                            
-                            $('.cc-dismiss').css("border-radius",comeback.outcome.button_border_radius+"px");
-                            
-                            $('.postcode').css("border-radius",comeback.outcome.zipcode_border_radius+"px");
-                            
-                            $('.cc-dismiss').css("border",comeback.outcome.button_border_width+"px solid");
-                            
-                            $('.postcode').css("border",comeback.outcome.zipcode_border_width+"px solid");
-            
-                            $(".preview_set").css("background-color",comeback.outcome.color_banner);
-            
-                            $(".preview_set").css("color",comeback.outcome.color_banner_text);
-            
-                            $(".cc-link").css("color",comeback.outcome.color_banner_link);
-                            
-                            $(".cc-dismiss").css("background-color",comeback.outcome.color_banner_link);
-                            $(".cc-close").css("color",comeback.outcome.color_banner_link);
-                            
-                            $(".cc-dismiss").css("color",comeback.outcome.color_button_text);
-                            
-                            $(".cc-dismiss").css("border-color",comeback.outcome.color_button_border);
-                          
-                            $(".cc-dismiss").css("background-color",comeback.outcome.color_zipcode_button);
-                          
-                            $(".cc-dismiss").css("color",comeback.outcome.color_zipcode_text);
-                           
-                            $(".cc-dismiss").css("border-color",comeback.outcome.color_zipcode_border);
+                            var position = comeback.outcome.position == 1 ? "top" : comeback.outcome.position == 2 ? "center" : "bottom";
                             if(position == "center"){
-                                $('.backimg').css({"display":"flex","justify-content":"center"});
+                                $('.custom-model-inner').css({"transform":"translate(0, 0)"});
+                            }else if(position == "top"){
+                                $('.custom-model-inner').css({"transform":" translateY(0)"});
                             }else{
-                                $('.preview_set').css(position,0);
+                                $('.custom-model-inner').css({"transform":" translateY(100%)"}); 
                             }
 
                             $("body").append('<div class="custom-model-main model-open">'+
