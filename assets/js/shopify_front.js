@@ -190,11 +190,12 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     },
                     success: function (comeback) {
                         console.log(comeback);
+                        $productPriceClass = $(".price-item");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                                     //  redirect403();
                             }else if (comeback['outcome'] == 'true') {
                                     $("#clsproductZipcodevalue").val(getpostcode);
-                                    $ProductPriceSymbol =  $("#ProductPrice").html();
+                                    $ProductPriceSymbol =  $productPriceClass.html();
                                     //$("#ProductPrice").text("");
                                     $(".chkpostcode").html("");
                                     $zonename = (comeback.data['zonename']);
@@ -202,12 +203,12 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $zonearea = (comeback.data['zonearea']);
                                     $currecySymbol = $ProductPriceSymbol.split(' ');
                                     console.log($currecySymbol);
-                                    $ProductPrice = $("#ProductPrice").attr("content");
+                                    $ProductPrice = $productPriceClass.attr("content");
                                     console.log($ProductPrice + " PRODUCT PRICE");
                                     console.log($zoneprice + " ZONE PRICE");
                                     $totalPrice = parseFloat($ProductPrice) + parseFloat($zoneprice);
                                     console.log($totalPrice);
-                                    $("#ProductPrice").attr("data-price",$currecySymbol[0]+$totalPrice);
+                                    $productPriceClass.attr("data-price",$currecySymbol[0]+$totalPrice);
                                     $(".clsProductPrice").css("display","block");
                                     $(".custom-model-main").removeClass("model-open");
                                     setCookie('postcodeval', $zonearea);
@@ -221,22 +222,21 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         console.log("condition true");
                                             $(".product-single__policies.rte").append(
                                             '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
-                                    ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
-                                        '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
-                                    '</div>');
-                                        $(".product-single__shopify-payment-btn").append('<div>'+
-                                        '<a  name="clsaddtocart" id="clsAddToCart" class="btn clsproduct-single__cart-submit clsshopify-payment-btn btn--secondary clszipapp" style="padding: 7px 15px;color: #f5db00;border: 2px solid #f5db00;">'+
-                                        '<span id="clsAddToCartText">Læg i indkøbskurv</span>'+
-                                    '</a>'+
-                                    '</div></br>'+
-                                    '<div>'+
-                                    '</div>');
+                                            ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
+                                                '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
+                                            '</div>');
+                                                $(".product-single__shopify-payment-btn").append('<div>'+
+                                                '<a  name="clsaddtocart" id="clsAddToCart" class="btn clsproduct-single__cart-submit clsshopify-payment-btn btn--secondary clszipapp" style="padding: 7px 15px;color: #f5db00;border: 2px solid #f5db00;">'+
+                                                '<span id="clsAddToCartText">Læg i indkøbskurv</span>'+
+                                            '</a>'+
+                                            '</div></br>'+
+                                            '<div>'+
+                                            '</div>');
                                     }
-                                        
                             } else {
                                 $(".clssucessmsg").html("");
-                                $("#ProductPrice").text("");
-                                $("#ProductPrice").html($Productcontent);
+                                $productPriceClass.text("");
+                                $productPriceClass.html($Productcontent);
                                 $(".chkpostcode").text(comeback['msg']['postcode'])
                             }
                                 
