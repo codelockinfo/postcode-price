@@ -166,7 +166,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 ' </div> '+ 
                             ' </div> '+ 
                             ' <div class="bg-overlay" style="display:block;background: rgba(0, 0, 0, 0.6); z-index: 99; height: 100vh; width: 100%; position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index:  -webkit-transition: background 0.15s linear; -o-transition: background 0.15s linear; transition: background 0.15s linear;"></div>'+
-                        '</div> <style>.clspostcode:focus-visible,.postman_select:focus-visible{box-shadow: unset;outline: none;}@media only screen and (max-width: 440px){ .form-group-grid__controls span{width: 100%;}.select_postman_block .postman_select{margin: 0 0 0 3.1% !important;}}</style>');
+                        '</div> <style>.custom-model-main:before {content: "";display: inline-block;height: auto;vertical-align: middle;margin-right: -0px;height: 100%;}.clspostcode:focus-visible,.postman_select:focus-visible{box-shadow: unset;outline: none;}@media only screen and (max-width: 440px){ .form-group-grid__controls span{width: 100%;}.select_postman_block .postman_select{margin: 0 0 0 3.1% !important;}}</style>');
                         }
                 }
             });
