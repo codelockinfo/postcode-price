@@ -130,9 +130,9 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             var agreement_text = comeback.outcome.agreement_text !== '' ? comeback.outcome.agreement_text : "Save";
                             var position = comeback.outcome.position == 1 ? "top" : comeback.outcome.position == 2 ? "center" : "bottom";
                             if(position == "center"){
-                                $popupPosition = "translate(0, 0)";
-                            }else if(position == "top"){
                                 $popupPosition = "translateY(0)";
+                            }else if(position == "top"){
+                                $popupPosition = "translateY(-100%)";
                             }else{
                                 $popupPosition = "translateY(100%)";
                             }
