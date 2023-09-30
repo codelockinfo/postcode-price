@@ -190,7 +190,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     },
                     success: function (comeback) {
                         console.log(comeback);
-                        $productPriceClass = $(".price-item");
+                        $productPriceClass = $(".price__regular .price-item");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                                     //  redirect403();
                             }else if (comeback['outcome'] == 'true') {
