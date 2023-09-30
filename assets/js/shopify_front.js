@@ -158,8 +158,9 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                     ' </div>'+
                                                         '<div class="select_postman_block" style="display: none;"></select><select name="select_postman" class="postman_select" style="width:140px;margin: 0 0 0 40.8%;display: flex;"></select></div>'+
                                                 '</div>'+
+                                                '<div style="width: 50%;text-align: center;"> <span class="chkpostcode errorcolor"  style="color:red;"></span></div>'+
                                                     '</div>'+
-                                                    '<div style="width: 50%;text-align: center;"> <span class="chkpostcode errorcolor"  style="color:red;"></span></div>'+
+                                                    
                                             ' </div>'+
                                         '</div>'+
                                     ' </div>'+
@@ -206,9 +207,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log($zoneprice + " ZONE PRICE");
                                     $totalPrice = parseFloat($ProductPrice) + parseFloat($zoneprice);
                                     console.log($totalPrice);
-                                    $replacestr = Shopify.formatMoney($totalPrice);
-                                    console.log($replacestr);
-                                    $("#ProductPrice").attr("data-price",$replacestr);
+                                    $("#ProductPrice").attr("data-price",$currecySymbol[0]+$totalPrice);
                                     $(".clsProductPrice").css("display","block");
                                     $(".custom-model-main").removeClass("model-open");
                                     setCookie('postcodeval', $zonearea);
@@ -235,7 +234,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     }
                                         
                             } else {
-                                $(".postalcode-panel").css("display","flex");
                                 $(".custom-model-inner").css("width","1000px");
                                 $(".clssucessmsg").html("");
                                 $("#ProductPrice").text("");
@@ -243,7 +241,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $(".chkpostcode").text(comeback['msg']['postcode'])
                             }
                                 
-                        }
+                    }
                 });
         }
     
