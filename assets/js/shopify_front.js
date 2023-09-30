@@ -130,15 +130,15 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             var agreement_text = comeback.outcome.agreement_text !== '' ? comeback.outcome.agreement_text : "Save";
                             var position = comeback.outcome.position == 1 ? "top" : comeback.outcome.position == 2 ? "center" : "bottom";
                             if(position == "center"){
-                                $('.custom-model-inner').css({"transform":"translate(0, 0)"});
+                                $popupPosition = "translate(0, 0)";
                             }else if(position == "top"){
-                                $('.custom-model-inner').css({"transform":" translateY(0)"});
+                                $popupPosition = "translateY(0)";
                             }else{
-                                $('.custom-model-inner').css({"transform":" translateY(100%)"}); 
+                                $popupPosition = "translateY(100%)";
                             }
 
                             $("body").append('<div class="custom-model-main model-open">'+
-                            '<div class="custom-model-inner" style="-webkit-transform: translate(0, -25%); -ms-transform: translate(0, -25%); transform: translate(0, -25%); -webkit-transition: -webkit-transform 0.3s ease-out; -o-transition: -o-transform 0.3s ease-out; transition: -webkit-transform 0.3s ease-out; -o-transition: transform 0.3s ease-out; transition: transform 0.3s ease-out; transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out; display: inline-block; vertical-align: middle; width: 600px; margin: 30px auto; max-width: 97%;">  '+     
+                            '<div class="custom-model-inner" style="-webkit-transform:'+ $popupPosition +'; -ms-transform: '+ $popupPosition  +'; transform: '+ $popupPosition +'; -webkit-transition: -webkit-transform 0.3s ease-out; -o-transition: -o-transform 0.3s ease-out; transition: -webkit-transform 0.3s ease-out; -o-transition: transform 0.3s ease-out; transition: transform 0.3s ease-out; transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out; display: inline-block; vertical-align: middle; width: 600px; margin: 30px auto; max-width: 97%;">  '+     
                             '<div class="close-btn" style="position: absolute; right: 7px; top: -12px; cursor: pointer; z-index: 99; font-size: 30px; color:'+ comeback.outcome.color_banner_link +';border-color:'+ comeback.outcome.color_button_border +'">×</div>'+
                                 ' <div class="custom-model-wrap" style="height:'+comeback.outcome.popup_height+';display: block; width: 100%; position: relative; background-color:'+ comeback.outcome.color_banner +'; border: 1px solid #999; border: 1px solid rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); background-clip: padding-box; outline: 0; text-align: left; padding: 2rem; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;  box-sizing: border-box; max-height: calc(100vh - 70px);overflow-y: auto;color:'+ comeback.outcome.color_banner_text +'">'+
                                     ' <div class="pop-up-content-wrap">'+
