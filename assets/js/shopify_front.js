@@ -194,7 +194,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     //  redirect403();
                             }else if (comeback['outcome'] == 'true') {
                                     $("#clsproductZipcodevalue").val(getpostcode);
-                                    $ProductPriceSymbol =  $productPriceClass.html();
+                                    $ProductPriceSymbol =  $.trim($productPriceClass.html());
                                     //$("#ProductPrice").text("");
                                     $(".chkpostcode").html("");
                                     $zonename = (comeback.data['zonename']);
