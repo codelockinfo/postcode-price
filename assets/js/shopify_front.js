@@ -202,10 +202,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $zonearea = (comeback.data['zonearea']);
                                     $currecySymbol = $ProductPriceSymbol.split(' ');
                                     console.log($currecySymbol);
-                                    $ProductPrice = $productPriceClass.attr("content");
-                                    console.log($ProductPrice + " PRODUCT PRICE");
                                     console.log($zoneprice + " ZONE PRICE");
-                                    $totalPrice = parseFloat($ProductPrice) + parseFloat($zoneprice);
+                                    $totalPrice = parseFloat($currecySymbol[1]) + parseFloat($zoneprice);
                                     console.log($totalPrice);
                                     $productPriceClass.attr("data-price",$currecySymbol[0]+$totalPrice);
                                     $(".clsProductPrice").css("display","block");
