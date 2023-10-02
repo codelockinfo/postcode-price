@@ -206,6 +206,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $totalPrice = parseFloat($currecySymbol[1]) + parseFloat($zoneprice);
                                     console.log($totalPrice);
                                     $productPriceClass.attr("data-price",$currecySymbol[0]+$totalPrice);
+                                    $productPriceClass.html($currecySymbol[0]+$totalPrice);
                                     $(".clsProductPrice").css("display","block");
                                     $(".custom-model-main").removeClass("model-open");
                                     setCookie('postcodeval', $zonearea);
