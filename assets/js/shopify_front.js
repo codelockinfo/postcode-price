@@ -403,7 +403,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             console.log("clsremovezipcode");
             console.log(shop);
             deleteCookie("postcodeval");
-            window.location.replace(shop);
+            //window.location.replace(shop);
             $("#postalholder").css("opacity","0");
         });
     
