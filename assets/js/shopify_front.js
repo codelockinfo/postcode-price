@@ -281,7 +281,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             }
         });
     
-        $(document).on("change","#ProductSelect-product-template-option-0",function(){
+        $(document).on("change",".no-js-hidden",function(){
                 $.ajax({
                         url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                         type: "POST",
@@ -296,7 +296,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             }else if (comeback['outcome'] == 'true') {
                             if(comeback['data'] == '1'){
                                 console.log("select box first");
-                                    $("#ProductPrice").css("display","none");
+                                    $(".price .price__regular .price-item").css("display","none");
                                     var optionSelected = $("option:selected", this);
                                     var valueSelected = this.value;
                                     $("#clsoption0").val(valueSelected);
