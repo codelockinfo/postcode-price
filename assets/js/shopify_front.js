@@ -136,7 +136,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             }else{
                                 $popupPosition = "translateY(100%)";
                             }
-
+                            $('form button[type="submit"]').attr("disabled",true);
                             $("body").append('<div class="custom-model-main model-open">'+
                             '<div class="custom-model-inner" style="-webkit-transform:'+ $popupPosition +'; -ms-transform: '+ $popupPosition  +'; transform: '+ $popupPosition +'; -webkit-transition: -webkit-transform 0.3s ease-out; -o-transition: -o-transform 0.3s ease-out; transition: -webkit-transform 0.3s ease-out; -o-transition: transform 0.3s ease-out; transition: transform 0.3s ease-out; transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out; display: inline-block; vertical-align: middle; width: 600px; margin: 30px auto; max-width: 97%;">  '+     
                             '<div class="close-btn" style="position: absolute; right: 7px; top: -12px; cursor: pointer; z-index: 99; font-size: 30px; color:'+ comeback.outcome.color_banner_link +';border-color:'+ comeback.outcome.color_button_border +'">×</div>'+
@@ -230,11 +230,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             '<div>'+
                                             '</div>');
                                     }
+                                    $('form button[type="submit"]').attr("disabled",false);
                             } else {
                                 $(".clssucessmsg").html("");
                                 $productPriceClass.text("");
                                 $productPriceClass.html($Productcontent);
-                                $(".chkpostcode").text(comeback['msg']['postcode'])
+                                $(".chkpostcode").text(comeback['msg']['postcode']);
+                                $('form button[type="submit"]').attr("disabled",true);
                             }
                                 
                     }
@@ -246,28 +248,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 event.preventDefault();  
                 getTotalprice();
         });
-    
-        function NOKformat(n, sep, decimals) {
-            sep = sep || "."; // Default to period as decimal separator
-            console.log(sep + "  sep");
-            decimals = decimals || 2; // Default to 2 decimals
-            console.log(n.toLocaleString() + "  xxxxx");
-            console.log( decimals + "   decimals");
-            console.log(n.toLocaleString().split(sep)[0]);
-            console.log("SPPPPP");
-            console.log(n.toFixed(decimals));
-            console.log("DDDDDD");
-            console.log(n.toFixed(decimals).split(sep)[1])
-            console.log("RETURRNNN");
-            return n.toLocaleString() + sep + n.toFixed(decimals).split(sep)[1];
-        }
-                                
+
         $(document).on("click",".close-btn, .bg-overlay",function(){
             console.log("close-btn btn call");
             $("#freightAreaZipcodePopup").val('');
             $(".select_postman_block").css("display","none");
             $(".custom-model-main").removeClass('model-open');
-        $(".single-option-selector").attr("disabled",false);
+            $(".single-option-selector").attr("disabled",false);
         });
     
         $(document).on("click",".clssingle-option-selector",function(){
@@ -282,6 +269,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         });
     
         $(document).on("change",".no-js-hidden",function(){
+            console.log("CHANGE");
                 $.ajax({
                         url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                         type: "POST",
