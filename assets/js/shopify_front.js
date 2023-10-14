@@ -205,8 +205,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log($zoneprice + " ZONE PRICE");
                                     $totalPrice = parseFloat($currecySymbol[1]) + parseFloat($zoneprice);
                                     console.log($totalPrice);
-                                    $productPriceClass.attr("data-price",$currecySymbol[0]+$totalPrice);
-                                    $productPriceClass.html($currecySymbol[0]+$totalPrice);
+                                    $productPriceClass.attr("data-price",$currecySymbol[0]+ " " +$totalPrice);
+                                    $productPriceClass.html($currecySymbol[0]+" "+$totalPrice);
                                     $(".clsProductPrice").css("display","block");
                                     $(".custom-model-main").removeClass("model-open");
                                     setCookie('postcodeval', $zonearea);
@@ -326,19 +326,27 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         });
     
         function addTocartfunc(){
-            $data = $("#ProductSelect-product-template option:selected").html().split("-");
-                $optionoptional = $data[0].split("/");
-                var clsproductId = $(".clsproductId").val();
+            // $data = $("#ProductSelect-product-template option:selected").html().split("-");
+            //     $optionoptional = $data[0].split("/");
+            //     var clsproductId = $(".clsproductId").val();
+            //     $clsoption0 = ($("#clsoption0").val() == '') ? $optionoptional[0] : $("#clsoption0").val();
+            //     $clsoption1 = ($("#clsoption1").val() == '') ? $optionoptional[1] : $("#clsoption1").val();
+            $(".product-form__input--dropdown .select__select").val();
+            var clsoption = [];
+            $( ".product-form__input--dropdown" ).each(function( index ) {
+                $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
+                clsoption[index] = $dropdownval;
+                console.log(clsoption[index]);
+            });
+                $price_html =  $.trim($(".price .price__regular .price-item").html());
+                $price = $price_html.split(' ');
                 $getpostcode = getCookie("postcodeval");
-                $clsoption0 = ($("#clsoption0").val() == '') ? $optionoptional[0] : $("#clsoption0").val();
-                $clsoption1 = ($("#clsoption1").val() == '') ? $optionoptional[1] : $("#clsoption1").val();
-                $price = $("#ProductPrice").attr("data-price");
                 var thisObj = this;
                 $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$data[1]},
+                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':clsoption[0],'clsoption1':clsoption[1],'productprice':$price[1],'oldprice':$price[1]},
                         beforeSend: function () {
                             
                     },
@@ -356,12 +364,12 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log(line_item);
                                     if(getCookie("buynowbtn") == undefined || getCookie("buynowbtn") == "" ){
                                         console.log("cart ");
-                                        $(".product-single__shopify-payment-btn").append('<span>Varen er lagt i indkøbskurven.</span>');
+                                        $(".product-single__shopify-payment-btn").append('<span>The item has been added to the shopping cart.</span>');
                                         window.location.href ='/cart';
                                     }else{
-                                            deleteCookie("buynowbtn");
-                                            console.log("checkout ");
-                                            window.location.href ='/checkout';
+                                        deleteCookie("buynowbtn");
+                                        console.log("checkout ");
+                                        window.location.href ='/checkout';
                                     }
                                 },
                                 };
