@@ -340,17 +340,17 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 clsoption[index] = $dropdownval;
                 console.log(clsoption[index]);
             });
-                $price_html =  $.trim($(".price .price__regular .price-item").html());
-                $price = $price_html.split(' ');
-                console.log($price);
+                // $price_html =  $.trim($(".price .price__regular .price-item").html());
+                // $price = $price_html.split(' ');
                 $getpostcode = getCookie("postcodeval");
-                // $price = getCookie("postcodeprice");
+                $price = getCookie("postcodeprice");
+                console.log($price);
                 var thisObj = this;
                 $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':clsoption[0],'clsoption1':clsoption[1],'productprice':$price[1],'oldprice':$price[1]},
+                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':clsoption[0],'clsoption1':clsoption[1],'productprice':$price,'oldprice':$price},
                         beforeSend: function () {
                             
                     },
