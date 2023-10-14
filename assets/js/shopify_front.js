@@ -340,9 +340,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 clsoption[index] = $dropdownval;
                 console.log(clsoption[index]);
             });
-                $price_html =  $.trim($(".price .price__regular .price-item").html());
-                $price = $price_html.split(' ');
+                // $price_html =  $.trim($(".price .price__regular .price-item").html());
+                // $price = $price_html.split(' ');
                 $getpostcode = getCookie("postcodeval");
+                $price = getCookie("postcodeprice");
                 var thisObj = this;
                 $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
