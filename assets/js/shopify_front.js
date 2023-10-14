@@ -371,7 +371,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 });
         }
     
-        $(document).on("click","form button[type='submit']",function (e) {
+        $(document).on("click","form button[type='submit'],form button[type='button']",function (e) {
             e.preventDefault();
             console.log("HII");
             addTocartfunc();
