@@ -285,7 +285,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             }else if (comeback['outcome'] == 'true') {
                             if(comeback['data'] == '1'){
                                 console.log("select box first");
-                                    $(".price .price__regular .price-item").css("display","none");
                                     $( ".product-form__input--dropdown" ).each(function( index ) {
                                         $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
                                         (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
