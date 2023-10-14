@@ -328,9 +328,9 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         function addTocartfunc(){
             // $data = $("#ProductSelect-product-template option:selected").html().split("-");
             //     $optionoptional = $data[0].split("/");
-            //     var clsproductId = $(".clsproductId").val();
             //     $clsoption0 = ($("#clsoption0").val() == '') ? $optionoptional[0] : $("#clsoption0").val();
             //     $clsoption1 = ($("#clsoption1").val() == '') ? $optionoptional[1] : $("#clsoption1").val();
+            var clsproductId = $('input[name="product-id"]').val();
             $(".product-form__input--dropdown .select__select").val();
             var clsoption = [];
             $( ".product-form__input--dropdown" ).each(function( index ) {
