@@ -228,6 +228,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             '</div>');
                                     }
                                     $('form button[type="submit"]').attr("disabled",false);
+                                    $( ".product-form__input--dropdown" ).each(function( index ) {
+                                        $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
+                                        (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
+                                    });
                             } else {
                                 $(".clssucessmsg").html("");
                                 $productPriceClass.text("");
