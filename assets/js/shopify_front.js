@@ -211,6 +211,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".custom-model-main").removeClass("model-open");
                                     setCookie('postcodeval', $zonearea);
                                     setCookie('postcodename', $zonename);
+                                    setCookie('postcodeprice', $totalPrice);
                                     
                                     $(".single-option-selector").attr("disabled",false);
                                     $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
