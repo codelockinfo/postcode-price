@@ -369,11 +369,11 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     if(getCookie("buynowbtn") == undefined || getCookie("buynowbtn") == "" ){
                                         console.log("cart ");
                                         $(".product-single__shopify-payment-btn").append('<span>The item has been added to the shopping cart.</span>');
-                                        // window.location.href ='/cart';
+                                         window.location.href ='/cart';
                                     }else{
                                         deleteCookie("buynowbtn");
                                         console.log("checkout ");
-                                        // window.location.href ='/checkout';
+                                         window.location.href ='/checkout';
                                     }
                                 },
                                 };
