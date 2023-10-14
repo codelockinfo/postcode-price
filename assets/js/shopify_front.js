@@ -71,8 +71,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $form_type = $('input[name=form_type]').val();
                                     if($form_type  == "product"){
                                     console.log("product page");
-                                    $("#AddToCart").css("display","none");
-                                    $findbuynowbtn = setInterval(hasbuynowbtn, 1000); 
+                                    // $findbuynowbtn = setInterval(hasbuynowbtn, 1000); 
                                     setTimeout(function(){
                                         console.log("settimeout function calling ...");
                                         console.log(getCookie("postcodeval") );
@@ -91,9 +90,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         '</a>'+
                                         '</div></br>'+
                                         '<div>'+
-                                    //     '<a  name="clsbuynow" id="" class="clsshopify-payment-button__button" style="cursor: pointer;padding: 13px 86px;background-color: #f5db00;color: #ffffff;border: 2px solid #f5db00;">'+
-                                    //     '<span id="clsbuynowText">Køb nu</span>'+
-                                    //   '</a>'+
                                         '</div>');
                                         $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
                                         '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
@@ -106,7 +102,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             }else{
                                 $(".single-option-selector").removeClass("clssingle-option-selector");
                                 $("#ProductPrice").css("display","block");
-                            console.log("Postcode app is disabled");
+                                console.log("Postcode app is disabled");
                             }
                         } else {
                             console.log("Something went wrong with postcode app");       
@@ -381,7 +377,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             addTocartfunc();
         });
     
-        $(document).on("click",".clsshopify-payment-button__button",function (e) {
+        $(document).on("click",".shopify-payment-button__button",function (e) {
             e.preventDefault();
             console.log("checkout");
             setCookie('buynowbtn', "buynowbutton");
