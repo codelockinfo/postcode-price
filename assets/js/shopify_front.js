@@ -328,28 +328,21 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
     
         function addTocartfunc(){
             // $data = $("#ProductSelect-product-template option:selected").html().split("-");
-            //     $optionoptional = $data[0].split("/");
-            //     $clsoption0 = ($("#clsoption0").val() == '') ? $optionoptional[0] : $("#clsoption0").val();
-            //     $clsoption1 = ($("#clsoption1").val() == '') ? $optionoptional[1] : $("#clsoption1").val();
+            // $optionoptional = $data[0].split("/");
+            $clsoption0 = ($("#clsoption0").val() == '') ? '' : $("#clsoption0").val();
+            $clsoption1 = ($("#clsoption1").val() == '') ? '' : $("#clsoption1").val();
             var clsproductId = $('input[name="product-id"]').val();
-            $(".product-form__input--dropdown .select__select").val();
-            var clsoption = [];
-            $( ".product-form__input--dropdown" ).each(function( index ) {
-                $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
-                clsoption[index] = $dropdownval;
-                console.log(clsoption[index]);
-            });
-                // $price_html =  $.trim($(".price .price__regular .price-item").html());
-                // $price = $price_html.split(' ');
-                $getpostcode = getCookie("postcodeval");
-                $price = getCookie("postcodeprice");
-                console.log($price);
+            // $price_html =  $.trim($(".price .price__regular .price-item").html());
+            // $price = $price_html.split(' ');
+            $getpostcode = getCookie("postcodeval");
+            $price = getCookie("postcodeprice");
+            console.log($price);
                 var thisObj = this;
                 $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':clsoption[0],'clsoption1':clsoption[1],'productprice':$price,'oldprice':$price},
+                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$price},
                         beforeSend: function () {
                             
                     },
