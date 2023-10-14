@@ -678,4 +678,124 @@ class Client_functions extends common_function {
         }
         return $response;
     }
+    function get_product(){
+        $where_query = array(["", "status", "=", "1"]);
+        $comeback= $this->select_result(CLS_TABLE_THIRDPARTY_APIKEY, '*',$where_query);
+        $CLS_API_KEY = (isset($comeback['data'][1]['thirdparty_apikey']) && $comeback['data'][1]['thirdparty_apikey'] !== '') ? $comeback['data'][1]['thirdparty_apikey'] : '';
+       
+        $shopinfo = $this->current_store_obj;
+        $shopinfo = (object)$shopinfo;
+        $store_name = $shopinfo->shop_name;
+        $password = $shopinfo->password;
+
+        $productid = isset($_POST['productid']) ? $_POST['productid'] :'';
+        $productprice = isset($_POST['productprice']) ? $_POST['productprice'] :'';
+        $oldprice = isset($_POST['oldprice']) ? $_POST['oldprice'] :'';
+        $postcode = isset($_POST['postcode']) ? $_POST['postcode'] :'';
+        $clsoption1 = isset($_POST['clsoption1']) ? $_POST['clsoption1'] :'';
+        $clsoption0 = isset($_POST['clsoption0']) ? $_POST['clsoption0'] :'';
+        $shopify_api = array("api_name" => "products/".$productid);
+        $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
+        
+        $producttitle = $productdata->product->title;
+        $productimage = $productdata->product->image->src;
+        $producttitle = $producttitle." - ".$postcode;
+                    if(isset($productsrc) && !empty($productsrc))  {
+                            $image_value = $productsrc;
+                            foreach ($img_arr as $value) {
+                                $imgs[] = explode(',', $value);
+                            }
+                            foreach ($imgs as $value) {
+                                $images[] = $value[1];
+                            }
+                            if (!empty($images)) {
+                                foreach ($images as $value) {
+                                    $image_value[]['attachment'] = trim($value);
+                                }
+                            }
+                            $product_array = array(
+                                'product' => array(
+                                    'title' => $producttitle,
+                                    'status'=>'active',
+                                    'images' => $image_value,
+                                    'price' => '100'
+                                )
+                            );
+                        } else {
+                            $product_array = array(
+                                'product' => array(
+                                        'title' => $producttitle,
+                                    'status'=>'active',
+                                    'price' => '500'
+                                )
+                            );
+                        }
+                    
+                    $variants = array();
+                    $variants1 = array("option1"=>$clsoption0,"option2"=>$clsoption1, "price" =>$productprice );
+                    
+                    array_push($variants,$variants1);
+                    $options1 = array("name" => "Size","position" => 1);
+                    $options2 = array("name" => "Color","position" => 2);
+        
+                    $options = array(
+                        $options1,
+                        $options2
+                        );
+                    
+                        if (isset($variants) && isset($options)) {
+                        $product_array['product']['variants'] = $variants;
+                        $product_array['product']['options'] = $options; 
+                    }
+                    
+                    $api = array('api_name' => 'products');
+                    
+                $curl = curl_init();
+    
+                curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://'. $CLS_API_KEY .':'. $password .'@'. $store_name .'/admin/api/2021-07/products.json',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS =>json_encode($product_array),
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json',
+                        'auth_token: '.$password
+                ),
+                ));
+    
+                $response = curl_exec($curl);
+                curl_close($curl);
+                
+                if($response != ""){
+                    $dublicateproductdata = json_decode($response);
+                }else{
+                    $dublicateproductdata = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
+                }
+                $api = array('api_name' => 'products/'.$dublicateproductdata->product->id.'/images');
+                $cdn_img = $productimage;
+                $product_image_array = array('image' => array('product_id' => $dublicateproductdata->product->id, 'src' =>$cdn_img));
+                $dublicateproductdata2 = $this->cls_get_shopify_list($api, $product_image_array, 'POST', 1, array("Content-Type: application/json"));
+                
+                $productid = $dublicateproductdata->product->id;
+                if(!empty($productid)){
+                    
+                        $mysql_date = date('Y-m-d H:i:s');
+                        $fields_arr = array(
+                            '`product_id`' =>$productid,
+                            '`old_price`' =>$oldprice,
+                            '`new_price`' =>$productprice,
+                            '`pincode`' =>$postcode,
+                            '`created_at`' => $mysql_date,
+                            '`updated_at`' => $mysql_date
+                        );
+                        $response_data = $this->post_data(TABLE_PRODUCT_MASTER, array($fields_arr));  
+                }
+                return $dublicateproductdata; 
+                
+    }
 }
