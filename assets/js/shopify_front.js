@@ -248,10 +248,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $(".single-option-selector").attr("disabled",false);
         });
     
-        $(document).on("click",".clssingle-option-selector",function(){
+        $(document).on("click",".select__select",function(){
             if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
-            console.log("cookies");
-                $(".single-option-selector").attr("disabled",true);
+                console.log("cookies");
+                $("form button[type='submit']").attr("disabled",true); 
                 $(".custom-model-main").addClass("model-open");
             }else{
                 $(".shopify-payment-button__button").css("display","none");
@@ -260,10 +260,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
     
         $(document).on("change",".no-js-hidden",function(){
             console.log("CHANGE");
-            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
-                    $(".custom-model-main").addClass("model-open");
-                }else{
-                    $.ajax({
+                $.ajax({
                         url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                         type: "POST",
                         dataType: 'json',
@@ -284,8 +281,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             }
                             }
                         }
-                    });
-                }
+                });
+        
         });
 
         function addTocartfunc(){
