@@ -79,7 +79,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }else{
                                             console.log("onload event for pdppage");
                                             $(".price__container").append(
-                                                '<div id="postalholder" style="display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
+                                                '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                                 ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
                                                     '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
                                                 '</div>');
@@ -204,7 +204,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".single-option-selector").attr("disabled",false);
                                     $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                     $hasClass = $("#postalholder").html();
-                                    
                                     if($hasClass == undefined){
                                             $(".price__container").append(
                                             '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
@@ -218,17 +217,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             '</div></br>'+
                                             '<div>'+
                                             '</div>');
-                                            
-                                        }
-                                        var inputElement = $('input[name="clsoption0"]');
-                                        var inputValue = inputElement.val();
-                                        if($hasClass == undefined){
-                                            $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
-                                            '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
-                                            '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-                                        }
-
-
+                                    }
                                     $('form button[type="submit"],.clspayment').attr("disabled",false);
                                     $( ".product-form__input--dropdown" ).each(function( index ) {
                                         $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
@@ -280,7 +269,20 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                             }else if (comeback['outcome'] == 'true') {
                             if(comeback['data'] == '1'){
-                                    getTotalprice();
+                                console.log("select box first");
+                                var inputElement = $('input[name="clsoption0"]');
+                                var inputValue = inputElement.val();
+                                if($hasClass == undefined){
+                                    $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
+                                    '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
+                                    '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
+
+                                }
+                                $( ".product-form__input--dropdown" ).each(function( index ) {
+                                    $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
+                                    (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
+                                });
+                                getTotalprice();
                                     
                             }
                             }
