@@ -204,6 +204,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".single-option-selector").attr("disabled",false);
                                     $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                     $hasClass = $("#postalholder").html();
+                                    
                                     if($hasClass == undefined){
                                             $(".price__container").append(
                                             '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
@@ -218,10 +219,16 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             '<div>'+
                                             '</div>');
                                             
-                                    $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
-                                    '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
-                                    '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-                                    }
+                                        }
+                                        var inputElement = $('input[name="clsoption0"]');
+                                        var inputValue = inputElement.val();
+                                        if($hasClass == undefined){
+                                            $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
+                                            '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
+                                            '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
+                                        }
+
+
                                     $('form button[type="submit"],.clspayment').attr("disabled",false);
                                     $( ".product-form__input--dropdown" ).each(function( index ) {
                                         $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
