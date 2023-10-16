@@ -253,8 +253,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 console.log("cookies");
                 $("form button[type='submit']").attr("disabled",true); 
                 $(".custom-model-main").addClass("model-open");
-            }else{
-                $(".shopify-payment-button__button").css("display","none");
             }
         });
     
