@@ -260,7 +260,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
     
         $(document).on("change",".no-js-hidden",function(){
             console.log("CHANGE");
-                $.ajax({
+            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
+                    $(".custom-model-main").addClass("model-open");
+                }else{
+                    $.ajax({
                         url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                         type: "POST",
                         dataType: 'json',
@@ -281,8 +284,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             }
                             }
                         }
-                });
-        
+                    });
+                }
         });
 
         function addTocartfunc(){
