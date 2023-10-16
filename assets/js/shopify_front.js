@@ -71,7 +71,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $form_type = $('input[name=form_type]').val();
                                     if($form_type  == "product"){
                                     console.log("product page");
-                                    // $findbuynowbtn = setInterval(hasbuynowbtn, 1000); 
+                                     $findbuynowbtn = setInterval(hasbuynowbtn, 1000); 
                                     setTimeout(function(){
                                         console.log("settimeout function calling ...");
                                         console.log(getCookie("postcodeval") );
@@ -401,8 +401,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         $hasfindclass  = $("button").hasClass("shopify-payment-button__button");
         console.log($hasfindclass);
         if($hasfindclass == true){
+            $paytment_Btn_class = $(".shopify-payment-button__button").attr("class");
+            $paytment_Btn_text = $(".shopify-payment-button__button").html();
+            $payment_btn_Html = '<button class="'+ paytment_Btn_class +' clspayment">"'+ $paytment_Btn_text +'"</button>';
+            $(".product-form__buttons").append($payment_btn_Html);
             $(".shopify-payment-button__button").css("display","none");
             clearInterval($findbuynowbtn);  
+
         }
         }
     
