@@ -289,6 +289,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $clsoption0 = ($("#clsoption0").val() == '') ? '' : $("#clsoption0").val();
             $clsoption1 = ($("#clsoption1").val() == '') ? '' : $("#clsoption1").val();
             var clsproductId = $('input[name="product-id"]').val();
+            $productQtyy = $(".quantity .quantity__input").val();
+
             $getpostcode = getCookie("postcodeval");
             $price = getCookie("postcodeprice");
             console.log($price);
@@ -309,7 +311,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             var params = {
                                 type: 'POST',
                                 url: '/cart/add.js',
-                                data: {id: variant_id,quantity: '1'},
+                                data: {id: variant_id,quantity: $productQtyy},
                                 dataType: 'json',
                                 success: function(line_item) { 
                                     console.log(line_item);
