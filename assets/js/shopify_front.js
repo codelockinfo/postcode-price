@@ -270,14 +270,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             }else if (comeback['outcome'] == 'true') {
                             if(comeback['data'] == '1'){
                                 console.log("select box first");
-                                var inputElement = $('input[name="clsproductZipcodevalue"]');
-                                var inputValue = inputElement.val();
-                                if($hasClass == undefined){
-                                    $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
-                                    '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
-                                    '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-
-                                }
                                 $( ".product-form__input--dropdown" ).each(function( index ) {
                                     $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
                                     (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
