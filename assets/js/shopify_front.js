@@ -237,16 +237,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         $(document).on("click",".postcode-checker-preview",function(event){
                 console.log("CLICK BTN ");
                 event.preventDefault();  
-                var inputElement = $('input[name="clsproductZipcodevalue"]');
-                var inputValue = inputElement.val();
-                if($hasClass == undefined){
-                    $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
-                    '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
-                    '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-
-                }
                 getTotalprice();
-                
         });
 
         $(document).on("click",".close-btn, .bg-overlay",function(){
