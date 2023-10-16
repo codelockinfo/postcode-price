@@ -169,18 +169,16 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
 
         check_app_status();
         function getTotalprice(){
-            console.log("getTotalprice function calling ......");
+            console.log("getTotalprice function ");
             var clsgetpostcode = $(".clspostcode").val();
-            console.log(clsgetpostcode);
             getpostcode = (clsgetpostcode == undefined || clsgetpostcode == "" ) ? getCookie("postcodeval") : clsgetpostcode;
-            console.log(getpostcode + "getpostcode   function .........");
+            console.log(clsgetpostcode);
             $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
                     data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode},
                     success: function (comeback) {
-                        console.log(comeback);
                         $productPriceClass = $(".price .price__regular .price-item");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                             }else if (comeback['outcome'] == 'true') {
@@ -207,7 +205,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                     $hasClass = $("#postalholder").html();
                                     if($hasClass == undefined){
-                                        console.log("condition true");
                                             $(".price__container").append(
                                             '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                             ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
@@ -271,7 +268,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         beforeSend: function () {
                         },
                         success: function (comeback) {
-                            console.log(comeback);
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                             }else if (comeback['outcome'] == 'true') {
                             if(comeback['data'] == '1'){
