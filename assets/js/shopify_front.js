@@ -365,7 +365,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     }else{
                                         deleteCookie("buynowbtn");
                                         console.log("checkout ");
-                                        //  window.location.href ='/checkout';
+                                        window.location.href ='/checkout';
                                     }
                                 },
                                 };
