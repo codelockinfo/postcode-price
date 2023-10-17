@@ -212,6 +212,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".single-option-selector").attr("disabled",false);
                                     $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                     $hasClass = $("#postalholder").html();
+                                    console.log("$hasClass +++" + $hasClass);
                                     if($hasClass == undefined){
                                             $(".price__container").append(
                                             '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
