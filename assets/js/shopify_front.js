@@ -205,9 +205,9 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $productPriceClass.html($currecySymbol[0]+" "+$totalPrice);
                                     $(".clsProductPrice").css("display","block");
                                     $(".custom-model-main").removeClass("model-open");
-                                    setCookie('postcodeval', $zonearea);
-                                    setCookie('postcodename', $zonename);
-                                    setCookie('postcodeprice', $totalPrice);
+                                    setCookie('postcodeval',$zonearea);
+                                    setCookie('postcodename',$zonename);
+                                    setCookie('postcodeprice',$totalPrice);
                                     
                                     $(".single-option-selector").attr("disabled",false);
                                     $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
