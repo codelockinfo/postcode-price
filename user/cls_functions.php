@@ -724,7 +724,7 @@ class Client_functions extends common_function {
                         } else {
                             $product_array = array(
                                 'product' => array(
-                                        'title' => $producttitle,
+                                    'title' => $producttitle,
                                     'status'=>'active',
                                     'price' => '500'
                                 )
@@ -732,20 +732,36 @@ class Client_functions extends common_function {
                         }
                     
                     $variants = array();
-                    $variants1 = array("option1"=>$clsoption0,"option2"=>$clsoption1, "price" =>$productprice );
+                    if($clsoption1 == "" ){
+                        $variants1 = array("option1"=>$clsoption0,"price" =>$productprice );
+                        array_push($variants,$variants1);
+                        $options1 = array("name" => "Size","position" => 1);
+            
+                        $options = array(
+                            $options1
+                            );
+                        
+                            if (isset($variants) && isset($options)) {
+                            $product_array['product']['variants'] = $variants;
+                            $product_array['product']['options'] = $options; 
+                        }
                     
-                    array_push($variants,$variants1);
-                    $options1 = array("name" => "Size","position" => 1);
-                    $options2 = array("name" => "Color","position" => 2);
-        
-                    $options = array(
-                        $options1,
-                        $options2
-                        );
-                    
-                        if (isset($variants) && isset($options)) {
-                        $product_array['product']['variants'] = $variants;
-                        $product_array['product']['options'] = $options; 
+                    }else{
+                        $variants1 = array("option1"=>$clsoption0,"option2"=>$clsoption1, "price" =>$productprice );
+                        array_push($variants,$variants1);
+                        $options1 = array("name" => "Size","position" => 1);
+                        $options2 = array("name" => "Color","position" => 2);
+            
+                        $options = array(
+                            $options1,
+                            $options2
+                            );
+                        
+                            if (isset($variants) && isset($options)) {
+                            $product_array['product']['variants'] = $variants;
+                            $product_array['product']['options'] = $options; 
+                        }
+                        
                     }
                     
                     $api = array('api_name' => 'products');
