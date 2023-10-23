@@ -762,6 +762,9 @@ class Client_functions extends common_function {
                             $product_array['product']['options'] = $options; 
                         }
                         
+                    }else{
+                        $variants1 = array("title"=>"","Default Title" =>$productprice );
+                        array_push($variants,$variants1);
                     }
                     
                     $api = array('api_name' => 'products');
