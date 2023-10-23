@@ -763,7 +763,7 @@ class Client_functions extends common_function {
                         }
                         
                     }else{
-                        $variants1 = array("title"=>"","Default Title" =>$productprice );
+                        $variants1 = array("title"=>"Default Title","price" =>$productprice );
                         array_push($variants,$variants1);
                         if (isset($variants)) {
                             $product_array['product']['variants'] = $variants;
