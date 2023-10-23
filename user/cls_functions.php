@@ -733,7 +733,7 @@ class Client_functions extends common_function {
                         }
                     
                     $variants = array();
-                    if($clsoption1 != "" ){
+                    if($clsoption0 != "" && $clsoption1 == "" ){
                         generate_log('createproduct', "  create product array option1"); 
                         $variants1 = array("option1"=>$clsoption0,"price" =>$productprice );
                         array_push($variants,$variants1);
