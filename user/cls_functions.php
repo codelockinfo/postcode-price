@@ -699,7 +699,15 @@ class Client_functions extends common_function {
         
         $producttitle = $productdata->product->title;
         $productimage = $productdata->product->image->src;
-   
+
+        if ($productdata && isset($productdata->product->variants)) {
+            $variants_count = count($productdata->product->variants);
+            generate_log('createproduct', $productdata->product->variants->title);
+            generate_log('createproduct', $variants_count . "  variant count"); 
+        } else {
+            generate_log('createproduct',"  variant not found"); 
+        }
+
         $producttitle = $producttitle." - ".$postcode;
                     if(isset($productsrc) && !empty($productsrc))  {
                             $image_value = $productsrc;
