@@ -699,14 +699,7 @@ class Client_functions extends common_function {
         
         $producttitle = $productdata->product->title;
         $productimage = $productdata->product->image->src;
-        generate_log('createproduct', json_encode($productdata->product->variants) . "  variant SSSSSS"); 
-        if ($productdata && isset($productdata->product->variants)) {
-            $variants_count = count($productdata->product->variants);
-            generate_log('createproduct', $variants_count . "  variant count"); 
-        } else {
-            generate_log('createproduct',"  variant not found"); 
-        }
-
+   
         $producttitle = $producttitle." - ".$postcode;
                     if(isset($productsrc) && !empty($productsrc))  {
                             $image_value = $productsrc;
@@ -741,6 +734,7 @@ class Client_functions extends common_function {
                     
                     $variants = array();
                     if($clsoption1 != "" ){
+                        generate_log('createproduct', "  create product array option1"); 
                         $variants1 = array("option1"=>$clsoption0,"price" =>$productprice );
                         array_push($variants,$variants1);
                         $options1 = array("name" => "Size","position" => 1);
@@ -755,6 +749,7 @@ class Client_functions extends common_function {
                         }
                     
                     }else if($clsoption0 != "" && $clsoption1 != "" ){
+                        generate_log('createproduct', "  create product array option1&2"); 
                         $variants1 = array("option1"=>$clsoption0,"option2"=>$clsoption1, "price" =>$productprice );
                         array_push($variants,$variants1);
                         $options1 = array("name" => "Size","position" => 1);
@@ -771,6 +766,7 @@ class Client_functions extends common_function {
                         }
                         
                     }else{
+                        generate_log('createproduct', "  create product array option10"); 
                         $variants1 = array("title"=>"Default Title","price" =>$productprice );
                         array_push($variants,$variants1);
                         if (isset($variants)) {
