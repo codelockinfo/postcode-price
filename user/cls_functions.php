@@ -701,7 +701,7 @@ class Client_functions extends common_function {
         $productimage = $productdata->product->image->src;
         generate_log('createproduct', json_encode($productdata->product->variants) . "  variant SSSSSS"); 
         if ($productdata && isset($productdata->product->variants)) {
-            $variants_count = count($productdata->product['variants']);
+            $variants_count = count($productdata->product->variants);
             generate_log('createproduct', $variants_count . "  variant count"); 
         } else {
             generate_log('createproduct',"  variant not found"); 
