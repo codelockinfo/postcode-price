@@ -702,7 +702,7 @@ class Client_functions extends common_function {
 
         if ($productdata && isset($productdata->product->variants)) {
             $variants_count = count($productdata->product->variants);
-            generate_log('createproduct', $productdata->product->variants->title);
+            generate_log('createproduct', $productdata->product->variants['title']);
             generate_log('createproduct', $variants_count . "  variant count"); 
         } else {
             generate_log('createproduct',"  variant not found"); 
