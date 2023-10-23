@@ -769,7 +769,7 @@ class Client_functions extends common_function {
                             $product_array['product']['variants'] = $variants;
                         }
                     }
-                    
+                    generate_log('createproduct', json_encode($product_array) . "  create product array"); 
                     $api = array('api_name' => 'products');
                     
                 $curl = curl_init();
