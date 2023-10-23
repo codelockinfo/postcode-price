@@ -732,7 +732,7 @@ class Client_functions extends common_function {
                         }
                     
                     $variants = array();
-                    if($clsoption1 == "" ){
+                    if($clsoption1 != "" ){
                         $variants1 = array("option1"=>$clsoption0,"price" =>$productprice );
                         array_push($variants,$variants1);
                         $options1 = array("name" => "Size","position" => 1);
@@ -746,7 +746,7 @@ class Client_functions extends common_function {
                             $product_array['product']['options'] = $options; 
                         }
                     
-                    }else{
+                    }else if($clsoption0 != "" && $clsoption1 != "" ){
                         $variants1 = array("option1"=>$clsoption0,"option2"=>$clsoption1, "price" =>$productprice );
                         array_push($variants,$variants1);
                         $options1 = array("name" => "Size","position" => 1);
