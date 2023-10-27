@@ -97,7 +97,118 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }
                                     },1000); 
                                     }
+                                    $(document).on("click",".postcode-checker-preview",function(event){
+                                        console.log("CLICK BTN ");
+                                        event.preventDefault();  
+                                        getTotalprice();
+                                });
+                        
+                                $(document).on("click",".close-btn, .bg-overlay",function(){
+                                    console.log("close-btn btn call");
+                                    $("#freightAreaZipcodePopup").val('');
+                                    $(".select_postman_block").css("display","none");
+                                    $(".custom-model-main").removeClass('model-open');
+                                    $(".single-option-selector").attr("disabled",false);
+                                });
                             
+                                $(document).on("click",".select__select",function(){
+                                    if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
+                                        console.log("cookies");
+                                        $("form button[type='submit'],.clspayment").attr("disabled",true); 
+                                        $(".custom-model-main").addClass("model-open");
+                                    }
+                                });
+                            
+                                $(document).on("change",".no-js-hidden",function(){
+                                    console.log("CHANGE");
+                                        $.ajax({
+                                                url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
+                                                type: "POST",
+                                                dataType: 'json',
+                                                data: {'routine_name': 'check_app_status' ,'store': shop},
+                                                beforeSend: function () {
+                                                },
+                                                success: function (comeback) {
+                                                    if (comeback['code'] != undefined && comeback['code'] == '403') {
+                                                    }else if (comeback['outcome'] == 'true') {
+                                                    if(comeback['data'] == '1'){
+                                                        console.log("select box first");
+                                                        $( ".product-form__input--dropdown" ).each(function( index ) {
+                                                            $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
+                                                            (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
+                                                        });
+                                                        getTotalprice();
+                                                            
+                                                    }
+                                                    }
+                                                }
+                                        });
+                                
+                                });
+
+                                $(document).on("click","form button[type='submit']",function (e) {
+                                    e.preventDefault();
+                                    console.log("Addtocart button click");
+                                    addTocartfunc();
+                                });
+                            
+                                $(document).on("click",".shopify-payment-button__button",function (e) {
+                                    e.preventDefault();
+                                    console.log("checkout button lick");
+                                    setCookie('buynowbtn', "buynowbutton");
+                                    addTocartfunc();
+                                });
+                            
+                                $(document).on("click",".clsremovezipcode",function (e){
+                                    e.preventDefault();
+                                    deleteCookie("postcodeval");
+                                    var url = "https://"+shop;
+                                    $("#postalholder").css("opacity","0");
+                                    window.location.replace(url);
+                                });
+                                $(document).on("keyup","#freightAreaZipcodePopup",function (e){
+                                    e.preventDefault();
+                                    console.log("zipcode pop up input keyup");
+                                    var getpostcode = $(this).val();
+                                    var searchKEYLEN = (getpostcode != undefined) ? getpostcode.length : 0;
+                                        if (searchKEYLEN == 0 || searchKEYLEN >1) {
+                                                        $(".select_postman_block").css("display","none");
+                                        }
+                                    if (searchKEYLEN >= 3) {
+                                        console.log( " 0 to 2 ");
+                                            $.ajax({
+                                            url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
+                                            type: "POST",
+                                            dataType: 'json',
+                                            data: {'routine_name': 'search_postcode' ,'store': shop,'postcode':getpostcode},
+                                            beforeSend: function () { 
+                                            },
+                                            success: function (comeback) {
+                                                    if (comeback['code'] != undefined && comeback['code'] == '403') {
+                                                    }else if (comeback['outcome'] == 'true') {
+                                                        $data = comeback['data']['zonearea'];
+                                                        $zonename = comeback['data']['zonename'];
+                                                        console.log($data);
+                                                        console.log($zonename);
+                                                        var select = "";
+                                                        $.each($data, function (key, val) {
+                                                            console.log(val);
+                                                            select += "<option value="+ val +">"+ val +" - "+$zonename[key]+"</option>";
+                                                            $(".select_postman_block").css("display","flex");
+                                                        });
+                                                            $(".postman_select").html(select);
+                                                    }   
+                                                }
+                                        });
+                                    }
+                                    $(".postman_select").html("");
+                                });
+                            
+                                $(document).on("change",".postman_select,.postman_select_zonename",function(){
+                                    var value= $(this).val();
+                                    console.log(value);
+                                    $(".clspostcode").val(value);
+                                });
                             }else{
                                 $(".single-option-selector").removeClass("clssingle-option-selector");
                                 $("#ProductPrice").css("display","block");
@@ -243,55 +354,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 });
         }
     
-        $(document).on("click",".postcode-checker-preview",function(event){
-                console.log("CLICK BTN ");
-                event.preventDefault();  
-                getTotalprice();
-        });
-
-        $(document).on("click",".close-btn, .bg-overlay",function(){
-            console.log("close-btn btn call");
-            $("#freightAreaZipcodePopup").val('');
-            $(".select_postman_block").css("display","none");
-            $(".custom-model-main").removeClass('model-open');
-            $(".single-option-selector").attr("disabled",false);
-        });
-    
-        $(document).on("click",".select__select",function(){
-            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
-                console.log("cookies");
-                $("form button[type='submit'],.clspayment").attr("disabled",true); 
-                $(".custom-model-main").addClass("model-open");
-            }
-        });
-    
-        $(document).on("change",".no-js-hidden",function(){
-            console.log("CHANGE");
-                $.ajax({
-                        url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
-                        type: "POST",
-                        dataType: 'json',
-                        data: {'routine_name': 'check_app_status' ,'store': shop},
-                        beforeSend: function () {
-                        },
-                        success: function (comeback) {
-                            if (comeback['code'] != undefined && comeback['code'] == '403') {
-                            }else if (comeback['outcome'] == 'true') {
-                            if(comeback['data'] == '1'){
-                                console.log("select box first");
-                                $( ".product-form__input--dropdown" ).each(function( index ) {
-                                    $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
-                                    (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
-                                });
-                                getTotalprice();
-                                    
-                            }
-                            }
-                        }
-                });
-        
-        });
-
         function addTocartfunc(){
             $clsoption0 = ($("#clsoption0").val() == '') ? '' : $("#clsoption0").val();
             $clsoption1 = ($("#clsoption1").val() == '') ? '' : $("#clsoption1").val();
@@ -339,27 +401,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 });
         }
     
-        $(document).on("click","form button[type='submit']",function (e) {
-            e.preventDefault();
-            console.log("Addtocart button click");
-            addTocartfunc();
-        });
-    
-        $(document).on("click",".shopify-payment-button__button",function (e) {
-            e.preventDefault();
-            console.log("checkout button lick");
-            setCookie('buynowbtn', "buynowbutton");
-            addTocartfunc();
-        });
-    
-        $(document).on("click",".clsremovezipcode",function (e){
-            e.preventDefault();
-            deleteCookie("postcodeval");
-            var url = "https://"+shop;
-            $("#postalholder").css("opacity","0");
-            window.location.replace(url);
-        });
-    
         function  hasbuynowbtn(){
         $hasfindclass  = $("button").hasClass("shopify-payment-button__button");
         console.log($hasfindclass);
@@ -372,50 +413,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             clearInterval($findbuynowbtn);  
         }
         }
-    
-        $(document).on("keyup","#freightAreaZipcodePopup",function (e){
-            e.preventDefault();
-            console.log("zipcode pop up input keyup");
-            var getpostcode = $(this).val();
-            var searchKEYLEN = (getpostcode != undefined) ? getpostcode.length : 0;
-                if (searchKEYLEN == 0 || searchKEYLEN >1) {
-                                $(".select_postman_block").css("display","none");
-                }
-            if (searchKEYLEN >= 3) {
-                console.log( " 0 to 2 ");
-                    $.ajax({
-                    url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
-                    type: "POST",
-                    dataType: 'json',
-                    data: {'routine_name': 'search_postcode' ,'store': shop,'postcode':getpostcode},
-                    beforeSend: function () { 
-                    },
-                    success: function (comeback) {
-                            if (comeback['code'] != undefined && comeback['code'] == '403') {
-                            }else if (comeback['outcome'] == 'true') {
-                                $data = comeback['data']['zonearea'];
-                                $zonename = comeback['data']['zonename'];
-                                console.log($data);
-                                console.log($zonename);
-                                var select = "";
-                                $.each($data, function (key, val) {
-                                    console.log(val);
-                                    select += "<option value="+ val +">"+ val +" - "+$zonename[key]+"</option>";
-                                    $(".select_postman_block").css("display","flex");
-                                });
-                                    $(".postman_select").html(select);
-                            }   
-                        }
-                });
-            }
-            $(".postman_select").html("");
-        });
-    
-        $(document).on("change",".postman_select,.postman_select_zonename",function(){
-            var value= $(this).val();
-            console.log(value);
-            $(".clspostcode").val(value);
-        });
+
     });
 });
          
