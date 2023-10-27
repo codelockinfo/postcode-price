@@ -193,8 +193,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                         var select = "";
                                                         $.each($data, function (key, val) {
                                                             console.log(val);
-                                                            select += "<option value="+ val +">"+ val +" - "+$zonename[key]+"</option>";
-                                                            $(".select_postman_block").css("display","flex");
+                                                            if(val.split(",").length - 1){
+                                                                $zipsplitval = val.split(",");
+                                                                console.log($zipsplitval);
+                                                              }else{
+                                                                  select += "<option value="+ val +">"+ val +" - "+$zonename[key]+"</option>";
+                                                                  $(".select_postman_block").css("display","flex");
+                                                              }
                                                         });
                                                             $(".postman_select").html(select);
                                                     }   
