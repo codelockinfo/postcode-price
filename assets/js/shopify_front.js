@@ -196,7 +196,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                             if(val.split(",").length - 1){
                                                                 $zipsplitval = val.split(",");
                                                                 $.each($zipsplitval, function (index, value) {
-                                                                    select += "<option value="+ val +">"+ val +" - "+$zonename[key]+"</option>";
+                                                                    select += "<option value="+ value +">"+ value +" - "+$zonename[key]+"</option>";
                                                                     $(".select_postman_block").css("display","flex");
                                                                 });
                                                               }else{
