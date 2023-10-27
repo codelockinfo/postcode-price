@@ -555,7 +555,7 @@ class Client_functions extends common_function {
             $zonearea = trim($zonearea," ");
             $zonearea = strtolower($zonearea);
             $options_arr = array('single' => false);
-            $where_query = array(["", "zonearea", "LIKE","END", "$zonearea"],["or", "lower(zonename)", "LIKE","END", "$zonearea"],["AND", "store_user_id", "=", "$shopinfo->store_user_id"]);
+            $where_query = array(["", "(zonearea", "LIKE","END", "$zonearea"],["or", "lower(zonename)", "LIKE","END", "$zonearea)"],["AND", "store_user_id", "=", "$shopinfo->store_user_id"]);
             $comeback = $this->select_results(TABLE_ZONE_MASTER, '*', $where_query);
             if (!empty($comeback["data"])) {
                 foreach ($comeback["data"] as $rows)
