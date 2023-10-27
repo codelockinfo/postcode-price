@@ -164,6 +164,7 @@ include dirname(dirname(__FILE__)). "/base_function.php";
         } elseif ($groupBy != '' && $orderBy != '') {
             $sql = "SELECT * FROM(SELECT $columns FROM $tbl_name $where_query $groupBy LIMIT $skip, $limit) AS TEMP_TBL $orderBy";
         } else {
+            echo "SELECT $columns FROM $tbl_name $where_query $groupBy $orderBy LIMIT $skip, $limit";
             $sql = $this->db_connection->query("SELECT $columns FROM $tbl_name $where_query $groupBy $orderBy LIMIT $skip, $limit");
         }
         // $result_row = $sql->fetch_object();
