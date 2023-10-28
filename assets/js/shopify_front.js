@@ -299,16 +299,19 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     dataType: 'json',
                     data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode},
                     success: function (comeback) {
-                        $productPriceClass = $(".price .price__regular .price-item").html();
+                        $productPriceClassHtml = $(".price .price__regular .price-item").html();
+                        $productPriceClass = $(".price .price__regular .price-item");
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
-                        if($productPriceClass == undefined){
+                        if($productPriceClassHtml == undefined){
                             console.log("1111111");
-                            $productPriceClass = $('.js-price .money').html();
+                            $productPriceClass = $('.js-price .money');
+                            $productPriceClassHtml = $('.js-price .money').html();
                         }
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
-                        if($productPriceClass == undefined){
+                        if($productPriceClassHtml == undefined){
                             console.log("222222222");
-                            $productPriceClass = $('.js-price').html();
+                            $productPriceClass = $('.js-price');
+                            $productPriceClassHtml = $('.js-price').html();
                         }
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
