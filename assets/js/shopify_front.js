@@ -313,7 +313,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             $productPriceClass = $('.product-info__price sale-price');
                             $productPriceClassHtml = $('.product-info__price sale-price').html();
                             var $productPriceClassHtml = $($productPriceClassHtml);
-
                             $productPriceClassHtml = $productPriceClassHtml.find('span').remove();
 
                         }
