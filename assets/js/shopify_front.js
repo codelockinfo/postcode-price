@@ -328,7 +328,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".custom-model-main").removeClass("model-open");
                                     console.log(comeback.data['zonearea'] + "...ZONEAREA...");
                                     console.log($zonearea + "...ZONEAREA...");
-                                    // setCookie('postcodeval',$zonearea);
+                                    setCookie('postcodeval',$zonearea);
                                     setCookie('postcodename',$zonename);
                                     setCookie('postcodeprice',$totalPrice);
                                     
