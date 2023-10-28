@@ -293,8 +293,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             console.log("getTotalprice function ");
             var clsgetpostcode = $(".clspostcode").val();
             getpostcode = (clsgetpostcode == undefined || clsgetpostcode == "" ) ? getCookie("postcodeval") : clsgetpostcode;
-            console.log(clsgetpostcode);
-            console.log(getpostcode + "HHHHHHHHHH");
             $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
@@ -327,9 +325,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $productPriceClass.html($currecySymbol[0]+" "+$totalPrice);
                                     $(".clsProductPrice").css("display","block");
                                     $(".custom-model-main").removeClass("model-open");
-                                    console.log(comeback.data['zonearea'] + "...ZONEAREA...");
-                                    console.log($zonearea + "...ZONEAREA...");
-                                    // setCookie('postcodeval',$zonearea);
+                                    setCookie('postcodeval',getpostcode);
                                     setCookie('postcodename',$zonename);
                                     setCookie('postcodeprice',$totalPrice);
                                     
