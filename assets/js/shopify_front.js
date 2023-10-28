@@ -305,6 +305,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             $productPriceClass = $('.js-price .money');
                         }
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
+                        if(inputZipcodeValue == undefined){
+                            $productPriceClass = $('.js-price');
+                        }
+                        console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                             }else if (comeback['outcome'] == 'true') {
                                 
