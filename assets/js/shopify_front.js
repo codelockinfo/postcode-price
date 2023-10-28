@@ -303,8 +303,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                             }else if (comeback['outcome'] == 'true') {
                                 
-                                    var inputZipcodeValue = $('input[name="clsproductZipcodevalue"],.js-price');
+                                    var inputZipcodeValue = $('input[name="clsproductZipcodevalue"]');
                                     var inputZipcodeValue = inputZipcodeValue.val();
+                                    console.log(inputZipcodeValue + "-----------------------------");
+
                                     if(inputZipcodeValue == undefined){
                                         $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
                                         '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
