@@ -302,10 +302,12 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         $productPriceClass = $(".price .price__regular .price-item").html();
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
                         if(inputZipcodeValue == undefined){
+                            console.log("1111111");
                             $productPriceClass = $('.js-price .money').html();
                         }
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
                         if(inputZipcodeValue == undefined){
+                            console.log("222222222");
                             $productPriceClass = $('.js-price').html();
                         }
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
