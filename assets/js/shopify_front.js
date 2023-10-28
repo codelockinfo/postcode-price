@@ -301,12 +301,12 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     success: function (comeback) {
                         $productPriceClass = $(".price .price__regular .price-item").html();
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
-                        if(inputZipcodeValue == undefined){
+                        if($productPriceClass == undefined){
                             console.log("1111111");
                             $productPriceClass = $('.js-price .money').html();
                         }
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
-                        if(inputZipcodeValue == undefined){
+                        if($productPriceClass == undefined){
                             console.log("222222222");
                             $productPriceClass = $('.js-price').html();
                         }
