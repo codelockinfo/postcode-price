@@ -78,7 +78,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             popupHtml();
                                         }else{
                                             console.log("onload event for pdppage");
-                                            $(".price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review").append(
+                                            $(".price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").append(
                                                 '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                                 ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
                                                     '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
@@ -349,68 +349,72 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             $productPriceClass = $('.price-review .current_price');
                             $productPriceClassHtml = $('.price-review .current_price').html();
                         }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product__price__wrap span');
+                            $productPriceClassHtml = $('.product__price__wrap span').html();
+                        }
 
                         console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
-                            if (comeback['code'] != undefined && comeback['code'] == '403') {
-                            }else if (comeback['outcome'] == 'true') {
+                        if (comeback['code'] != undefined && comeback['code'] == '403') {
+                        }else if (comeback['outcome'] == 'true') {
+                            
+                                var inputZipcodeValue = $('input[name="clsproductZipcodevalue"]');
+                                var inputZipcodeValue = inputZipcodeValue.val();
+                                if(inputZipcodeValue == undefined){
+                                    $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
+                                    '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
+                                    '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
+                                }
+                                $("#clsproductZipcodevalue").val(getpostcode);
+                                $ProductPriceSymbol =  $.trim($productPriceClassHtml);
+                                console.log($ProductPriceSymbol + "ppppppppppppppppppppppppppp");
+                                $(".chkpostcode").html("");
+                                $zonename = (comeback.data['zonename']);
+                                $zoneprice = (comeback.data['zoneprice']);
+                                $zonearea = (comeback.data['zonearea']);
+                                $currecySymbol = $ProductPriceSymbol.split(' ');
+                                console.log($currecySymbol);
+                                console.log($zoneprice + " ZONE PRICE");
+                                $totalPrice = parseFloat($currecySymbol[1]) + parseFloat($zoneprice);
+                                console.log($totalPrice);
+                                // $productPriceClass.attr("data-price",$currecySymbol[0]+ " " +$totalPrice);
+                                $productPriceClass.html($currecySymbol[0]+" "+$totalPrice);
+                                $(".clsProductPrice").css("display","block");
+                                $(".custom-model-main").removeClass("model-open");
+                                setCookie('postcodeval',getpostcode);
+                                setCookie('postcodename',$zonename);
+                                setCookie('postcodeprice',$totalPrice);
                                 
-                                    var inputZipcodeValue = $('input[name="clsproductZipcodevalue"]');
-                                    var inputZipcodeValue = inputZipcodeValue.val();
-                                    if(inputZipcodeValue == undefined){
-                                        $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
-                                        '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
-                                        '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-                                    }
-                                    $("#clsproductZipcodevalue").val(getpostcode);
-                                    $ProductPriceSymbol =  $.trim($productPriceClassHtml);
-                                    console.log($ProductPriceSymbol + "ppppppppppppppppppppppppppp");
-                                    $(".chkpostcode").html("");
-                                    $zonename = (comeback.data['zonename']);
-                                    $zoneprice = (comeback.data['zoneprice']);
-                                    $zonearea = (comeback.data['zonearea']);
-                                    $currecySymbol = $ProductPriceSymbol.split(' ');
-                                    console.log($currecySymbol);
-                                    console.log($zoneprice + " ZONE PRICE");
-                                    $totalPrice = parseFloat($currecySymbol[1]) + parseFloat($zoneprice);
-                                    console.log($totalPrice);
-                                    // $productPriceClass.attr("data-price",$currecySymbol[0]+ " " +$totalPrice);
-                                    $productPriceClass.html($currecySymbol[0]+" "+$totalPrice);
-                                    $(".clsProductPrice").css("display","block");
-                                    $(".custom-model-main").removeClass("model-open");
-                                    setCookie('postcodeval',getpostcode);
-                                    setCookie('postcodename',$zonename);
-                                    setCookie('postcodeprice',$totalPrice);
-                                    
-                                    $(".single-option-selector").attr("disabled",false);
-                                    $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
-                                    $hasClass = $("#postalholder").html();
-                                    console.log("$hasClass +++" + $hasClass);
-                                    if($hasClass == undefined){
-                                            $(".price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review").append(
-                                            '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
-                                            ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
-                                                '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
-                                            '</div>');
-                                                $(".product-single__shopify-payment-btn").append('<div>'+
-                                                '<a  name="clsaddtocart" id="clsAddToCart" class="btn clsproduct-single__cart-submit clsshopify-payment-btn btn--secondary clszipapp" style="padding: 7px 15px;color: #f5db00;border: 2px solid #f5db00;">'+
-                                                '<span id="clsAddToCartText">Læg i indkøbskurv</span>'+
-                                            '</a>'+
-                                            '</div></br>'+
-                                            '<div>'+
-                                            '</div>');
-                                    }
-                                    $('form button[type="submit"],.clspayment').attr("disabled",false);
-                                    $( ".product-form__input--dropdown" ).each(function( index ) {
-                                        $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
-                                        (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
-                                    });
-                            } else {
-                                $(".clssucessmsg").html("");
-                                $productPriceClass.text("");
-                                $productPriceClass.html($Productcontent);
-                                $(".chkpostcode").text(comeback['msg']['postcode']);
-                                $('form button[type="submit"],.clspayment').attr("disabled",true);
-                            }
+                                $(".single-option-selector").attr("disabled",false);
+                                $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
+                                $hasClass = $("#postalholder").html();
+                                console.log("$hasClass +++" + $hasClass);
+                                if($hasClass == undefined){
+                                        $(".price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").append(
+                                        '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
+                                        ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
+                                            '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
+                                        '</div>');
+                                            $(".product-single__shopify-payment-btn").append('<div>'+
+                                            '<a  name="clsaddtocart" id="clsAddToCart" class="btn clsproduct-single__cart-submit clsshopify-payment-btn btn--secondary clszipapp" style="padding: 7px 15px;color: #f5db00;border: 2px solid #f5db00;">'+
+                                            '<span id="clsAddToCartText">Læg i indkøbskurv</span>'+
+                                        '</a>'+
+                                        '</div></br>'+
+                                        '<div>'+
+                                        '</div>');
+                                }
+                                $('form button[type="submit"],.clspayment').attr("disabled",false);
+                                $( ".product-form__input--dropdown" ).each(function( index ) {
+                                    $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
+                                    (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
+                                });
+                        } else {
+                            $(".clssucessmsg").html("");
+                            $productPriceClass.text("");
+                            $productPriceClass.html($Productcontent);
+                            $(".chkpostcode").text(comeback['msg']['postcode']);
+                            $('form button[type="submit"],.clspayment').attr("disabled",true);
+                        }
                     }
                 });
         }
