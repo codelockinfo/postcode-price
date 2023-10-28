@@ -294,6 +294,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             var clsgetpostcode = $(".clspostcode").val();
             getpostcode = (clsgetpostcode == undefined || clsgetpostcode == "" ) ? getCookie("postcodeval") : clsgetpostcode;
             console.log(clsgetpostcode);
+            console.log(getpostcode + "HHHHHHHHHH");
             $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
