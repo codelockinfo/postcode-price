@@ -314,8 +314,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             $productPriceClassHtml = $('.product-info__price sale-price').html();
                         }
                         if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.product-price');
-                            $productPriceClassHtml = $('.product-price').html();
+                            $productPriceClass = $('.product-price span');
+                            $productPriceClassHtml = $('.product-price span').html();
                         }
 
                         console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
