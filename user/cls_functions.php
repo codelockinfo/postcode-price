@@ -726,7 +726,8 @@ class Client_functions extends common_function {
                                     'title' => $producttitle,
                                     'status'=>'active',
                                     'images' => $image_value,
-                                    'price' => '100'
+                                    'price' => '100',
+                                    "tags"=>"POSTCODE"
                                 )
                             );
                         } else {
@@ -734,7 +735,8 @@ class Client_functions extends common_function {
                                 'product' => array(
                                     'title' => $producttitle,
                                     'status'=>'active',
-                                    'price' => '500'
+                                    'price' => '500',
+                                    "tags"=>"POSTCODE"
                                 )
                             );
                         }
