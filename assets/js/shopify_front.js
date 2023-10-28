@@ -311,16 +311,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         }
                         if($productPriceClassHtml == undefined){
                             $productPriceClass = $('.product-info__price sale-price');
-                            var htmlString  = $('.product-info__price sale-price').html();
-                            // Create a jQuery object from the HTML string
-                            var $productPriceClassHtml = $(htmlString);
-
-                            // Use .find() to locate the <span> element and remove it
-                            $productPriceClassHtml =  $productPriceClassHtml.find('span').remove();
-                            $productPriceClassHtml = $productPriceClassHtml.text();
-
-
+                            $productPriceClassHtml = $('.product-info__price sale-price').html();
                         }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-price');
+                            $productPriceClassHtml = $('.product-price').html();
+                        }
+
                         console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                             }else if (comeback['outcome'] == 'true') {
