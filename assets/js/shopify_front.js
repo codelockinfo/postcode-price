@@ -311,7 +311,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         }
                         if($productPriceClassHtml == undefined){
                             $productPriceClass = $('.product-info__price sale-price');
-                            $productPriceClassHtml = $('.product-info__price sale-price').html();
+                            var htmlString  = $('.product-info__price sale-price').html();
+                            // Create a jQuery object from the HTML string
+                            var $productPriceClassHtml = $(htmlString);
+
+                            // Use .find() to locate the <span> element and remove it
+                            $productPriceClassHtml =  $productPriceClassHtml.find('span').remove();
+
 
                         }
                         console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
