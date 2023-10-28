@@ -166,6 +166,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $("#postalholder").css("opacity","0");
                                     window.location.replace(url);
                                 });
+                                
                                 $(document).on("keyup","#freightAreaZipcodePopup",function (e){
                                     e.preventDefault();
                                     console.log("zipcode pop up input keyup");
