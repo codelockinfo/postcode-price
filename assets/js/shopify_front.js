@@ -299,14 +299,14 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     dataType: 'json',
                     data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode},
                     success: function (comeback) {
-                        $productPriceClass = $(".price .price__regular .price-item");
+                        $productPriceClass = $(".price .price__regular .price-item").html();
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
                         if(inputZipcodeValue == undefined){
-                            $productPriceClass = $('.js-price .money');
+                            $productPriceClass = $('.js-price .money').html();
                         }
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
                         if(inputZipcodeValue == undefined){
-                            $productPriceClass = $('.js-price');
+                            $productPriceClass = $('.js-price').html();
                         }
                         console.log($productPriceClass + "PPPPPPPPPPPPPPPPPPPPPPPP");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
@@ -320,7 +320,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
                                     }
                                     $("#clsproductZipcodevalue").val(getpostcode);
-                                    $ProductPriceSymbol =  $.trim($productPriceClass.html());
+                                    $ProductPriceSymbol =  $.trim($productPriceClass);
                                     console.log($ProductPriceSymbol + "ppppppppppppppppppppppppppp");
                                     $(".chkpostcode").html("");
                                     $zonename = (comeback.data['zonename']);
