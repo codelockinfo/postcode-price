@@ -734,8 +734,7 @@ class Client_functions extends common_function {
                                 'product' => array(
                                     'title' => $producttitle,
                                     'status'=>'active',
-                                    'price' => '500',
-                                    "note"=>"POSTCODE"
+                                    'price' => '500'
                                 )
                             );
                         }
