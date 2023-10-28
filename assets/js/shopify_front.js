@@ -312,6 +312,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         if($productPriceClassHtml == undefined){
                             $productPriceClass = $('.product-info__price sale-price');
                             $productPriceClassHtml = $('.product-info__price sale-price').html();
+                            $productPriceClassHtml = $productPriceClassHtml.find('span').remove();
+
                         }
                         console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
