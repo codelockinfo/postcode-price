@@ -309,6 +309,11 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             $productPriceClass = $('.js-price');
                             $productPriceClassHtml = $('.js-price').html();
                         }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-info__price sale-price');
+                            $productPriceClassHtml = $('.product-info__price sale-price').html();
+                        }
+                        console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
                             }else if (comeback['outcome'] == 'true') {
                                 
