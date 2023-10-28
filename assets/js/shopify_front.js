@@ -325,7 +325,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
                                     }
                                     $("#clsproductZipcodevalue").val(getpostcode);
-                                    $ProductPriceSymbol =  $.trim($productPriceClass);
+                                    $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                                     console.log($ProductPriceSymbol + "ppppppppppppppppppppppppppp");
                                     $(".chkpostcode").html("");
                                     $zonename = (comeback.data['zonename']);
