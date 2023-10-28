@@ -325,6 +325,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             $productPriceClass = $('.f8pr .f8pr-price');
                             $productPriceClassHtml = $('.f8pr .f8pr-price').html();
                         }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-single__prices .product-single__price');
+                            $productPriceClassHtml = $('.product-single__prices .product-single__price').html();
+                        }
 
                         console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
