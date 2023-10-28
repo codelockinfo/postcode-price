@@ -317,6 +317,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     }
                                     $("#clsproductZipcodevalue").val(getpostcode);
                                     $ProductPriceSymbol =  $.trim($productPriceClass.html());
+                                    console.log($ProductPriceSymbol + "ppppppppppppppppppppppppppp");
                                     $(".chkpostcode").html("");
                                     $zonename = (comeback.data['zonename']);
                                     $zoneprice = (comeback.data['zoneprice']);
