@@ -317,6 +317,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
 
                             // Use .find() to locate the <span> element and remove it
                             $productPriceClassHtml =  $productPriceClassHtml.find('span').remove();
+                            $productPriceClassHtml = $productPriceClassHtml.text();
 
 
                         }
