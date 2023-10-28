@@ -321,6 +321,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             $productPriceClass = $('.t4s-product__price-review .t4s-product-price');
                             $productPriceClassHtml = $('.t4s-product__price-review .t4s-product-price').html();
                         }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.f8pr .f8pr-price');
+                            $productPriceClassHtml = $('.f8pr .f8pr-price').html();
+                        }
 
                         console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                             if (comeback['code'] != undefined && comeback['code'] == '403') {
