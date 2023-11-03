@@ -90,7 +90,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         '</div></br>'+
                                         '<div>'+
                                         '</div>');
-                                        $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
+                                        $(".product-form,.ProductForm").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
                                         '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
                                         '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
                                     getTotalprice();
@@ -411,7 +411,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $hasClass = $("#clsproductZipcodevalue").html();
                                 if($hasClass == undefined){
                                     console.log("HASclASS");
-                                    $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
+                                    $(".product-form,.ProductForm").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
                                         '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
                                         '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
                                         $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").append(
