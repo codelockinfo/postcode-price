@@ -430,7 +430,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $( ".ProductForm__Variants .ProductForm__Option" ).each(function( index ) {
                                     $dropdownval = ($(this).find(".ProductForm__SelectedValue").html() == '') ? '' : $(this).find(".ProductForm__SelectedValue").html();
                                     console.log($dropdownval + "PRESTIGE");
-                                    (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
+                                    (index == 0) ? $("#clsoption0").val($dropdownval) : '';
+                                    (index == 1) ?  $("#clsoption1").val($dropdownval) : '';
                                 });
                                 if($("#clsoption0").val() == "" ){
                                     console.log("option0");
