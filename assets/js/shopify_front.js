@@ -176,8 +176,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
 
                                 // END BROADCAST THEME VARIANTS CHANGE
 
-                                $(document).on("click","form button[type='submit']",function (e) {
-                                    e.preventDefault();
+                                $(document).on("click","form button[type='submit']",function (ent) {
+                                    ent.preventDefault();
                                     console.log("Addtocart button click");
                                     addTocartfunc();
                                 });
