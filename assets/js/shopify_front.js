@@ -149,6 +149,20 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         });
                                 
                                 });
+                                // START BROADCAST THEME VARIANTS CHANGE
+
+                                    $('input[data-index="option1"]').change(function() {
+                                        $selectedValue0 = $(this).val(); // Get the selected value
+                                        $("#clsoption0").val($selectedValue0);
+                                    });
+
+
+                                    $('input[data-index="option2"]').change(function() {
+                                        $selectedValue1 = $(this).val(); // Get the selected value
+                                        $("#clsoption1").val($selectedValue1);
+                                    });
+
+                                // END BROADCAST THEME VARIANTS CHANGE
 
                                 $(document).on("click","form button[type='submit']",function (e) {
                                     e.preventDefault();
