@@ -139,18 +139,18 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                             $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
                                                             (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
                                                         });
-                                                        if($("#clsoption0").val() == "" ){
-                                                            console.log("option0");
-                                                           $clsoption0 =  $('input[data-index="option1"]').val();
-                                                           console.log($clsoption0);
-                                                           $("#clsoption0").val($clsoption0);
-                                                        }
-                                                        if($("#clsoption1").val() == "" ){
-                                                            console.log("option1");
-                                                            $clsoption1 =  $('input[type="radio"]:checked').val();
-                                                            console.log($clsoption1);
-                                                            $("#clsoption1").val($clsoption1);
-                                                         }
+                                                        // if($("#clsoption0").val() == "" ){
+                                                        //     console.log("option0");
+                                                        //    $clsoption0 =  $('input[data-index="option1"]').val();
+                                                        //    console.log($clsoption0);
+                                                        //    $("#clsoption0").val($clsoption0);
+                                                        // }
+                                                        // if($("#clsoption1").val() == "" ){
+                                                        //     console.log("option1");
+                                                        //     $clsoption1 =  $('input[type="radio"]:checked').val();
+                                                        //     console.log($clsoption1);
+                                                        //     $("#clsoption1").val($clsoption1);
+                                                        //  }
                                                         getTotalprice();
                                                             
                                                     }
@@ -161,14 +161,14 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 });
                                 // START BROADCAST THEME VARIANTS CHANGE
 
-                                    // $('input[data-index="option1"]').change(function() {
-                                    //     $selectedValue0 = $(this).val(); // Get the selected value
-                                    //     $("#clsoption0").val($selectedValue0);
-                                    // });
-                                    // $('input[data-index="option2"]').change(function() {
-                                    //     $selectedValue1 = $(this).val(); // Get the selected value
-                                    //     $("#clsoption1").val($selectedValue1);
-                                    // });
+                                    $('input[data-index="option1"]').change(function() {
+                                        $selectedValue0 = $(this).val(); // Get the selected value
+                                        $("#clsoption0").val($selectedValue0);
+                                    });
+                                    $('input[data-index="option2"]').change(function() {
+                                        $selectedValue1 = $(this).val(); // Get the selected value
+                                        $("#clsoption1").val($selectedValue1);
+                                    });
 
                                 // END BROADCAST THEME VARIANTS CHANGE
                                 //  START District THEME VARIANTS CHANGE
