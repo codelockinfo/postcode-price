@@ -427,6 +427,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
                                     (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
                                 });
+                                $( ".ProductForm__Variants .ProductForm__Option" ).each(function( index ) {
+                                    $dropdownval = ($(this).find(".ProductForm__SelectedValue").html() == '') ? '' : $(this).find(".ProductForm__SelectedValue").html();
+                                    (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
+                                });
                                 if($("#clsoption0").val() == "" ){
                                     console.log("option0");
                                    $clsoption0 =  $('input[data-index="option1"]').val();
@@ -461,6 +465,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log($clsoption1);
                                     $("#clsoption1").val($clsoption1);
                                 }
+
                         } else {
                             $(".clssucessmsg").html("");
                             $productPriceClass.text("");
