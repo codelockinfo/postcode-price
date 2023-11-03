@@ -119,7 +119,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     }
                                 });
                             
-                                $(document).on("change","variant-selects.no-js-hidden,.single-option-selector,.product-form__radio",function(){
+                                $(document).on("change","variant-selects.no-js-hidden,.single-option-selector,.product-form__radio,input[name='Size'],input[name='Color']",function(){
                                     console.log("CHANGE");
                                         $.ajax({
                                                 url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
