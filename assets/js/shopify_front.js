@@ -412,7 +412,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $(".single-option-selector").attr("disabled",false);
                                 $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                 $hasClass = $("#postalholder").html();
-                                console.log("$hasClass +++" + $hasClass);
                                 if($hasClass == undefined){
                                     console.log("HASclASS");
                                         $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").append(
