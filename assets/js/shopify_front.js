@@ -382,14 +382,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         if (comeback['code'] != undefined && comeback['code'] == '403') {
                         }else if (comeback['outcome'] == 'true') {
                             
-                                var inputZipcodeValue = $('input[name="clsproductZipcodevalue"]');
-                                var inputZipcodeValue = inputZipcodeValue.val();
-                                console.log(inputZipcodeValue + "XXXXXXXXXXXXXZZZZZZZ");
-                                // if(inputZipcodeValue == undefined){
-                                //     $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
-                                //     '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
-                                //     '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-                                // }
+                                // var inputZipcodeValue = $('input[name="clsproductZipcodevalue"]');
+                                // var inputZipcodeValue = inputZipcodeValue.val();
+                                // console.log(inputZipcodeValue + "XXXXXXXXXXXXXZZZZZZZ");
+                             
                                 $("#clsproductZipcodevalue").val(getpostcode);
                                 $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                                 console.log($ProductPriceSymbol + "ppppppppppppppppppppppppppp");
@@ -412,7 +408,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 
                                 $(".single-option-selector").attr("disabled",false);
                                 $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
-                                $hasClass = $("#postalholder").html();
+                                $hasClass = $("#clsproductZipcodevalue").html();
                                 if($hasClass == undefined){
                                     console.log("HASclASS");
                                     $(".product-form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
