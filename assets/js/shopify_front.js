@@ -169,8 +169,15 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                     });
-
-                                // END District THEME VARIANTS CHANGE
+                                    $('select[name="options[Size]"]').change(function() {
+                                        $selectedValue0 = $(this).val(); // Get the selected value
+                                        $("#clsoption0").val($selectedValue0);
+                                    });
+                                    $('select[name="options[Color]"]').change(function() {
+                                        $selectedValue1 = $(this).val(); // Get the selected value
+                                        $("#clsoption1").val($selectedValue1);
+                                    });
+                                    // END District THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
                                     ent.preventDefault();
                                     console.log("Addtocart button click");
@@ -441,6 +448,16 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 if($("#clsoption1").val() == "" ){
                                     console.log("option1");
                                     $clsoption1 =  $('input[name="Color"]:checked').val();
+                                    console.log($clsoption1);
+                                    $("#clsoption1").val($clsoption1);
+                                }
+                                if($("#clsoption0").val() == "" ){
+                                    $clsoption0 = $('select[name="options[Size]"]').val();
+                                    console.log($clsoption0);
+                                    $("#clsoption0").val($clsoption0);
+                                }
+                                if($("#clsoption1").val() == "" ){
+                                    $clsoption1 = $('select[name="options[Color]"]').val();
                                     console.log($clsoption1);
                                     $("#clsoption1").val($clsoption1);
                                 }
