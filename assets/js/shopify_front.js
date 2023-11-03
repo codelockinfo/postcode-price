@@ -149,7 +149,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                         }
                                                         if($("#clsoption1").val() == "" ){
                                                             console.log("option1");
-                                                            $clsoption1 =  $('input[data-index="option2"]').val();
+                                                            $clsoption1 =  $('input[type="radio"]:checked').val();
                                                             console.log($clsoption1);
                                                             $("#clsoption1").val($clsoption1);
                                                          }
@@ -442,7 +442,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 }
                                 if($("#clsoption1").val() == "" ){
                                     console.log("option1");
-                                    $clsoption1 =  $('input[data-index="option2"]').val();
+                                    $clsoption1 =  $('input[type="radio"]').val();
                                     console.log($clsoption1);
                                     $("#clsoption1").val($clsoption1);
                                  }
