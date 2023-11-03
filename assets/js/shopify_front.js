@@ -111,7 +111,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".single-option-selector").attr("disabled",false);
                                 });
                             
-                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle,.product-form__radio",function(){
+                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle,.product-form__radio,.ProductForm__Item",function(){
                                     if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                                         console.log("cookies");
                                         $("form button[type='submit'],.clspayment").attr("disabled",true); 
