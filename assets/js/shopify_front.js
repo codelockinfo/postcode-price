@@ -142,11 +142,15 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                             (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
                                                         });
                                                         if($("#clsoption0").val() == "" ){
+                                                            console.log("option0");
                                                            $clsoption0 =  $('input[data-index="option1"]').val();
+                                                           console.log($clsoption0);
                                                            $("#clsoption0").val($clsoption0);
                                                         }
                                                         if($("#clsoption1").val() == "" ){
+                                                            console.log("option1");
                                                             $clsoption1 =  $('input[data-index="option2"]').val();
+                                                            console.log($clsoption1);
                                                             $("#clsoption1").val($clsoption1);
                                                          }
                                                         getTotalprice();
