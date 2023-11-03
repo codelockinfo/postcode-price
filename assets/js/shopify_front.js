@@ -141,6 +141,14 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                             $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
                                                             (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
                                                         });
+                                                        if($("#clsoption0").val() == "" ){
+                                                           $clsoption0 =  $('input[data-index="option1"]').val();
+                                                           $("#clsoption0").val($clsoption0);
+                                                        }
+                                                        if($("#clsoption1").val() == "" ){
+                                                            $clsoption1 =  $('input[data-index="option2"]').val();
+                                                            $("#clsoption1").val($clsoption1);
+                                                         }
                                                         getTotalprice();
                                                             
                                                     }
@@ -422,6 +430,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
                                     (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
                                 });
+
+
                         } else {
                             $(".clssucessmsg").html("");
                             $productPriceClass.text("");
