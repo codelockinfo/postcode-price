@@ -111,7 +111,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".single-option-selector").attr("disabled",false);
                                 });
                             
-                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle",function(){
+                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle,.product-form__radio",function(){
                                     if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                                         console.log("cookies");
                                         $("form button[type='submit'],.clspayment").attr("disabled",true); 
@@ -139,18 +139,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                             $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
                                                             (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
                                                         });
-                                                        // if($("#clsoption0").val() == "" ){
-                                                        //     console.log("option0");
-                                                        //    $clsoption0 =  $('input[data-index="option1"]').val();
-                                                        //    console.log($clsoption0);
-                                                        //    $("#clsoption0").val($clsoption0);
-                                                        // }
-                                                        // if($("#clsoption1").val() == "" ){
-                                                        //     console.log("option1");
-                                                        //     $clsoption1 =  $('input[type="radio"]:checked').val();
-                                                        //     console.log($clsoption1);
-                                                        //     $("#clsoption1").val($clsoption1);
-                                                        //  }
                                                         getTotalprice();
                                                             
                                                     }
