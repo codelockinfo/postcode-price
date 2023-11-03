@@ -414,6 +414,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $hasClass = $("#postalholder").html();
                                 console.log("$hasClass +++" + $hasClass);
                                 if($hasClass == undefined){
+                                    console.log("HASclASS");
                                         $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").append(
                                         '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                         ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
