@@ -119,7 +119,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     }
                                 });
                             
-                                $(document).on("change","variant-selects.no-js-hidden,.single-option-selector",function(){
+                                $(document).on("change","variant-selects.no-js-hidden,.single-option-selector,.product-form__radio",function(){
                                     console.log("CHANGE");
                                         $.ajax({
                                                 url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
@@ -165,15 +165,24 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
                                     });
-
-
                                     $('input[data-index="option2"]').change(function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                     });
 
                                 // END BROADCAST THEME VARIANTS CHANGE
+                                //  START District THEME VARIANTS CHANGE
 
+                                    $('input[name="Size"]').change(function() {
+                                        $selectedValue0 = $(this).val(); // Get the selected value
+                                        $("#clsoption0").val($selectedValue0);
+                                    });
+                                    $('input[name="Color"]').change(function() {
+                                        $selectedValue1 = $(this).val(); // Get the selected value
+                                        $("#clsoption1").val($selectedValue1);
+                                    });
+
+                                // END District THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
                                     ent.preventDefault();
                                     console.log("Addtocart button click");
@@ -381,11 +390,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                         if (comeback['code'] != undefined && comeback['code'] == '403') {
                         }else if (comeback['outcome'] == 'true') {
-                            
-                                // var inputZipcodeValue = $('input[name="clsproductZipcodevalue"]');
-                                // var inputZipcodeValue = inputZipcodeValue.val();
-                                // console.log(inputZipcodeValue + "XXXXXXXXXXXXXZZZZZZZ");
-                             
+                                                         
                                 $("#clsproductZipcodevalue").val(getpostcode);
                                 $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                                 console.log($ProductPriceSymbol + "ppppppppppppppppppppppppppp");
@@ -436,6 +441,18 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 if($("#clsoption1").val() == "" ){
                                     console.log("option1");
                                     $clsoption1 =  $('input[data-index="option2"]:checked').val();
+                                    console.log($clsoption1);
+                                    $("#clsoption1").val($clsoption1);
+                                }
+                                if($("#clsoption0").val() == "" ){
+                                    console.log("option0");
+                                   $clsoption0 =  $('input[name="Size"]:checked').val();
+                                   console.log($clsoption0);
+                                   $("#clsoption0").val($clsoption0);
+                                }
+                                if($("#clsoption1").val() == "" ){
+                                    console.log("option1");
+                                    $clsoption1 =  $('input[name="Color"]:checked').val();
                                     console.log($clsoption1);
                                     $("#clsoption1").val($clsoption1);
                                 }
