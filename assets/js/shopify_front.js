@@ -534,7 +534,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $("#clsoption1").val($clsoption1);
                                 }
                                 if($("#clsoption0").val() == "" ){
-                                    $clsoption0 = $('.product-options__section[data-property="color"] .active').data('value');
+                                    $clsoption0 = $('.product-options__section[data-property="size"] .active').data('value');
                                     console.log($clsoption0);
                                     $("#clsoption0").val($clsoption0);
                                 }
