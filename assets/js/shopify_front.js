@@ -111,7 +111,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".single-option-selector").attr("disabled",false);
                                 });
                             
-                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle,.product-form__radio,.ProductForm__Item,.radio__button,.swatch__button",function(){
+                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle,.product-form__radio,.ProductForm__Item,.radio__button,.swatch__button,.product-options__value",function(){
                                     if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                                         console.log("cookies");
                                         $("form button[type='submit'],.clspayment").attr("disabled",true); 
@@ -218,6 +218,22 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         },5000);
                                     });
                                 // END Prestige THEME VARIANTS CHANGE
+                                // START Shella THEME VARIANTS CHANGE
+                                    $('.product-options__value').click(function() {
+                                        console.log("click");
+                                        $selectedValue = $(this).data("value"); // Get the selected value
+                                        $optionposition = $(this).closest(".product-options__section").attr("data-property");
+                                        console.log($optionposition);
+                                        if($optionposition == "size"){
+                                            $("#clsoption0").val($selectedValue);
+                                        }else if($optionposition == "color"){
+                                            $("#clsoption1").val($selectedValue);
+                                        }
+                                        setTimeout(function(){
+                                            // getTotalprice();
+                                        },5000);
+                                    });
+                                // END Shella THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
                                     ent.preventDefault();
                                     console.log("Addtocart button click");
@@ -514,6 +530,16 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 }
                                 if($("#clsoption1").val() == "" ){
                                     $clsoption1 = $('select[name="options[Color]"]').val();
+                                    console.log($clsoption1);
+                                    $("#clsoption1").val($clsoption1);
+                                }
+                                if($("#clsoption0").val() == "" ){
+                                    $clsoption0 = $('.product-options__section[data-property="color"] .active').data('value');
+                                    console.log($clsoption0);
+                                    $("#clsoption0").val($clsoption0);
+                                }
+                                if($("#clsoption1").val() == "" ){
+                                    $clsoption1 = $('.product-options__section[data-property="color"] .active').data('value');
                                     console.log($clsoption1);
                                     $("#clsoption1").val($clsoption1);
                                 }
