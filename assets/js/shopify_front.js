@@ -154,14 +154,14 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },700);
+                                        },1000);
                                     });
                                     $('input[data-index="option2"]').change(function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },700);
+                                        },1000);
                                     });
 
                                 // END BROADCAST THEME VARIANTS CHANGE
@@ -172,28 +172,28 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },700);
+                                        },1000);
                                     });
                                     $('input[name="Color"]').change(function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },700);
+                                        },1000);
                                     });
                                     $('select[name="options[Size]"]').change(function() {
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },700);
+                                        },1000);
                                     });
                                     $('select[name="options[Color]"]').change(function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },700);
+                                        },1000);
                                     });
                                 // END District THEME VARIANTS CHANGE
                                 //  START Prestige THEME VARIANTS CHANGE
@@ -209,7 +209,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },700);
+                                        },1000);
                                     });
                                 // END Prestige THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
