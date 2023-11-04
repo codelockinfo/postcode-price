@@ -154,7 +154,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
-                                            getTotalprice();
+                                            // getTotalprice();
                                         },5000);
                                     });
                                     $('input[data-index="option2"]').change(function() {
@@ -162,7 +162,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
-                                            getTotalprice();
+                                            // getTotalprice();
                                         },5000);
                                     });
 
@@ -174,7 +174,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
-                                            getTotalprice();
+                                            // getTotalprice();
                                         },5000);
                                     });
                                     $('.product-form__input input[name="Color"]').change(function() {
@@ -182,7 +182,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
-                                            getTotalprice();
+                                            // getTotalprice();
                                         },5000);
                                     });
                                     $('select[name="options[Size]"]').change(function() {
@@ -190,7 +190,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
-                                            getTotalprice();
+                                            // getTotalprice();
                                         },5000);
                                     });
                                     $('select[name="options[Color]"]').change(function() {
@@ -198,7 +198,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
-                                            getTotalprice();
+                                            // getTotalprice();
                                         },5000);
                                     });
                                 // END District THEME VARIANTS CHANGE
@@ -214,7 +214,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             $("#clsoption1").val($selectedValue);
                                         }
                                         setTimeout(function(){
-                                            getTotalprice();
+                                            // getTotalprice();
                                         },5000);
                                     });
                                 // END Prestige THEME VARIANTS CHANGE
