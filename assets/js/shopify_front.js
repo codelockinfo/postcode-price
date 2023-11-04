@@ -177,7 +177,20 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                     });
-                                    // END District THEME VARIANTS CHANGE
+                                // END District THEME VARIANTS CHANGE
+                                //  START Prestige THEME VARIANTS CHANGE
+                                    $('.Popover__Value').click(function() {
+                                        console.log("click");
+                                        $selectedValue = $(this).val(); // Get the selected value
+                                        $optionposition = $(this).attr("data-option-position");
+                                        console.log($optionposition);
+                                        if($optionposition == 1){
+                                            $("#clsoption0").val($selectedValue);
+                                        }else if($optionposition == 2){
+                                            $("#clsoption1").val($selectedValue);
+                                        }
+                                    });
+                                // END Prestige THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
                                     ent.preventDefault();
                                     console.log("Addtocart button click");
