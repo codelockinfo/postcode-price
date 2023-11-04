@@ -169,7 +169,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 // END BROADCAST THEME VARIANTS CHANGE
                                 //  START District THEME VARIANTS CHANGE
 
-                                    $('input[name="Size"]').change(function() {
+                                    $('.product-form__input input[name="Size"]').change(function() {
                                         console.log("3333333333");
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
@@ -177,7 +177,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             getTotalprice();
                                         },1000);
                                     });
-                                    $('input[name="Color"]').change(function() {
+                                    $('.product-form__input input[name="Color"]').change(function() {
                                         console.log("44444444444444");
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
