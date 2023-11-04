@@ -448,18 +448,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 });
                                 if($("#clsoption0").val() == "" ){
                                     console.log("option0");
-                                   $clsoption0 =  $('input[data-index="option1"]').val();
-                                   console.log($clsoption0);
-                                   $("#clsoption0").val($clsoption0);
-                                }
-                                if($("#clsoption1").val() == "" ){
-                                    console.log("option1");
-                                    $clsoption1 =  $('input[data-index="option2"]:checked').val();
-                                    console.log($clsoption1);
-                                    $("#clsoption1").val($clsoption1);
-                                }
-                                if($("#clsoption0").val() == "" ){
-                                    console.log("option0");
                                    $clsoption0 =  $('input[name="Size"]:checked').val();
                                    console.log($clsoption0);
                                    $("#clsoption0").val($clsoption0);
@@ -467,6 +455,18 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 if($("#clsoption1").val() == "" ){
                                     console.log("option1");
                                     $clsoption1 =  $('input[name="Color"]:checked').val();
+                                    console.log($clsoption1);
+                                    $("#clsoption1").val($clsoption1);
+                                }
+                                if($("#clsoption0").val() == "" ){
+                                    console.log("option0");
+                                   $clsoption0 =  $('input[data-index="option1"]').val();
+                                   console.log($clsoption0);
+                                   $("#clsoption0").val($clsoption0);
+                                }
+                                if($("#clsoption1").val() == "" ){
+                                    console.log("option1");
+                                    $clsoption1 =  $('input[data-index="option2"]:checked').val();
                                     console.log($clsoption1);
                                     $("#clsoption1").val($clsoption1);
                                 }
