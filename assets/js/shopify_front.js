@@ -150,6 +150,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 // START BROADCAST THEME VARIANTS CHANGE
 
                                     $('input[data-index="option1"]').change(function() {
+                                        console.log("11111111111");
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
@@ -157,6 +158,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         },1000);
                                     });
                                     $('input[data-index="option2"]').change(function() {
+                                        console.log("22222222");
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
@@ -168,6 +170,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 //  START District THEME VARIANTS CHANGE
 
                                     $('input[name="Size"]').change(function() {
+                                        console.log("3333333333");
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
@@ -175,6 +178,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         },1000);
                                     });
                                     $('input[name="Color"]').change(function() {
+                                        console.log("44444444444444");
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
@@ -182,6 +186,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         },1000);
                                     });
                                     $('select[name="options[Size]"]').change(function() {
+                                        console.log("5555555555555");
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
@@ -189,6 +194,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         },1000);
                                     });
                                     $('select[name="options[Color]"]').change(function() {
+                                        console.log("666666666666666");
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
