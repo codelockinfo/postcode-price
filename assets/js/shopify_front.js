@@ -90,7 +90,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         '</div></br>'+
                                         '<div>'+
                                         '</div>');
-                                        $(".product-form,.ProductForm").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
+                                        $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="">'+
                                         '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
                                         '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
                                     getTotalprice();
