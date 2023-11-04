@@ -181,7 +181,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 //  START Prestige THEME VARIANTS CHANGE
                                     $('.Popover__Value').click(function() {
                                         console.log("click");
-                                        $selectedValue = $(this).val(); // Get the selected value
+                                        $selectedValue = $(this).data("value"); // Get the selected value
                                         $optionposition = $(this).attr("data-option-position");
                                         console.log($optionposition);
                                         if($optionposition == 1){
