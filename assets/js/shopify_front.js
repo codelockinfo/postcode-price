@@ -70,7 +70,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     // $form_type = $('input[name=form_type]').val();
                                     if(window.location.href.includes("/products/")){
                                     console.log("product page");
-                                     $findbuynowbtn = setInterval(hasbuynowbtn, 1000); 
+                                     $findbuynowbtn = setInterval(hasbuynowbtn, 2000); 
                                     setTimeout(function(){
                                         console.log("settimeout function calling ...");
                                         console.log(getCookie("postcodeval") );
@@ -95,7 +95,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
                                     getTotalprice();
                                         }
-                                    },1000); 
+                                    },2000); 
                                     }
                                     $(document).on("click",".postcode-checker-preview",function(event){
                                         console.log("CLICK BTN ");
@@ -155,7 +155,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },1000);
+                                        },2000);
                                     });
                                     $('input[data-index="option2"]').change(function() {
                                         console.log("22222222");
@@ -163,7 +163,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },1000);
+                                        },2000);
                                     });
 
                                 // END BROADCAST THEME VARIANTS CHANGE
@@ -175,7 +175,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },1000);
+                                        },2000);
                                     });
                                     $('.product-form__input input[name="Color"]').change(function() {
                                         console.log("44444444444444");
@@ -183,7 +183,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },1000);
+                                        },2000);
                                     });
                                     $('select[name="options[Size]"]').change(function() {
                                         console.log("5555555555555");
@@ -191,7 +191,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },1000);
+                                        },2000);
                                     });
                                     $('select[name="options[Color]"]').change(function() {
                                         console.log("666666666666666");
@@ -199,7 +199,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },1000);
+                                        },2000);
                                     });
                                 // END District THEME VARIANTS CHANGE
                                 //  START Prestige THEME VARIANTS CHANGE
@@ -215,7 +215,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },1000);
+                                        },2000);
                                     });
                                 // END Prestige THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
