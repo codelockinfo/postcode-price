@@ -70,7 +70,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     // $form_type = $('input[name=form_type]').val();
                                     if(window.location.href.includes("/products/")){
                                     console.log("product page");
-                                     $findbuynowbtn = setInterval(hasbuynowbtn, 2000); 
+                                     $findbuynowbtn = setInterval(hasbuynowbtn, 5000); 
                                     setTimeout(function(){
                                         console.log("settimeout function calling ...");
                                         console.log(getCookie("postcodeval") );
@@ -81,7 +81,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").append(
                                                 '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                                 ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
-                                                    '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
+                                                    '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/5000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
                                                 '</div>');
                                             $(".product-single__shopify-payment-btn").append('<div>'+
                                         '<a  name="clsaddtocart" id="clsAddToCart" class="btn clsproduct-single__cart-submit clsshopify-payment-btn btn--secondary clszipapp" style="padding: 7px 15px;color: #f5db00;border: 2px solid #f5db00;">'+
@@ -95,7 +95,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
                                     getTotalprice();
                                         }
-                                    },2000); 
+                                    },5000); 
                                     }
                                     $(document).on("click",".postcode-checker-preview",function(event){
                                         console.log("CLICK BTN ");
@@ -155,7 +155,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },2000);
+                                        },5000);
                                     });
                                     $('input[data-index="option2"]').change(function() {
                                         console.log("22222222");
@@ -163,7 +163,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },2000);
+                                        },5000);
                                     });
 
                                 // END BROADCAST THEME VARIANTS CHANGE
@@ -175,7 +175,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },2000);
+                                        },5000);
                                     });
                                     $('.product-form__input input[name="Color"]').change(function() {
                                         console.log("44444444444444");
@@ -183,7 +183,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },2000);
+                                        },5000);
                                     });
                                     $('select[name="options[Size]"]').change(function() {
                                         console.log("5555555555555");
@@ -191,7 +191,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption0").val($selectedValue0);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },2000);
+                                        },5000);
                                     });
                                     $('select[name="options[Color]"]').change(function() {
                                         console.log("666666666666666");
@@ -199,7 +199,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $("#clsoption1").val($selectedValue1);
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },2000);
+                                        },5000);
                                     });
                                 // END District THEME VARIANTS CHANGE
                                 //  START Prestige THEME VARIANTS CHANGE
@@ -215,7 +215,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }
                                         setTimeout(function(){
                                             getTotalprice();
-                                        },2000);
+                                        },5000);
                                     });
                                 // END Prestige THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
@@ -457,7 +457,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").append(
                                         '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                         ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
-                                            '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
+                                            '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/5000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
                                         '</div>');
                                 }else{
                                     console.log("HASCLASS ELSE");
@@ -468,7 +468,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log("postalholder inif");
                                     $('.product-single__meta .product__price').after( '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                     ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
-                                        '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
+                                        '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/5000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
                                     '</div>');
                                 }
 
