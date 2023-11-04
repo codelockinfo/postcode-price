@@ -547,7 +547,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $paytment_Btn_text = $(".shopify-payment-button__button").html();
             $(".shopify-payment-button__button").css("display","none");
             $payment_btn_Html = '<button class="'+ $paytment_Btn_class +' clspayment">'+ $paytment_Btn_text +'</button>';
-            $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_Html);
+            $(".product-form__buttons,.ProductForm").append($payment_btn_Html);
             clearInterval($findbuynowbtn);  
         }
         }
