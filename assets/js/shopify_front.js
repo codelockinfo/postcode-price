@@ -23,7 +23,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         var shop = Shopify.shop;
         var cookie_version_control = '---2018/5/11';
         $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://postcode.codelocksolutions.com/assets/css/modal_front.css') );
-        $Productcontent =  $("#ProductPrice").html();
         function setCookie(cName, cValue,expDays) {
                 let date = new Date();
                 date.setTime(date.getTime() + (expDays * 0));
@@ -575,7 +574,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         } else {
                             $(".clssucessmsg").html("");
                             $productPriceClass.text("");
-                            $productPriceClass.html($Productcontent);
                             $(".chkpostcode").text(comeback['msg']['postcode']);
                             $('form button[type="submit"],.clspayment').attr("disabled",true);
                         }
