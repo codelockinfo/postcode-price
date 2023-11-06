@@ -597,7 +597,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     success: function (comeback) {
                         if(comeback  != undefined){
                             var comeback = JSON.parse(comeback);
-                            console.log(comeback); 
+                            console.log(comeback + "TTTTTTTTTTTTTTT"); 
                             console.log(comeback.outcome); 
                             $hasproductvariant = $("#productvariant").html();
                             if($hasproductvariant == undefined){
