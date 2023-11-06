@@ -750,6 +750,10 @@ class Client_functions extends common_function {
                     // echo "MAtch id";
                     // echo "<pre>";
                     // print_r($variant->title);
+                    $varianttitle = explode('/', $variant->title);
+                    $variantitle = count($varianttitle);
+echo "<pre>";
+print_r($variantitle);
                 }
             }
             generate_log('createproduct', $variants_count . "  variant count"); 
