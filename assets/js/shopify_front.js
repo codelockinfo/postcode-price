@@ -575,7 +575,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
 
                         } else {
                             $(".clssucessmsg").html("");
-                            $productPriceClass.text("");
                             $(".chkpostcode").text(comeback['msg']['postcode']);
                             $('form button[type="submit"],.clspayment').attr("disabled",true);
                         }
