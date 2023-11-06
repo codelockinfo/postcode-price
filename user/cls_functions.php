@@ -741,8 +741,8 @@ class Client_functions extends common_function {
         $producttitle = $productdata->product->title;
         $productimage = $productdata->product->image->src;
         foreach ($productdata->product->options as $index => $option) {
-            $+"titleoption"+$index = $option->name;
-            console.log($titleoption+$index);
+            $."titleoption".$index = $option->name;
+            print_r($option->name);
         }
         if ($productdata && isset($productdata->product->variants)) {
             $variants_count = count($productdata->product->variants);
