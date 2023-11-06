@@ -685,13 +685,12 @@ class Client_functions extends common_function {
             $zoneprice = isset($_POST['zoneprice']) ? $_POST['zoneprice'] :'';
             $shopify_api = array("api_name" => "products/".$productid);
             $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
-            echo "<pre>";
-            print_r($productdata);
             $combinedString = "";
             if ($productdata && isset($productdata->product->variants)) {
                 foreach ($productdata->product->variants as $variant) {
-                 echo "<pre>";
-                 print_r($variant->price);
+                 $totalprice = $variant->price + $zoneprice;
+                 $combinedString .= $variant->id . " " . $totalprice .";";
+
                 }
              
             } else {
