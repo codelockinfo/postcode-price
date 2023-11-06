@@ -692,7 +692,7 @@ class Client_functions extends common_function {
                  $combinedString .= $variant->id . "," . $totalprice .";";
 
                 }
-             
+                $combinedString = rtrim($combinedString, ';')
             } else {
                 echo ("variant not found"); 
             }
