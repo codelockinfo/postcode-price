@@ -586,6 +586,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $price = getCookie("postcodeprice");
             console.log($price);
             console.log($getpostcode + "ZIPCODE");
+            if($getpostcode != undefined){
                 var thisObj = this;
                 $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
@@ -622,6 +623,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         });
                 }
                 });
+            }else{
+                $("form button[type='submit'],.clspayment").attr("disabled",true); 
+                $(".custom-model-main").addClass("model-open");
+            }
         }
     
         function  hasbuynowbtn(){
