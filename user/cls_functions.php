@@ -690,17 +690,7 @@ class Client_functions extends common_function {
             die;
             $combinedString = "";
             if ($productdata && isset($productdata->product->variants)) {
-                for($productdata->product->variants as $variant){
-
-                    echo "<pre>";
-                    print_r($variant->price);
-                    $variants_zip_price = $productdata->price + $zoneprice;
-                    $variants_zip_id = $productdata->id;
-                    $combinedString .= $variants_zip_id . "," . $variants_zip_price . ";" ;
-                    echo "<pre>";
-                    print_r($variants_zip_price);
-                    print_r($combinedString);
-                }
+             
             } else {
                 echo ("variant not found"); 
             }
