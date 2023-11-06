@@ -407,9 +407,76 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 } else {
                                     console.log("Value not found for " + $productVariantId);
                                 }
-                               
+                                $productPriceClassHtml = $(".price .price__regular .price-item").html();
+                        $productPriceClass = $(".price .price__regular .price-item");
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.js-price .money');
+                            $productPriceClassHtml = $('.js-price .money').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.js-price');
+                            $productPriceClassHtml = $('.js-price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-info__price sale-price');
+                            // $productPriceClassHtml = $('.product-info__price sale-price').html();
+                            var $salePriceElement = $('.product-info__price  sale-price');
+                            var priceText = $salePriceElement.text();
+                            var match = priceText.match(/Rs\. \d+\.\d+/);
+                            if (match) {
+                                $productPriceClassHtml = match[0];
+                                console.log($productPriceClassHtml );
+                            } else {
+                                console.log("Price not found.");
+                            }
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-info__price sale-price');
+                            $productPriceClassHtml = $('.product-info__price sale-price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-price span');
+                            $productPriceClassHtml = $('.product-price span').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.t4s-product__price-review .t4s-product-price');
+                            $productPriceClassHtml = $('.t4s-product__price-review .t4s-product-price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.f8pr .f8pr-price');
+                            $productPriceClassHtml = $('.f8pr .f8pr-price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-single__prices .product-single__price');
+                            $productPriceClassHtml = $('.product-single__prices .product-single__price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-page-info__price .price');
+                            $productPriceClassHtml = $('.product-page-info__price .price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-single__meta .product__price');
+                            $productPriceClassHtml = $('.product-single__meta .product__price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.ProductMeta__PriceList .Price');
+                            $productPriceClassHtml = $('.ProductMeta__PriceList .Price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.price-review .current_price');
+                            $productPriceClassHtml = $('.price-review .current_price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product__price__wrap span');
+                            $productPriceClassHtml = $('.product__price__wrap span').html();
+                        }
+
+                        console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+                        $ProductPriceSymbol =  $.trim($productPriceClassHtml);
+                        $currecySymbol = $ProductPriceSymbol.split(' ');
+                        console.log($currecySymbol);
                                 $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","block");
-                                $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").html($newPrice);
+                                $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").html($currecySymbol[0]+" "+$newPrice);
                                 $(".custom-model-main").removeClass("model-open");
                                 setCookie('postcodeval',getpostcode);
                                 setCookie('postcodename',$zonename);
