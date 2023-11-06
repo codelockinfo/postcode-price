@@ -533,7 +533,8 @@ class Client_functions extends common_function {
             if ($productdata && isset($productdata->product->variants)) {
                 foreach ($productdata->product->variants as $variant) {
                     echo "<pre>";
-                    print_r($variant->price);
+                    print_r($variant->price );
+                    echo "?????";
                     print_r($zoneprice);
                  $totalprice = $variant->price + $zoneprice;
                  $combinedString .= $variant->id . "," . $totalprice .";";
