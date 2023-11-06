@@ -560,7 +560,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $("#clsoption0").val($clsoption0);
                                 }
                                 if($("#clsoption1").val() == "" ){
-                                    $clsoption1 = $('select[name="option2"]').val();
+                                    $clsoption1 = $('input[name="option2"]:checked').val();
                                     console.log($clsoption1);
                                     $("#clsoption1").val($clsoption1);
                                 }
