@@ -49,6 +49,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
     
         function check_app_status(){
             console.log("check_app_status function calling ");
+            $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","none");
                 $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
@@ -61,7 +62,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                         if (comeback['code'] != undefined && comeback['code'] == '403') {
                         }else if (comeback['outcome'] == 'true') {
                             if(comeback['data'] == '1'){
-                                $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","none");
                                 console.log(comeback['data']);
                                 $(".single-option-selector").addClass("clssingle-option-selector");
                                     if(window.location.href.includes("/products/")){
@@ -302,7 +302,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 });
                             }else{
                                 $(".single-option-selector").removeClass("clssingle-option-selector");
-                                $("#ProductPrice").css("display","block");
+                                $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","block");
                                 console.log("Postcode app is disabled");
                             }
                         } else {
