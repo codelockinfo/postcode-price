@@ -506,7 +506,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","block");
                                             $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").html($currecySymbol[0]+" "+$newPrice);
                                 }else{
-                                            $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","none");
+                                    $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","none");
                                 }
                       
                                 $('form button[type="submit"],.clspayment').attr("disabled",false);
@@ -588,6 +588,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $clsoption0 = ($("#clsoption0").val() == '') ? '' : $("#clsoption0").val();
             $clsoption1 = ($("#clsoption1").val() == '') ? '' : $("#clsoption1").val();
             var clsproductId = $('input[name="product-id"]').val();
+            var productVariantId = $('input[name="id"]').val();
             $productQtyy = $(".quantity .quantity__input").val();
 
             $getpostcode = getCookie("postcodeval");
@@ -600,7 +601,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {'routine_name': 'get__atc_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$price},
+                    data: {'routine_name': 'get__atc_product' ,'store': shop,'productid':clsproductId,'productvariantid':productVariantId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$price},
                     success: function (comeback) {
                         console.log(comeback);
                         $.each(comeback.product.variants, function(key, value) {

@@ -729,6 +729,7 @@ class Client_functions extends common_function {
         $password = $shopinfo->password;
 
         $productid = isset($_POST['productid']) ? $_POST['productid'] :'';
+        $productvariantid = isset($_POST['productvariantid']) ? $_POST['productvariantid'] :'';
         $productprice = isset($_POST['productprice']) ? $_POST['productprice'] :'';
         $oldprice = isset($_POST['oldprice']) ? $_POST['oldprice'] :'';
         $postcode = isset($_POST['postcode']) ? $_POST['postcode'] :'';
@@ -742,6 +743,14 @@ class Client_functions extends common_function {
 
         if ($productdata && isset($productdata->product->variants)) {
             $variants_count = count($productdata->product->variants);
+            foreach ($productdata->product->variants as $variant) {
+                if($variant->id == $productvariantid){
+                    echo "MAtch id";
+                    echo "<pre>";
+                    print_r($variant);
+
+                }
+            }
             generate_log('createproduct', $variants_count . "  variant count"); 
         } else {
             generate_log('createproduct',"  variant not found"); 
