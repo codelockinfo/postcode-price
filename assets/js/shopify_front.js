@@ -111,7 +111,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".single-option-selector").attr("disabled",false);
                                 });
                             
-                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle,.product-form__radio,.ProductForm__Item,.radio__button,.swatch__button,.product-options__value",function(){
+                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle,.product-form__radio,.ProductForm__Item,.radio__button,.swatch__button,.product-options__value,.variant-picker__option .select,.variant-picker__option .color-swatch",function(){
                                     if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                                         console.log("cookies");
                                         $("form button[type='submit'],.clspayment").attr("disabled",true); 
@@ -234,6 +234,18 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         },5000);
                                     });
                                 // END Shella THEME VARIANTS CHANGE
+                                // START Impact THEME VARIANTS CHANGE
+                                    $('input[name="option1"]').change(function() {
+                                        console.log("click");
+                                        $selectedValue = $(this).val(); // Get the selected value
+                                        $("#clsoption0").val($selectedValue);
+                                    });
+                                    $('input[name="option2"]').change(function() {
+                                        console.log("click");
+                                        $selectedValue = $(this).val(); // Get the selected value
+                                        $("#clsoption1").val($selectedValue);
+                                    });
+                                // END Impact THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
                                     ent.preventDefault();
                                     console.log("Addtocart button click");
@@ -539,6 +551,16 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 }
                                 if($("#clsoption1").val() == "" ){
                                     $clsoption1 = $('.product-options__section[data-property="color"] .active').data('value');
+                                    console.log($clsoption1);
+                                    $("#clsoption1").val($clsoption1);
+                                }
+                                if($("#clsoption0").val() == "" ){
+                                    $clsoption0 = $('input[name="option1"]').val();
+                                    console.log($clsoption0);
+                                    $("#clsoption0").val($clsoption0);
+                                }
+                                if($("#clsoption1").val() == "" ){
+                                    $clsoption1 = $('select[name="option2"]').val();
                                     console.log($clsoption1);
                                     $("#clsoption1").val($clsoption1);
                                 }
