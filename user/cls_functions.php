@@ -752,8 +752,6 @@ class Client_functions extends common_function {
                     // print_r($variant->title);
                     $varianttitle = explode('/', $variant->title);
                     $variantitle = count($varianttitle);
-echo "<pre>";
-print_r($variantitle);
                 }
             }
             generate_log('createproduct', $variants_count . "  variant count"); 
@@ -796,9 +794,9 @@ print_r($variantitle);
                         }
                     
                     $variants = array();
-                    if($clsoption0 != "" && $clsoption1 == "" ){
+                    if($variantitle == 1){
                         generate_log('createproduct', "  create product array option1"); 
-                        $variants1 = array("option1"=>$clsoption0,"price" =>$productprice );
+                        $variants1 = array("option1"=>$varianttitle[0],"price" =>$productprice );
                         array_push($variants,$variants1);
                         $options1 = array("name" => "Size","position" => 1);
             
