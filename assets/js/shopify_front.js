@@ -21,13 +21,9 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
     $(document).ready(function() {
         console.log("POSTCODE - PRICE");
         var shop = Shopify.shop;
-        console.log(shop);
         var cookie_version_control = '---2018/5/11';
-   
         $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://postcode.codelocksolutions.com/assets/css/modal_front.css') );
-        
         $Productcontent =  $("#ProductPrice").html();
-     
         function setCookie(cName, cValue,expDays) {
                 let date = new Date();
                 date.setTime(date.getTime() + (expDays * 0));
@@ -93,15 +89,17 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                 $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">'+
                                                 '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
                                                 '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-                                                getTotalprice();
+                                                $productVariant = $('input[name="id"]').val();
+                                                getTotalprice($productVariant);
                                                 getProduct();
                                             }
                                         },5000); 
                                     }
-                                    $(document).on("click",".postcode-checker-preview",function(event){
-                                        console.log("CLICK BTN ");
-                                        event.preventDefault();  
-                                        getTotalprice();
+                                $(document).on("click",".postcode-checker-preview",function(event){
+                                    console.log("CLICK BTN ");
+                                    event.preventDefault();  
+                                    $productVariant = $('input[name="id"]').val();
+                                    getTotalprice($productVariant);
                                 });
                         
                                 $(document).on("click",".close-btn, .bg-overlay",function(){
@@ -139,9 +137,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                         $( ".product-form__input--dropdown" ).each(function( index ) {
                                                             $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
                                                             (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
-                                                        });
-                                                        getTotalprice();
-                                                            
+                                                        });   
                                                     }
                                                     }
                                                 }
@@ -154,17 +150,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         console.log("11111111111");
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
-                                        setTimeout(function(){
-                                            // getTotalprice();
-                                        },5000);
+                                        
                                     });
                                     $('input[data-index="option2"]').change(function() {
                                         console.log("22222222");
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
-                                        setTimeout(function(){
-                                            // getTotalprice();
-                                        },5000);
+                                     
                                     });
 
                                 // END BROADCAST THEME VARIANTS CHANGE
@@ -174,33 +166,25 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         console.log("3333333333");
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
-                                        setTimeout(function(){
-                                            // getTotalprice();
-                                        },5000);
+                              
                                     });
                                     $('.product-form__input input[name="Color"]').change(function() {
                                         console.log("44444444444444");
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
-                                        setTimeout(function(){
-                                            // getTotalprice();
-                                        },5000);
+                                      
                                     });
                                     $('select[name="options[Size]"]').change(function() {
                                         console.log("5555555555555");
                                         $selectedValue0 = $(this).val(); // Get the selected value
                                         $("#clsoption0").val($selectedValue0);
-                                        setTimeout(function(){
-                                            // getTotalprice();
-                                        },5000);
+                                      
                                     });
                                     $('select[name="options[Color]"]').change(function() {
                                         console.log("666666666666666");
                                         $selectedValue1 = $(this).val(); // Get the selected value
                                         $("#clsoption1").val($selectedValue1);
-                                        setTimeout(function(){
-                                            // getTotalprice();
-                                        },5000);
+                                      
                                     });
                                 // END District THEME VARIANTS CHANGE
                                 //  START Prestige THEME VARIANTS CHANGE
@@ -214,9 +198,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }else if($optionposition == 2){
                                             $("#clsoption1").val($selectedValue);
                                         }
-                                        setTimeout(function(){
-                                            // getTotalprice();
-                                        },5000);
+                                     
                                     });
                                 // END Prestige THEME VARIANTS CHANGE
                                 // START Shella THEME VARIANTS CHANGE
@@ -230,9 +212,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }else if($optionposition == "color"){
                                             $("#clsoption1").val($selectedValue);
                                         }
-                                        setTimeout(function(){
-                                            // getTotalprice();
-                                        },5000);
+                                     
                                     });
                                 // END Shella THEME VARIANTS CHANGE
                                 // START Impact THEME VARIANTS CHANGE
@@ -390,7 +370,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         }
 
         check_app_status();
-        function getTotalprice(){
+        function getTotalprice($variantId){
             console.log("getTotalprice function ");
             var clsgetpostcode = $(".clspostcode").val();
             getpostcode = (clsgetpostcode == undefined || clsgetpostcode == "" ) ? getCookie("postcodeval") : clsgetpostcode;
@@ -400,96 +380,34 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     dataType: 'json',
                     data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode},
                     success: function (comeback) {
-                        $productPriceClassHtml = $(".price .price__regular .price-item").html();
-                        $productPriceClass = $(".price .price__regular .price-item");
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.js-price .money');
-                            $productPriceClassHtml = $('.js-price .money').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.js-price');
-                            $productPriceClassHtml = $('.js-price').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.product-info__price sale-price');
-                            // $productPriceClassHtml = $('.product-info__price sale-price').html();
-                            var $salePriceElement = $('.product-info__price  sale-price');
-                            var priceText = $salePriceElement.text();
-                            var match = priceText.match(/Rs\. \d+\.\d+/);
-                            if (match) {
-                                $productPriceClassHtml = match[0];
-                                console.log($productPriceClassHtml );
-                            } else {
-                                console.log("Price not found.");
+                        $productvariantHtml = $("#productvariant").val();
+                        console.log($productvariantHtml);
+
+                        var pairs = productvariantHtml.split(';');
+                        for (var i = 0; i < pairs.length; i++) {
+                            var pair = pairs[i].split(',');
+                            if (pair[0] === $variantId) {
+                                $newPrice = pair[1];
+                                break; // Exit the loop when a match is found
                             }
                         }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.product-info__price sale-price');
-                            $productPriceClassHtml = $('.product-info__price sale-price').html();
+                        if ($newPrice !== null) {
+                            console.log("Value for " + $variantId + " is " + $newPrice);
+                        } else {
+                            console.log("Value not found for " + $variantId);
                         }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.product-price span');
-                            $productPriceClassHtml = $('.product-price span').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.t4s-product__price-review .t4s-product-price');
-                            $productPriceClassHtml = $('.t4s-product__price-review .t4s-product-price').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.f8pr .f8pr-price');
-                            $productPriceClassHtml = $('.f8pr .f8pr-price').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.product-single__prices .product-single__price');
-                            $productPriceClassHtml = $('.product-single__prices .product-single__price').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.product-page-info__price .price');
-                            $productPriceClassHtml = $('.product-page-info__price .price').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.product-single__meta .product__price');
-                            $productPriceClassHtml = $('.product-single__meta .product__price').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.ProductMeta__PriceList .Price');
-                            $productPriceClassHtml = $('.ProductMeta__PriceList .Price').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.price-review .current_price');
-                            $productPriceClassHtml = $('.price-review .current_price').html();
-                        }
-                        if($productPriceClassHtml == undefined){
-                            $productPriceClass = $('.product__price__wrap span');
-                            $productPriceClassHtml = $('.product__price__wrap span').html();
-                        }
-
-                        console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+                       
                         if (comeback['code'] != undefined && comeback['code'] == '403') {
                         }else if (comeback['outcome'] == 'true') {
-                                                         
-                                $("#clsproductZipcodevalue").val(getpostcode);
-                                $ProductPriceSymbol =  $.trim($productPriceClassHtml);
-                                console.log($ProductPriceSymbol + "ppppppppppppppppppppppppppp");
                                 $(".chkpostcode").html("");
                                 $zonename = (comeback.data['zonename']);
                                 $zoneprice = (comeback.data['zoneprice']);
                                 $zonearea = (comeback.data['zonearea']);
-                                $currecySymbol = $ProductPriceSymbol.split(' ');
-                                console.log($currecySymbol);
-                                console.log($zoneprice + " ZONE PRICE");
-                                $totalPrice = parseFloat($currecySymbol[1]) + parseFloat($zoneprice);
-                                console.log($totalPrice);
-                                // $productPriceClass.attr("data-price",$currecySymbol[0]+ " " +$totalPrice);
-                                $productPriceClass.html($currecySymbol[0]+" "+$totalPrice);
-                                $(".clsProductPrice").css("display","block");
+                                $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","block");
                                 $(".custom-model-main").removeClass("model-open");
                                 setCookie('postcodeval',getpostcode);
                                 setCookie('postcodename',$zonename);
-                                setCookie('postcodeprice',$totalPrice);
-                                setCookie('zoneprice',$zoneprice);
-                                
-                                $(".single-option-selector").attr("disabled",false);
+                                setCookie('postcodeprice',$newPrice);
                                 $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                 $hasClass = $("#clsproductZipcodevalue").html();
                                 if($hasClass == undefined){
@@ -608,9 +526,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     type: "POST",
                     dataType: 'json',
                     data: {'routine_name': 'get__atc_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$price},
-                        beforeSend: function () {
-                            
-                    },
                     success: function (comeback) {
                         console.log(comeback);
                         $.each(comeback.product.variants, function(key, value) {
@@ -687,7 +602,12 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 });
             }
         }
-
+        $('input[name="id"]').change(function() {
+            console.log("change id");
+            $variantId = $(this).val();
+            console.log($variantId);
+            getTotalprice($variantId);
+        });
     });
 });
          
