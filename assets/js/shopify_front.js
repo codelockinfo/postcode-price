@@ -410,6 +410,11 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             $productPriceClassHtml = $('.js-price').html();
                         }
                         if($productPriceClassHtml == undefined){
+                            $productPriceClass = $('.product-info__price sale-price span');
+                            console.log($productPriceClass.find("span").remove().html() + "AAAAAAAAAAAAAAA");
+                            $productPriceClassHtml = $('.product-info__price sale-price').html();
+                        }
+                        if($productPriceClassHtml == undefined){
                             $productPriceClass = $('.product-info__price sale-price');
                             $productPriceClassHtml = $('.product-info__price sale-price').html();
                         }
