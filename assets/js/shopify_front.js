@@ -391,7 +391,23 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 if($hasproductvariant == undefined){
                                     $('input[name="product-id"]').after('<input type="hidden" name="productvariant" id="productvariant" value="'+ $productVariantHtml +'">');
                                 }
-
+                                $productVariantId = $('input[name="id"]').val();
+                                $productvariantHtml = $("#productvariant").val();
+        
+                                var pairs = productvariantHtml.split(';');
+                                for (var i = 0; i < pairs.length; i++) {
+                                    var pair = pairs[i].split(',');
+                                    if (pair[0] === $productVariantId) {
+                                        $newPrice = pair[1];
+                                        break; // Exit the loop when a match is found
+                                    }
+                                }
+                                if ($newPrice !== null) {
+                                    console.log("Value for " + $productVariantId + " is " + $newPrice);
+                                } else {
+                                    console.log("Value not found for " + $productVariantId);
+                                }
+                               
                                 $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","block");
                                 $(".custom-model-main").removeClass("model-open");
                                 setCookie('postcodeval',getpostcode);
