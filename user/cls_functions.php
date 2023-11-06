@@ -687,9 +687,12 @@ class Client_functions extends common_function {
             $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
             echo "<pre>";
             print_r($productdata);
-            die;
             $combinedString = "";
             if ($productdata && isset($productdata->product->variants)) {
+                foreach ($productdata->product->variants as $variant) {
+                 echo "<pre>";
+                 print_r($variant->price);
+                }
              
             } else {
                 echo ("variant not found"); 
