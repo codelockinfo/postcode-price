@@ -394,7 +394,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $productVariantId = $('input[name="id"]').val();
                                 $productvariantHtml = $("#productvariant").val();
         
-                                var pairs = productvariantHtml.split(';');
+                                var pairs = $productvariantHtml.split(';');
                                 for (var i = 0; i < pairs.length; i++) {
                                     var pair = pairs[i].split(',');
                                     if (pair[0] === $productVariantId) {
