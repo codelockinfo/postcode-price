@@ -521,16 +521,34 @@ class Client_functions extends common_function {
         }
         if (empty($error_array)) {
             $zonearea = isset($_POST['postcode']) ? $_POST['postcode'] : '';
-            //   echo "SELECT * FROM zone WHERE FIND_IN_SET($zonearea,zonearea) > 0";
-            //     $comeback = $this->db->query("SELECT * FROM zone WHERE FIND_IN_SET($zonearea,zonearea) > 0");
-        
             $where_query = array(["", "zonearea", "LIKE","BOTH", "$zonearea"], ["AND", "store_user_id", "=", "$shopinfo->store_user_id"],["OR", "zonename", "LIKE","BOTH", "$zonearea"],);
             $comeback = $this->select_result(TABLE_ZONE_MASTER, '*', $where_query);
+
+
+            $productid = isset($_POST['productid']) ? $_POST['productid'] :'';
+            $zoneprice = isset($data->zoneprice) ? $data->zoneprice : '';
+            $shopify_api = array("api_name" => "products/".$productid);
+            $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
+            $combinedString = "";
+            if ($productdata && isset($productdata->product->variants)) {
+                foreach ($productdata->product->variants as $variant) {
+                    echo "<pre>";
+                    print_r($variant->price);
+                    print_r($zoneprice);
+                 $totalprice = $variant->price + $zoneprice;
+                 $combinedString .= $variant->id . "," . $totalprice .";";
+
+                }
+                $combinedString = rtrim($combinedString, ';');
+            } else {
+                echo ("variant not found"); 
+            }
             if (!empty($comeback["data"][0])) {
                 $data = (object)$comeback["data"][0];
                 $return_arary["zoneprice"] = isset($data->zoneprice) ? $data->zoneprice : '';
                 $return_arary["zonename"] = isset($data->zonename) ? $data->zonename : '';
                 $return_arary["zonearea"] = isset($data->zonearea) ? $data->zonearea : '';
+                $return_arary["productVariantHtml"] = $combinedString;
                 $response_data = array("outcome" => "true", "data" => $return_arary);
             }else{
                 $error_array['postcode'] = "Please enter a valid zip code";
@@ -678,32 +696,32 @@ class Client_functions extends common_function {
         }
         return $response;
     }
-    function get_product(){
-        $response_data = array('result' => 'fail', 'msg' => __('Something went wrong'));
-        if (isset($_POST['store']) && $_POST['store'] != '') {
-            $productid = isset($_POST['productid']) ? $_POST['productid'] :'';
-            $zoneprice = isset($_POST['zoneprice']) ? $_POST['zoneprice'] :'';
-            $shopify_api = array("api_name" => "products/".$productid);
-            $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
-            $combinedString = "";
-            if ($productdata && isset($productdata->product->variants)) {
-                foreach ($productdata->product->variants as $variant) {
-                    echo "<pre>";
-                    print_r($variant->price);
-                    print_r($zoneprice);
-                 $totalprice = $variant->price + $zoneprice;
-                 $combinedString .= $variant->id . "," . $totalprice .";";
+    // function get_product(){
+    //     $response_data = array('result' => 'fail', 'msg' => __('Something went wrong'));
+    //     if (isset($_POST['store']) && $_POST['store'] != '') {
+    //         $productid = isset($_POST['productid']) ? $_POST['productid'] :'';
+    //         $zoneprice = isset($_POST['zoneprice']) ? $_POST['zoneprice'] :'';
+    //         $shopify_api = array("api_name" => "products/".$productid);
+    //         $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
+    //         $combinedString = "";
+    //         if ($productdata && isset($productdata->product->variants)) {
+    //             foreach ($productdata->product->variants as $variant) {
+    //                 echo "<pre>";
+    //                 print_r($variant->price);
+    //                 print_r($zoneprice);
+    //              $totalprice = $variant->price + $zoneprice;
+    //              $combinedString .= $variant->id . "," . $totalprice .";";
 
-                }
-                $combinedString = rtrim($combinedString, ';');
-            } else {
-                echo ("variant not found"); 
-            }
-            $response_data = array('result' => 'success', 'outcome' => $combinedString); 
-        }
-       $response = json_encode($response_data);
-       return $response;
-    }
+    //             }
+    //             $combinedString = rtrim($combinedString, ';');
+    //         } else {
+    //             echo ("variant not found"); 
+    //         }
+    //         $response_data = array('result' => 'success', 'outcome' => $combinedString); 
+    //     }
+    //    $response = json_encode($response_data);
+    //    return $response;
+    // }
     function get__atc_product(){
         $where_query = array(["", "status", "=", "1"]);
         $comeback= $this->select_result(CLS_TABLE_THIRDPARTY_APIKEY, '*',$where_query);

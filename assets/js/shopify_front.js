@@ -65,7 +65,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 console.log(comeback['data']);
                                 $(".single-option-selector").addClass("clssingle-option-selector");
                                     if(window.location.href.includes("/products/")){
-                                        getProduct();
                                         console.log("product page");
                                         $findbuynowbtn = setInterval(hasbuynowbtn, 5000); 
                                         setTimeout(function(){
@@ -98,7 +97,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $(document).on("click",".postcode-checker-preview",function(event){
                                     console.log("CLICK BTN ");
                                     event.preventDefault();  
-                                    getProduct();
                                     $productVariant = $('input[name="id"]').val();
                                     getTotalprice($productVariant);
                                 });
@@ -374,41 +372,26 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         function getTotalprice($variantId){
             console.log("getTotalprice function ");
             var clsgetpostcode = $(".clspostcode").val();
+            var clsproductId = $('input[name="product-id"]').val();
             getpostcode = (clsgetpostcode == undefined || clsgetpostcode == "" ) ? getCookie("postcodeval") : clsgetpostcode;
             $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode},
+                    data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode,'productid':clsproductId},
                     success: function (comeback) {
-                        $productVariantHtml = $("#productvariant").html();
-                        if($productVariantHtml != undefined){
-                            $productvariantHtml = $("#productvariant").val();
-                            console.log($productvariantHtml);
-    
-                            var pairs = productvariantHtml.split(';');
-                            for (var i = 0; i < pairs.length; i++) {
-                                var pair = pairs[i].split(',');
-                                if (pair[0] === $variantId) {
-                                    $newPrice = pair[1];
-                                    break; // Exit the loop when a match is found
-                                }
-                            }
-                            if ($newPrice !== null) {
-                                console.log("Value for " + $variantId + " is " + $newPrice);
-                            } else {
-                                console.log("Value not found for " + $variantId);
-                            }
-                        }else{
-                            console.log("NOT FOUND PRoduct Variant Html ...");
-                        }
-                       
                         if (comeback['code'] != undefined && comeback['code'] == '403') {
                         }else if (comeback['outcome'] == 'true') {
                                 $(".chkpostcode").html("");
                                 $zonename = (comeback.data['zonename']);
                                 $zoneprice = (comeback.data['zoneprice']);
                                 $zonearea = (comeback.data['zonearea']);
+                                $productVariantHtml = (comeback.data['productVariantHtml']);
+                                $hasproductvariant = $("#productvariant").html();
+                                if($hasproductvariant == undefined){
+                                    $('input[name="product-id"]').after('<input type="hidden" name="productvariant" id="productvariant" value="'+ $productVariantHtml +'">');
+                                }
+
                                 $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","block");
                                 $(".custom-model-main").removeClass("model-open");
                                 setCookie('postcodeval',getpostcode);
@@ -582,33 +565,33 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         }
         }
 
-        function getProduct(){
-            console.log("getPRoduct js function calling.. ");
-            var clsproductId = $('input[name="product-id"]').val();
-            $getpostcode = getCookie("postcodeval");
-            $zoneprice = getCookie("zoneprice");
-            console.log($zoneprice);
-            console.log($getpostcode + "ZIPCODE");
-            if($getpostcode != undefined){
-                $.ajax({
-                    url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
-                    type: "POST",
-                    dataType: 'json',
-                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'zoneprice':$zoneprice},
-                    success: function (comeback) {
-                        if(comeback  != undefined){
-                            var comeback = JSON.parse(comeback);
-                            console.log(comeback + "TTTTTTTTTTTTTTT"); 
-                            console.log(comeback.outcome); 
-                            $hasproductvariant = $("#productvariant").html();
-                            if($hasproductvariant == undefined){
-                                $('input[name="product-id"]').after('<input type="hidden" name="productvariant" id="productvariant" value="'+ comeback.outcome +'">');
-                            }
-                        }
-                    }
-                });
-            }
-        }
+        // function getProduct(){
+        //     console.log("getPRoduct js function calling.. ");
+        //     var clsproductId = $('input[name="product-id"]').val();
+        //     $getpostcode = getCookie("postcodeval");
+        //     $zoneprice = getCookie("zoneprice");
+        //     console.log($zoneprice);
+        //     console.log($getpostcode + "ZIPCODE");
+        //     if($getpostcode != undefined){
+        //         $.ajax({
+        //             url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
+        //             type: "POST",
+        //             dataType: 'json',
+        //             data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'zoneprice':$zoneprice},
+        //             success: function (comeback) {
+        //                 if(comeback  != undefined){
+        //                     var comeback = JSON.parse(comeback);
+        //                     console.log(comeback + "TTTTTTTTTTTTTTT"); 
+        //                     console.log(comeback.outcome); 
+        //                     $hasproductvariant = $("#productvariant").html();
+        //                     if($hasproductvariant == undefined){
+        //                         $('input[name="product-id"]').after('<input type="hidden" name="productvariant" id="productvariant" value="'+ comeback.outcome +'">');
+        //                     }
+        //                 }
+        //             }
+        //         });
+        //     }
+        // }
         $('input[name="id"]').change(function() {
             if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                 console.log("cookies");
