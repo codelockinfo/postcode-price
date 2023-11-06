@@ -98,6 +98,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $(document).on("click",".postcode-checker-preview",function(event){
                                     console.log("CLICK BTN ");
                                     event.preventDefault();  
+                                    getProduct();
                                     $productVariant = $('input[name="id"]').val();
                                     getTotalprice($productVariant);
                                 });
