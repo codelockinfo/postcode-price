@@ -665,7 +665,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             var clsproductId = $('input[name="product-id"]').val();
             $getpostcode = getCookie("postcodeval");
             $zoneprice = getCookie("zoneprice");
-            console.log($price);
+            console.log($zoneprice);
             console.log($getpostcode + "ZIPCODE");
             if($getpostcode != undefined){
                 $.ajax({
