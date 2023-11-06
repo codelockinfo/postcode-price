@@ -741,15 +741,15 @@ class Client_functions extends common_function {
         $producttitle = $productdata->product->title;
         $productimage = $productdata->product->image->src;
         foreach ($productdata->product->options as $index => $option) {
-            print_r($option->name);
+            // print_r($option->name);
         }
         if ($productdata && isset($productdata->product->variants)) {
             $variants_count = count($productdata->product->variants);
             foreach ($productdata->product->variants as $variant) {
                 if($variant->id == $productvariantid){
-                    echo "MAtch id";
-                    echo "<pre>";
-                    print_r($variant->title);
+                    // echo "MAtch id";
+                    // echo "<pre>";
+                    // print_r($variant->title);
                 }
             }
             generate_log('createproduct', $variants_count . "  variant count"); 
