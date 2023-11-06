@@ -740,7 +740,8 @@ class Client_functions extends common_function {
         
         $producttitle = $productdata->product->title;
         $productimage = $productdata->product->image->src;
-
+echo "<pre>";
+print_r($productdata);
         if ($productdata && isset($productdata->product->variants)) {
             $variants_count = count($productdata->product->variants);
             foreach ($productdata->product->variants as $variant) {
