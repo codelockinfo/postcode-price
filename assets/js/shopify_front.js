@@ -585,6 +585,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $getpostcode = getCookie("postcodeval");
             $price = getCookie("postcodeprice");
             console.log($price);
+            console.log($getpostcode + "ZIPCODE");
                 var thisObj = this;
                 $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
