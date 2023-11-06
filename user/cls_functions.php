@@ -691,7 +691,7 @@ class Client_functions extends common_function {
             if ($productdata && isset($productdata->product->variants)) {
                 $variants_zip_price = $productdata->product->variants->price + $zoneprice;
                 $variants_zip_id = $productdata->product->variants->id;
-                $combinedString .= $variants_zip_id . "," . $variants_zip_price . ";" . ;
+                $combinedString .= $variants_zip_id . "," . $variants_zip_price . ";" ;
 
                 echo "<pre>";
                 print_r($variants_zip_price);
