@@ -89,9 +89,9 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                 $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">'+
                                                 '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
                                                 '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
+                                                getProduct();
                                                 $productVariant = $('input[name="id"]').val();
                                                 getTotalprice($productVariant);
-                                                getProduct();
                                             }
                                         },5000); 
                                     }
@@ -380,21 +380,26 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     dataType: 'json',
                     data: {'routine_name': 'get_postcode' ,'store': shop,'postcode':getpostcode},
                     success: function (comeback) {
-                        $productvariantHtml = $("#productvariant").val();
-                        console.log($productvariantHtml);
-
-                        var pairs = productvariantHtml.split(';');
-                        for (var i = 0; i < pairs.length; i++) {
-                            var pair = pairs[i].split(',');
-                            if (pair[0] === $variantId) {
-                                $newPrice = pair[1];
-                                break; // Exit the loop when a match is found
+                        $productVariantHtml = $("#productvariant").html();
+                        if($productVariantHtml != undefined){
+                            $productvariantHtml = $("#productvariant").val();
+                            console.log($productvariantHtml);
+    
+                            var pairs = productvariantHtml.split(';');
+                            for (var i = 0; i < pairs.length; i++) {
+                                var pair = pairs[i].split(',');
+                                if (pair[0] === $variantId) {
+                                    $newPrice = pair[1];
+                                    break; // Exit the loop when a match is found
+                                }
                             }
-                        }
-                        if ($newPrice !== null) {
-                            console.log("Value for " + $variantId + " is " + $newPrice);
-                        } else {
-                            console.log("Value not found for " + $variantId);
+                            if ($newPrice !== null) {
+                                console.log("Value for " + $variantId + " is " + $newPrice);
+                            } else {
+                                console.log("Value not found for " + $variantId);
+                            }
+                        }else{
+                            console.log("NOT FOUND PRoduct Variant Html ...");
                         }
                        
                         if (comeback['code'] != undefined && comeback['code'] == '403') {
