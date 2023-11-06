@@ -414,6 +414,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 setCookie('postcodeval',getpostcode);
                                 setCookie('postcodename',$zonename);
                                 setCookie('postcodeprice',$newPrice);
+                                setCookie('zoneprice',$zoneprice);
                                 $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                 $hasClass = $("#clsproductZipcodevalue").html();
                                 if($hasClass == undefined){
