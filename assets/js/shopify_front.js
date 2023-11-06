@@ -592,7 +592,20 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $productQtyy = $(".quantity .quantity__input").val();
 
             $getpostcode = getCookie("postcodeval");
-            $price = getCookie("postcodeprice");
+            $productvariantHtml = $("#productvariant").val();
+            var pairs = $productvariantHtml.split(';');
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i].split(',');
+                if (pair[0] === $productVariantId) {
+                    $price = pair[1];
+                    break; // Exit the loop when a match is found
+                }
+            }
+            if ($price !== null) {
+                console.log("Value for " + $productVariantId + " is " + $price);
+            } else {
+                console.log("Value not found for " + $productVariantId);
+            }
             console.log($price);
             console.log($getpostcode + "ZIPCODE");
             if($getpostcode != undefined){
