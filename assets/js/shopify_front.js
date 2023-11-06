@@ -603,6 +603,11 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             }
         }
         $('input[name="id"]').change(function() {
+            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
+                console.log("cookies");
+                $("form button[type='submit'],.clspayment").attr("disabled",true); 
+                $(".custom-model-main").addClass("model-open");
+            }
             console.log("change id");
             $variantId = $(this).val();
             console.log($variantId);
