@@ -65,6 +65,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 console.log(comeback['data']);
                                 $(".single-option-selector").addClass("clssingle-option-selector");
                                     if(window.location.href.includes("/products/")){
+                                        getProduct();
                                         console.log("product page");
                                         $findbuynowbtn = setInterval(hasbuynowbtn, 5000); 
                                         setTimeout(function(){
@@ -89,7 +90,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                 $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">'+
                                                 '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
                                                 '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-                                                getProduct();
                                                 $productVariant = $('input[name="id"]').val();
                                                 getTotalprice($productVariant);
                                             }
