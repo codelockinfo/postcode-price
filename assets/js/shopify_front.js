@@ -674,7 +674,15 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     dataType: 'json',
                     data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':getpostcode,'zoneprice':$zoneprice},
                     success: function (comeback) {
-
+                        if(comeback  != undefined){
+                            var comeback = JSON.parse(comeback);
+                            console.log(comeback); 
+                            console.log(comeback.outcome); 
+                            $hasproductvariant = $("#productvariant").html();
+                            if($hasproductvariant == undefined){
+                                $('input[name="product-id"]').after('<input type="hidden" name="productvariant" id="productvariant" value="'+ comeback.outcome +'">');
+                            }
+                        }
                     }
                 });
             }
