@@ -679,6 +679,32 @@ class Client_functions extends common_function {
         return $response;
     }
     function get_product(){
+        $response_data = array('result' => 'fail', 'msg' => __('Something went wrong'));
+        if (isset($_POST['store']) && $_POST['store'] != '') {
+            $productid = isset($_POST['productid']) ? $_POST['productid'] :'';
+            $zoneprice = isset($_POST['zoneprice']) ? $_POST['zoneprice'] :'';
+            $shopify_api = array("api_name" => "products/".$productid);
+            $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
+            echo "<pre>";
+            print_r($productdata);
+            $combinedString = "";
+            if ($productdata && isset($productdata->product->variants)) {
+                $variants_zip_price = $productdata->product->variants->price + $zoneprice;
+                $variants_zip_id = $productdata->product->variants->id;
+                $combinedString .= $variants_zip_id . "," . $variants_zip_price . ";" . ;
+
+                echo "<pre>";
+                print_r($variants_zip_price);
+                print_r($combinedString);
+            } else {
+                echo ("variant not found"); 
+            }
+            $response_data = array('result' => 'success', 'outcome' => $combinedString); 
+        }
+       $response = json_encode($response_data);
+       return $response;
+    }
+    function get__atc_product(){
         $where_query = array(["", "status", "=", "1"]);
         $comeback= $this->select_result(CLS_TABLE_THIRDPARTY_APIKEY, '*',$where_query);
         $CLS_API_KEY = (isset($comeback['data'][1]['thirdparty_apikey']) && $comeback['data'][1]['thirdparty_apikey'] !== '') ? $comeback['data'][1]['thirdparty_apikey'] : '';

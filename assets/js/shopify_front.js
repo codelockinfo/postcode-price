@@ -93,7 +93,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">'+
                                         '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
                                         '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-                                    getTotalprice();
+                                            getTotalprice();
+                                            getProduct();
                                         }
                                     },5000); 
                                     }
@@ -486,6 +487,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 setCookie('postcodeval',getpostcode);
                                 setCookie('postcodename',$zonename);
                                 setCookie('postcodeprice',$totalPrice);
+                                setCookie('zoneprice',$zoneprice);
                                 
                                 $(".single-option-selector").attr("disabled",false);
                                 $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
@@ -605,36 +607,36 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$price},
+                    data: {'routine_name': 'get__atc_product' ,'store': shop,'productid':clsproductId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$price},
                         beforeSend: function () {
                             
                     },
-                success: function (comeback) {
-                    console.log(comeback);
-                    $.each(comeback.product.variants, function(key, value) {
-                        var variant_id = value.id;
-                        console.log(variant_id);
-                            var params = {
-                                type: 'POST',
-                                url: '/cart/add.js',
-                                data: {id: variant_id,quantity: $productQtyy},
-                                dataType: 'json',
-                                success: function(line_item) { 
-                                    console.log(line_item);
-                                    if(getCookie("buynowbtn") == undefined || getCookie("buynowbtn") == "" ){
-                                        console.log("cart ");
-                                        $(".product-single__shopify-payment-btn").append('<span>The item has been added to the shopping cart.</span>');
-                                         window.location.href ='/cart';
-                                    }else{
-                                        deleteCookie("buynowbtn");
-                                        console.log("checkout ");
-                                        window.location.href ='/checkout';
-                                    }
-                                },
-                                };
-                                $.ajax(params);
-                        });
-                }
+                    success: function (comeback) {
+                        console.log(comeback);
+                        $.each(comeback.product.variants, function(key, value) {
+                            var variant_id = value.id;
+                            console.log(variant_id);
+                                var params = {
+                                    type: 'POST',
+                                    url: '/cart/add.js',
+                                    data: {id: variant_id,quantity: $productQtyy},
+                                    dataType: 'json',
+                                    success: function(line_item) { 
+                                        console.log(line_item);
+                                        if(getCookie("buynowbtn") == undefined || getCookie("buynowbtn") == "" ){
+                                            console.log("cart ");
+                                            $(".product-single__shopify-payment-btn").append('<span>The item has been added to the shopping cart.</span>');
+                                            window.location.href ='/cart';
+                                        }else{
+                                            deleteCookie("buynowbtn");
+                                            console.log("checkout ");
+                                            window.location.href ='/checkout';
+                                        }
+                                    },
+                                    };
+                                    $.ajax(params);
+                            });
+                    }
                 });
             }else{
                 $("form button[type='submit'],.clspayment").attr("disabled",true); 
@@ -656,6 +658,26 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_css);
             clearInterval($findbuynowbtn);  
         }
+        }
+
+        function getProduct(){
+            console.log("getPRoduct js function calling.. ");
+            var clsproductId = $('input[name="product-id"]').val();
+            $getpostcode = getCookie("postcodeval");
+            $zoneprice = getCookie("zoneprice");
+            console.log($price);
+            console.log($getpostcode + "ZIPCODE");
+            if($getpostcode != undefined){
+                $.ajax({
+                    url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {'routine_name': 'get_product' ,'store': shop,'productid':clsproductId,'postcode':getpostcode,'zoneprice':$zoneprice},
+                    success: function (comeback) {
+
+                    }
+                });
+            }
         }
 
     });
