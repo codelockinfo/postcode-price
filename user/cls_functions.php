@@ -813,15 +813,18 @@ class Client_functions extends common_function {
                         generate_log('createproduct', "  create product array option1&2"); 
                         $variants1 = array("option1"=>$varianttitle[0],"option2"=>$varianttitle[1], "price" =>$productprice );
                         array_push($variants,$variants1);
-                        // foreach ($dynamicOption as $variableName => $variableValue) {
-                        //     $options1 = array("name" => $variableValue,"position" => $variableName);
-                        // }
-                        $options1 = array("name" => "Size","position" => 1);
-                        $options2 = array("name" => "Color","position" => 2);
+                        foreach ($dynamicOption as $variableName => $variableValue) {
+                            $options[] = array("name" => $variableValue,"position" => $variableName);
+                        }
+                        echo "<pre>";
+                        print_r($options);
+                        
+                        // $options1 = array("name" => "Size","position" => 1);
+                        // $options2 = array("name" => "Color","position" => 2);
             
                         $options = array(
-                            $options1,
-                            $options2
+                            $options[0],
+                            $options[1]
                             );
                         
                             if (isset($variants) && isset($options)) {
