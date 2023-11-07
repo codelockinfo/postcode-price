@@ -797,6 +797,8 @@ class Client_functions extends common_function {
                         }
                     
                     $variants = array();
+                    echo "<pre>";
+                    print_r($variantitle);
                     if($variantitle == 1){
                         generate_log('createproduct', "  create product array option1"); 
                         $variants1 = array("option1"=>$varianttitle[0],"price" =>$productprice );
