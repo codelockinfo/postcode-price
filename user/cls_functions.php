@@ -725,6 +725,8 @@ class Client_functions extends common_function {
        
         $shopinfo = $this->current_store_obj;
         $shopinfo = (object)$shopinfo;
+        echo "<pre>";
+        print_r($shopinfo);
         $store_name = $shopinfo->shop_name;
         $password = $shopinfo->password;
 
