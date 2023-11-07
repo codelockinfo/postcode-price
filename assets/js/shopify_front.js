@@ -89,7 +89,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                 getTotalprice();
                                             }
                                         },2500); 
-                                    }
+                                    
                                 $(document).on("click",".postcode-checker-preview",function(event){
                                     console.log("CLICK BTN ");
                                     event.preventDefault();  
@@ -177,6 +177,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".clspostcode").val(value);
                                     setCookie('postcodeval',value);
                                 });
+
+                            }
                             }else{
                                 $(".single-option-selector").removeClass("clssingle-option-selector");
                                 $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span,.price-list sale-price").css("display","block");
