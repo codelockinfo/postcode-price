@@ -743,10 +743,11 @@ class Client_functions extends common_function {
         $dynamicOption = [];
         foreach ($productdata->product->options as $index => $option) {
             // print_r($option->name);
-            $dynamicOption["var$index"] = $option->name;
+            $dynamicOption["$index"] = $option->name;
         }
         echo "<pre>";
-        print_r($dynamicOption["var$index"]);
+        print_r($dynamicOption["$index"]);
+        print_r("$dynamicOption["$index"]");
         echo "---------------";
         if ($productdata && isset($productdata->product->variants)) {
             $variants_count = count($productdata->product->variants);
