@@ -802,8 +802,8 @@ class Client_functions extends common_function {
                         $variants1 = array("option1"=>$varianttitle[0],"price" =>$productprice );
                         array_push($variants,$variants1);
                         foreach ($dynamicOption as $variableName => $variableValue) {
-                            echo "$variableName: $variableValue<br>";
-                            $options.$variableName = array("name" => $variableValue,"position" => $variableName);
+                            echo "$option.$variableName";
+                            $option.$variableName = array("name" => $variableValue,"position" => $variableName);
                         }
             
                         $options = array(
