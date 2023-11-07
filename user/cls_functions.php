@@ -736,7 +736,7 @@ class Client_functions extends common_function {
         $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
         
         $producttitle = $productdata->product->title;
-        $productimage = $productdata->product->image->src;
+        $productimage = isset($productdata->product->image->src) ? $productdata->product->image->src : '';
         $dynamicOption = [];
         $i = 1;
         foreach ($productdata->product->options as $index => $option) {
@@ -888,10 +888,11 @@ class Client_functions extends common_function {
                     }else{
                         $dublicateproductdata = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
                     }
-                    $api = array('api_name' => 'products/'.$dublicateproductdata->product->id.'/images');
-                    $cdn_img = $productimage;
-                    $product_image_array = array('image' => array('product_id' => $dublicateproductdata->product->id, 'src' =>$cdn_img));
-                    $dublicateproductdata2 = $this->cls_get_shopify_list($api, $product_image_array, 'POST', 1, array("Content-Type: application/json"));
+                    if($productimage != ""){
+                        $api = array('api_name' => 'products/'.$dublicateproductdata->product->id.'/images');
+                        $product_image_array = array('image' => array('product_id' => $dublicateproductdata->product->id, 'src' =>$productimage));
+                        $dublicateproductdata2 = $this->cls_get_shopify_list($api, $product_image_array, 'POST', 1, array("Content-Type: application/json"));
+                    }
                     
                     $productid = $dublicateproductdata->product->id;
                     if(!empty($productid)){
