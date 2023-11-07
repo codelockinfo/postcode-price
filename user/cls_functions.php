@@ -803,7 +803,7 @@ class Client_functions extends common_function {
                         array_push($variants,$variants1);
                         foreach ($dynamicOption as $variableName => $variableValue) {
                             echo "$variableName: $variableValue<br>";
-                            $options1 = array("name" => $variableValue,"position" => 1);
+                            $options.$variableName = array("name" => $variableValue,"position" => $variableName);
                         }
             
                         $options = array(
@@ -815,9 +815,9 @@ class Client_functions extends common_function {
                             $product_array['product']['options'] = $options; 
                         }
                     
-                    }else if($clsoption0 != "" && $clsoption1 != "" ){
+                    }else if($variantitle == 2){
                         generate_log('createproduct', "  create product array option1&2"); 
-                        $variants1 = array("option1"=>$clsoption0,"option2"=>$clsoption1, "price" =>$productprice );
+                        $variants1 = array("option1"=>$varianttitle[0],"option2"=>$varianttitle[1], "price" =>$productprice );
                         array_push($variants,$variants1);
                         $options1 = array("name" => "Size","position" => 1);
                         $options2 = array("name" => "Color","position" => 2);
