@@ -741,14 +741,11 @@ class Client_functions extends common_function {
         $producttitle = $productdata->product->title;
         $productimage = $productdata->product->image->src;
         $dynamicOption = [];
+        $i = 1;
         foreach ($productdata->product->options as $index => $option) {
-            // print_r($option->name);
-            $dynamicOption["$index"] = $option->name;
+            $dynamicOption["var$i"] = $option->name;
+            $i++;
         }
-        echo "<pre>";
-        print_r($dynamicOption["$index"]);
-        print_r("$dynamicOption["$index"]");
-        echo "---------------";
         if ($productdata && isset($productdata->product->variants)) {
             $variants_count = count($productdata->product->variants);
             foreach ($productdata->product->variants as $variant) {
@@ -804,7 +801,10 @@ class Client_functions extends common_function {
                         generate_log('createproduct', "  create product array option1"); 
                         $variants1 = array("option1"=>$varianttitle[0],"price" =>$productprice );
                         array_push($variants,$variants1);
-                        $options1 = array("name" => $dynamicOption[0],"position" => 1);
+                        foreach ($dynamicOption as $variableName => $variableValue) {
+                            echo "$variableName: $variableValue<br>";
+                            $options1 = array("name" => $variableValue,"position" => 1);
+                        }
             
                         $options = array(
                             $options1
