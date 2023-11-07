@@ -88,7 +88,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                 $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">');
                                                 getTotalprice();
                                             }
-                                        },5000); 
+                                        },2500); 
                                     }
                                 $(document).on("click",".postcode-checker-preview",function(event){
                                     console.log("CLICK BTN ");
