@@ -802,8 +802,7 @@ class Client_functions extends common_function {
                         $variants1 = array("option1"=>$varianttitle[0],"price" =>$productprice );
                         array_push($variants,$variants1);
                         foreach ($dynamicOption as $variableName => $variableValue) {
-                            print_r("$option.$variableName");
-                            $option.$variableName = array("name" => $variableValue,"position" => $variableName);
+                            $options1 = array("name" => $variableValue,"position" => $variableName);
                         }
             
                         $options = array(
@@ -819,12 +818,37 @@ class Client_functions extends common_function {
                         generate_log('createproduct', "  create product array option1&2"); 
                         $variants1 = array("option1"=>$varianttitle[0],"option2"=>$varianttitle[1], "price" =>$productprice );
                         array_push($variants,$variants1);
+                        // foreach ($dynamicOption as $variableName => $variableValue) {
+                        //     $options1 = array("name" => $variableValue,"position" => $variableName);
+                        // }
                         $options1 = array("name" => "Size","position" => 1);
                         $options2 = array("name" => "Color","position" => 2);
             
                         $options = array(
                             $options1,
                             $options2
+                            );
+                        
+                            if (isset($variants) && isset($options)) {
+                            $product_array['product']['variants'] = $variants;
+                            $product_array['product']['options'] = $options; 
+                        }
+                        
+                    }else if($variantitle == 3){
+                        generate_log('createproduct', "  create product array option1&2"); 
+                        $variants1 = array("option1"=>$varianttitle[0],"option2"=>$varianttitle[1],"option2"=>$varianttitle[2],"price" =>$productprice );
+                        array_push($variants,$variants1);
+                        // foreach ($dynamicOption as $variableName => $variableValue) {
+                        //     $options1 = array("name" => $variableValue,"position" => $variableName);
+                        // }
+                        $options1 = array("name" => "Size","position" => 1);
+                        $options2 = array("name" => "Color","position" => 2);
+                        $options3 = array("name" => "Material","position" => 3);
+            
+                        $options = array(
+                            $options1,
+                            $options2,
+                            $options3
                             );
                         
                             if (isset($variants) && isset($options)) {
