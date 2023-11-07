@@ -48,7 +48,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
     
         function check_app_status(){
             console.log("check_app_status function calling ");
-            $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","none");
+            $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span").css("display","none");
                 $.ajax({
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
@@ -179,7 +179,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 });
                             }else{
                                 $(".single-option-selector").removeClass("clssingle-option-selector");
-                                $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","block");
+                                $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span").css("display","block");
                                 console.log("Postcode app is disabled");
                             }
                         } else {
@@ -380,10 +380,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                                     $currecySymbol = $ProductPriceSymbol.split(' ');
                                     console.log($currecySymbol);
-                                            $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","block");
-                                            $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").html($currecySymbol[0]+" "+$newPrice);
+                                            $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span").css("display","block");
+                                            $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span").html($currecySymbol[0]+" "+$newPrice);
                                 }else{
-                                    $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").css("display","none");
+                                    $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span").css("display","none");
                                 }
                       
                                 $('form button[type="submit"],.clspayment').attr("disabled",false);
