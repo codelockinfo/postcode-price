@@ -750,9 +750,9 @@ class Client_functions extends common_function {
             $variants_count = count($productdata->product->variants);
             foreach ($productdata->product->variants as $variant) {
                 if($variant->id == $productvariantid){
-                    // echo "MAtch id";
-                    // echo "<pre>";
-                    // print_r($variant->title);
+                    echo "MAtch id";
+                    echo "<pre>";
+                    print_r($variant->title);
                     $varianttitle = explode('/', $variant->title);
                     $variantitle = count($varianttitle);
                 }
