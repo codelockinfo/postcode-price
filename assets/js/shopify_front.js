@@ -382,6 +382,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $productPriceClassHtml = $('.product__price  .price__container').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        $productPriceClass = $('.price  .price__container');
+                                        $productPriceClassHtml = $('.price  .price__container').html();
+                                    }
+                                    if($productPriceClassHtml == undefined){
                                         $productPriceClass = $('.price-list sale-price');
                                         var $salePriceElement = $('.price-list sale-price');
                                         $productPriceClassHtml = $salePriceElement.text();
