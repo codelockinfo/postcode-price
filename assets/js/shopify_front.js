@@ -375,7 +375,18 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $productPriceClass = $('.product__price__wrap span');
                                         $productPriceClassHtml = $('.product__price__wrap span').html();
                                     }
-
+                                    if($productPriceClassHtml == undefined){
+                                        $productPriceClass = $('.price-list sale-price');
+                                        var $salePriceElement = $('.product-info__price sale-price');
+                                        var priceText = $salePriceElement.text();
+                                        var match = priceText.match(/Rs\. \d+\.\d+/);
+                                        if (match) {
+                                            $productPriceClassHtml = match[0];
+                                            console.log($productPriceClassHtml );
+                                        } else {
+                                            console.log("Price not found.");
+                                        }
+                                    }
                                     console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                                     $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                                     $currecySymbol = $ProductPriceSymbol.split(' ');
