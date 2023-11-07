@@ -894,6 +894,8 @@ class Client_functions extends common_function {
                         
                             $mysql_date = date('Y-m-d H:i:s');
                             $fields_arr = array(
+                                '`store_user_id`' =>$shopinfo->id,
+                                '`original_product_id`' =>$productdata->product->id,
                                 '`product_id`' =>$productid,
                                 '`old_price`' =>$oldprice,
                                 '`new_price`' =>$productprice,
