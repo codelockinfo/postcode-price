@@ -85,19 +85,15 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                     '</div></br>'+
                                                     '<div>'+
                                                     '</div>');
-                                                $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">'+
-                                                '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
-                                                '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
-                                                $productVariant = $('input[name="id"]').val();
-                                                getTotalprice($productVariant);
+                                                $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">');
+                                                getTotalprice();
                                             }
                                         },5000); 
                                     }
                                 $(document).on("click",".postcode-checker-preview",function(event){
                                     console.log("CLICK BTN ");
                                     event.preventDefault();  
-                                    $productVariant = $('input[name="id"]').val();
-                                    getTotalprice($productVariant);
+                                    getTotalprice();
                                 });
                         
                                 $(document).on("click",".close-btn, .bg-overlay",function(){
@@ -108,123 +104,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $(".single-option-selector").attr("disabled",false);
                                 });
                             
-                                $(document).on("click",".select__select,.swatch__button,.select-popout__toggle,.product-form__radio,.ProductForm__Item,.radio__button,.swatch__button,.product-options__value,.variant-picker__option .select,.variant-picker__option .color-swatch",function(){
-                                    if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
-                                        console.log("cookies");
-                                        $("form button[type='submit'],.clspayment").attr("disabled",true); 
-                                        $(".custom-model-main").addClass("model-open");
-                                    }
-                                });
-                            
-                                $(document).on("change","variant-selects.no-js-hidden,.single-option-selector,.product-form__radio",function(){
-                                    console.log("CHANGE");
-                                        $.ajax({
-                                                url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
-                                                type: "POST",
-                                                dataType: 'json',
-                                                data: {'routine_name': 'check_app_status' ,'store': shop},
-                                                beforeSend: function () {
-                                                },
-                                                success: function (comeback) {
-                                                    if (comeback['code'] != undefined && comeback['code'] == '403') {
-                                                    }else if (comeback['outcome'] == 'true') {
-                                                    if(comeback['data'] == '1'){
-                                                        console.log("select box first");
-                                                        $varinatselect = $( ".product-form__input--dropdown" ).html();
-                                                        $varinatselect = $( ".product-form" ).html();
-                                                        $( ".product-form__input--dropdown" ).each(function( index ) {
-                                                            $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
-                                                            (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
-                                                        });   
-                                                    }
-                                                    }
-                                                }
-                                        });
-                                
-                                });
-                                // START BROADCAST THEME VARIANTS CHANGE
-
-                                    $('input[data-index="option1"]').change(function() {
-                                        console.log("11111111111");
-                                        $selectedValue0 = $(this).val(); // Get the selected value
-                                        $("#clsoption0").val($selectedValue0);
-                                        
-                                    });
-                                    $('input[data-index="option2"]').change(function() {
-                                        console.log("22222222");
-                                        $selectedValue1 = $(this).val(); // Get the selected value
-                                        $("#clsoption1").val($selectedValue1);
-                                     
-                                    });
-
-                                // END BROADCAST THEME VARIANTS CHANGE
-                                //  START District THEME VARIANTS CHANGE
-
-                                    $('.product-form__input input[name="Size"]').change(function() {
-                                        console.log("3333333333");
-                                        $selectedValue0 = $(this).val(); // Get the selected value
-                                        $("#clsoption0").val($selectedValue0);
-                              
-                                    });
-                                    $('.product-form__input input[name="Color"]').change(function() {
-                                        console.log("44444444444444");
-                                        $selectedValue1 = $(this).val(); // Get the selected value
-                                        $("#clsoption1").val($selectedValue1);
-                                      
-                                    });
-                                    $('select[name="options[Size]"]').change(function() {
-                                        console.log("5555555555555");
-                                        $selectedValue0 = $(this).val(); // Get the selected value
-                                        $("#clsoption0").val($selectedValue0);
-                                      
-                                    });
-                                    $('select[name="options[Color]"]').change(function() {
-                                        console.log("666666666666666");
-                                        $selectedValue1 = $(this).val(); // Get the selected value
-                                        $("#clsoption1").val($selectedValue1);
-                                      
-                                    });
-                                // END District THEME VARIANTS CHANGE
-                                //  START Prestige THEME VARIANTS CHANGE
-                                    $('.Popover__Value').click(function() {
-                                        console.log("click");
-                                        $selectedValue = $(this).data("value"); // Get the selected value
-                                        $optionposition = $(this).attr("data-option-position");
-                                        console.log($optionposition);
-                                        if($optionposition == 1){
-                                            $("#clsoption0").val($selectedValue);
-                                        }else if($optionposition == 2){
-                                            $("#clsoption1").val($selectedValue);
-                                        }
-                                     
-                                    });
-                                // END Prestige THEME VARIANTS CHANGE
-                                // START Shella THEME VARIANTS CHANGE
-                                    $('.product-options__value').click(function() {
-                                        console.log("click");
-                                        $selectedValue = $(this).data("value"); // Get the selected value
-                                        $optionposition = $(this).closest(".product-options__section").attr("data-property");
-                                        console.log($optionposition);
-                                        if($optionposition == "size"){
-                                            $("#clsoption0").val($selectedValue);
-                                        }else if($optionposition == "color"){
-                                            $("#clsoption1").val($selectedValue);
-                                        }
-                                     
-                                    });
-                                // END Shella THEME VARIANTS CHANGE
-                                // START Impact THEME VARIANTS CHANGE
-                                    $('input[name="option1"]').change(function() {
-                                        console.log("click");
-                                        $selectedValue = $(this).val(); // Get the selected value
-                                        $("#clsoption0").val($selectedValue);
-                                    });
-                                    $('input[name="option2"]').change(function() {
-                                        console.log("click");
-                                        $selectedValue = $(this).val(); // Get the selected value
-                                        $("#clsoption1").val($selectedValue);
-                                    });
-                                // END Impact THEME VARIANTS CHANGE
                                 $(document).on("click","form button[type='submit']",function (ent) {
                                     ent.preventDefault();
                                     console.log("Addtocart button click");
@@ -368,7 +247,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         }
 
         check_app_status();
-        function getTotalprice($variantId){
+        function getTotalprice(){
             console.log("getTotalprice function ");
             var clsgetpostcode = $(".clspostcode").val();
             var clsproductId = $('input[name="product-id"]').val();
@@ -416,9 +295,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 $hasClass = $("#clsproductZipcodevalue").html();
                                 if($hasClass == undefined){
                                     console.log("HASclASS");
-                                    $(".product-form,.ProductForm,form[action='/cart/add']").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">'+
-                                        '<input type="hidden" name="clsoption0" id="clsoption0" value="">'+
-                                        '<input type="hidden" name="clsoption1" id="clsoption1" value="">');
+                                    $(".product-form,.ProductForm,form[action='/cart/add']").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">');
                                     $(".product__price-container,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-page-info__price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap").append(
                                         '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                         ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
@@ -510,70 +387,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 }
                       
                                 $('form button[type="submit"],.clspayment').attr("disabled",false);
-                                $( ".product-form__input--dropdown" ).each(function( index ) {
-                                    $dropdownval = ($(this).find(".select__select").val() == '') ? '' : $(this).find(".select__select").val();
-                                    (index == 0) ? $("#clsoption0").val($dropdownval) :  $("#clsoption1").val($dropdownval);
-                                });
-                                $( ".ProductForm__Variants .ProductForm__Option" ).each(function( index ) {
-                                    $dropdownval = ($(this).find(".ProductForm__SelectedValue").html() == '') ? '' : $(this).find(".ProductForm__SelectedValue").html();
-                                    console.log($dropdownval + "PRESTIGE");
-                                    (index == 0) ? $("#clsoption0").val($dropdownval) : '';
-                                    (index == 1) ?  $("#clsoption1").val($dropdownval) : '';
-                                });
-                                if($("#clsoption0").val() == "" ){
-                                    console.log("option0");
-                                   $clsoption0 =  $('input[name="Size"]:checked').val();
-                                   console.log($clsoption0);
-                                   $("#clsoption0").val($clsoption0);
-                                }
-                                if($("#clsoption1").val() == "" ){
-                                    console.log("option1");
-                                    $clsoption1 =  $('input[name="Color"]:checked').val();
-                                    console.log($clsoption1);
-                                    $("#clsoption1").val($clsoption1);
-                                }
-                                if($("#clsoption0").val() == "" ){
-                                    console.log("option0");
-                                   $clsoption0 =  $('input[data-index="option1"]').val();
-                                   console.log($clsoption0);
-                                   $("#clsoption0").val($clsoption0);
-                                }
-                                if($("#clsoption1").val() == "" ){
-                                    console.log("option1");
-                                    $clsoption1 =  $('input[data-index="option2"]:checked').val();
-                                    console.log($clsoption1);
-                                    $("#clsoption1").val($clsoption1);
-                                }
-                                if($("#clsoption0").val() == "" ){
-                                    $clsoption0 = $('select[name="options[Size]"]').val();
-                                    console.log($clsoption0);
-                                    $("#clsoption0").val($clsoption0);
-                                }
-                                if($("#clsoption1").val() == "" ){
-                                    $clsoption1 = $('select[name="options[Color]"]').val();
-                                    console.log($clsoption1);
-                                    $("#clsoption1").val($clsoption1);
-                                }
-                                if($("#clsoption0").val() == "" ){
-                                    $clsoption0 = $('.product-options__section[data-property="size"] .active').data('value');
-                                    console.log($clsoption0);
-                                    $("#clsoption0").val($clsoption0);
-                                }
-                                if($("#clsoption1").val() == "" ){
-                                    $clsoption1 = $('.product-options__section[data-property="color"] .active').data('value');
-                                    console.log($clsoption1);
-                                    $("#clsoption1").val($clsoption1);
-                                }
-                                if($("#clsoption0").val() == "" ){
-                                    $clsoption0 = $('input[name="option1"]').val();
-                                    console.log($clsoption0);
-                                    $("#clsoption0").val($clsoption0);
-                                }
-                                if($("#clsoption1").val() == "" ){
-                                    $clsoption1 = $('input[name="option2"]:checked').val();
-                                    console.log($clsoption1);
-                                    $("#clsoption1").val($clsoption1);
-                                }
 
                         } else {
                             $(".clssucessmsg").html("");
@@ -585,12 +398,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         }
     
         function addTocartfunc(){
-            $clsoption0 = ($("#clsoption0").val() == '') ? '' : $("#clsoption0").val();
-            $clsoption1 = ($("#clsoption1").val() == '') ? '' : $("#clsoption1").val();
+           
             var clsproductId = $('input[name="product-id"]').val();
             var productVariantId = $('input[name="id"]').val();
             $productQtyy = $(".quantity .quantity__input").val();
-
             $getpostcode = getCookie("postcodeval");
             $productvariantHtml = $("#productvariant").val();
             var pairs = $productvariantHtml.split(';');
@@ -614,7 +425,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {'routine_name': 'get__atc_product' ,'store': shop,'productid':clsproductId,'productvariantid':productVariantId,'postcode':$getpostcode,'clsoption0':$clsoption0,'clsoption1':$clsoption1,'productprice':$price,'oldprice':$price},
+                    data: {'routine_name': 'get__atc_product' ,'store': shop,'productid':clsproductId,'productvariantid':productVariantId,'postcode':$getpostcode,'productprice':$price},
                     success: function (comeback) {
                         console.log(comeback);
                         $.each(comeback.product.variants, function(key, value) {
@@ -698,9 +509,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 $(".custom-model-main").addClass("model-open");
             }
             console.log("change id");
-            $variantId = $(this).val();
-            console.log($variantId);
-            getTotalprice($variantId);
+            getTotalprice();
         });
     });
 });

@@ -731,10 +731,7 @@ class Client_functions extends common_function {
         $productid = isset($_POST['productid']) ? $_POST['productid'] :'';
         $productvariantid = isset($_POST['productvariantid']) ? $_POST['productvariantid'] :'';
         $productprice = isset($_POST['productprice']) ? $_POST['productprice'] :'';
-        $oldprice = isset($_POST['oldprice']) ? $_POST['oldprice'] :'';
         $postcode = isset($_POST['postcode']) ? $_POST['postcode'] :'';
-        $clsoption1 = isset($_POST['clsoption1']) ? $_POST['clsoption1'] :'';
-        $clsoption0 = isset($_POST['clsoption0']) ? $_POST['clsoption0'] :'';
         $shopify_api = array("api_name" => "products/".$productid);
         $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
         
@@ -751,6 +748,7 @@ class Client_functions extends common_function {
             foreach ($productdata->product->variants as $variant) {
                 if($variant->id == $productvariantid){
                     $varianttitle = explode('/', $variant->title);
+                    $oldprice =  $variant->price;
                     $variantitle = count($varianttitle);
                 }
             }
