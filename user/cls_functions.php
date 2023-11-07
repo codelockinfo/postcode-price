@@ -837,6 +837,9 @@ class Client_functions extends common_function {
                         // foreach ($dynamicOption as $variableName => $variableValue) {
                         //     $options1 = array("name" => $variableValue,"position" => $variableName);
                         // }
+                        echo "<pre>";
+                        print_r($variants1);
+                        echo "-------";
                         $options1 = array("name" => "Size","position" => 1);
                         $options2 = array("name" => "Color","position" => 2);
                         $options3 = array("name" => "Material","position" => 3);
@@ -889,6 +892,8 @@ class Client_functions extends common_function {
                 }else{
                     $dublicateproductdata = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
                 }
+                echo "<pre>";
+                print_r($dublicateproductdata);
                 $api = array('api_name' => 'products/'.$dublicateproductdata->product->id.'/images');
                 $cdn_img = $productimage;
                 $product_image_array = array('image' => array('product_id' => $dublicateproductdata->product->id, 'src' =>$cdn_img));
