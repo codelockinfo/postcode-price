@@ -799,6 +799,7 @@ class Client_functions extends common_function {
                     $variants = array();
                     echo "<pre>";
                     print_r($variantitle);
+                    print_r($varianttitle[2]);
                     if($variantitle == 1){
                         generate_log('createproduct', "  create product array option1"); 
                         $variants1 = array("option1"=>$varianttitle[0],"price" =>$productprice );
@@ -839,6 +840,8 @@ class Client_functions extends common_function {
                     }else if($variantitle == 3){
                         generate_log('createproduct', "  create product array option1&2"); 
                         $variants1 = array("option1"=>$varianttitle[0],"option2"=>$varianttitle[1],"option2"=>$varianttitle[2],"price" =>$productprice );
+                        echo "<pre>";
+                        print_r($variants1);
                         array_push($variants,$variants1);
                         // foreach ($dynamicOption as $variableName => $variableValue) {
                         //     $options1 = array("name" => $variableValue,"position" => $variableName);
