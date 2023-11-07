@@ -378,8 +378,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     if($productPriceClassHtml == undefined){
                                         $productPriceClass = $('.price-list sale-price');
                                         var $salePriceElement = $('.price-list sale-price');
-                                        var priceText = $salePriceElement.text();
-                                        var match = priceText.match(/Rs\. \d+\.\d+/);
+                                        $productPriceClassHtml = $salePriceElement.text();
+                                        var match = $productPriceClassHtml.match(/Rs\. \d+\.\d+/);
                                         if (match) {
                                             $productPriceClassHtml = match[0];
                                             console.log($productPriceClassHtml );
