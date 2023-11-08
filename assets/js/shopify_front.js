@@ -272,7 +272,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $('input[name="product-id"]').after('<input type="hidden" name="productvariant" id="productvariant" value="'+ $productVariantHtml +'">');
                                 }
                                 $productVariantId = $('input[name="id"]').val();
-                                console.log(productVariantId + "VVVVVVVVVVVV");
+                                console.log($productVariantId + "VVVVVVVVVVVV");
                                 $productvariantHtml = $("#productvariant").val();
         
                                 var pairs = $productvariantHtml.split(';');
