@@ -555,7 +555,7 @@ class Client_functions extends common_function {
                     $totalprice = $variant->price + $zoneprice;
                     $format = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
                     $totalprice_symbol = $format->formatCurrency($totalprice, $shop_currency);
-                    $combinedString .= $variant->id . "," . $totalprice_symbol .";";
+                    $combinedString .= $variant->id . "," . $totalprice .";";
 
                     }
                     $combinedString = rtrim($combinedString, ';');
