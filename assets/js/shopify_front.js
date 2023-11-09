@@ -285,7 +285,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
                                 $productvariantHtml = $("#productvariant").val();
-        
+        console.log($productvariantHtml + "VARIANT IDS HTML VALUE");
                                 var pairs = $productvariantHtml.split(';');
                                 for (var i = 0; i < pairs.length; i++) {
                                     var pair = pairs[i].split(',');
