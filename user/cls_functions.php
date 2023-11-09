@@ -534,7 +534,7 @@ class Client_functions extends common_function {
                 $shopify_api = array("api_name" => "products/".$productid);
                 $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
 
-                $shopify_shop_api = array("api_name" => "shop");
+                $shopify_shop_api = array("api_name" => "currencies");
                 $shopdata = $this->cls_get_shopify_list($shopify_shop_api, '', 'GET');
 
                 echo "<pre>";
