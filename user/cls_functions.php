@@ -547,18 +547,20 @@ class Client_functions extends common_function {
                 $shopify_shop_api = array("api_name" => "shop");
                 $shopdata = $this->cls_get_shopify_list($shopify_shop_api, '', 'GET');
                 $shop_currency = $shopdata->shop->currency;
-echo "<pre>";
+
+                $combinedString = "";
+                if ($productdata && isset($productdata->product->variants)) {
+                    foreach ($productdata->product->variants as $variant) {
+                        
+                    $totalprice = $variant->price + $zoneprice;
+                    echo "<pre>";
 print_r($shop_currency);
 $format = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
-$shop_currency_symbol = $format->formatCurrency(123456789, $shop_currency);
+$shop_currency_symbol = $format->formatCurrency($totalprice, $shop_currency);
 echo "<pre>";
 echo "----";
 print_r($shop_currency_symbol );
 echo "----";
-                $combinedString = "";
-                if ($productdata && isset($productdata->product->variants)) {
-                    foreach ($productdata->product->variants as $variant) {
-                    $totalprice = $variant->price + $zoneprice;
                     $combinedString .= $variant->id . "," . $totalprice .";";
 
                     }
