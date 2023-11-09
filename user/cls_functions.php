@@ -536,10 +536,9 @@ class Client_functions extends common_function {
 
                 $shopify_shop_api = array("api_name" => "shop");
                 $shopdata = $this->cls_get_shopify_list($shopify_shop_api, '', 'GET');
-
-                echo "<pre>";
-                print_r($shopdata);
-                
+                $shop_currency = $shopdata->shop->currency;
+echo "<pre>"                ;
+print_r($shop_currency);
 
                 $combinedString = "";
                 if ($productdata && isset($productdata->product->variants)) {
