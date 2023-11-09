@@ -553,15 +553,9 @@ class Client_functions extends common_function {
                     foreach ($productdata->product->variants as $variant) {
                         
                     $totalprice = $variant->price + $zoneprice;
-                    echo "<pre>";
-print_r($shop_currency);
-$format = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
-$shop_currency_symbol = $format->formatCurrency($totalprice, $shop_currency);
-echo "<pre>";
-echo "----";
-print_r($shop_currency_symbol );
-echo "----";
-                    $combinedString .= $variant->id . "," . $totalprice .";";
+                    $format = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
+                    $totalprice_symbol = $format->formatCurrency($totalprice, $shop_currency);
+                    $combinedString .= $variant->id . "," . $totalprice_symbol .";";
 
                     }
                     $combinedString = rtrim($combinedString, ';');
