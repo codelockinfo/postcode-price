@@ -537,8 +537,11 @@ class Client_functions extends common_function {
                 $shopify_shop_api = array("api_name" => "shop");
                 $shopdata = $this->cls_get_shopify_list($shopify_shop_api, '', 'GET');
                 $shop_currency = $shopdata->shop->currency;
-echo "<pre>"                ;
+echo "<pre>";
 print_r($shop_currency);
+$shop_currency_symbol = Symfony\Component\Intl\Intl::getCurrencyBundle()->getCurrencySymbol($shop_currency);
+echo "<pre>";
+print_r($shop_currency_symbol);
 
                 $combinedString = "";
                 if ($productdata && isset($productdata->product->variants)) {
