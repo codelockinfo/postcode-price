@@ -533,6 +533,14 @@ class Client_functions extends common_function {
                 $zoneprice = isset($data->zoneprice) ? $data->zoneprice : '';
                 $shopify_api = array("api_name" => "products/".$productid);
                 $productdata = $this->cls_get_shopify_list($shopify_api, '', 'GET');
+
+                $shopify_shop_api = array("api_name" => "shop");
+                $shopdata = $this->cls_get_shopify_list($shopify_shop_api, '', 'GET');
+
+                echo "<pre>";
+                print_r($shopdata);
+                
+
                 $combinedString = "";
                 if ($productdata && isset($productdata->product->variants)) {
                     foreach ($productdata->product->variants as $variant) {
