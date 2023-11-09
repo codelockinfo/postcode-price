@@ -276,8 +276,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 if($productVariantId == undefined || $productVariantId == ""){
                                     console.log("Variant ID ");
                                     $productVariantId = $.urlParam('variant'); 
-                                    // $productVariantId = getParameterByName('variant');
                                     console.log($productVariantId + "VVVVVVVVVVVV");
+                                }
+                                if($productVariantId == undefined || $productVariantId == ""){
+                                    console.log("set default variant id");
                                 }
                                 $productvariantHtml = $("#productvariant").val();
         
@@ -522,15 +524,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
             return results[1] || 0;
         }
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[[]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-        }
+       
         $('input[name="id"]').change(function() {
             if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                 console.log("cookies");
