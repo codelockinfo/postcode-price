@@ -552,7 +552,9 @@ print_r($shop_currency);
 $format = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
 $shop_currency_symbol = $format->formatCurrency(123456789, $shop_currency);
 echo "<pre>";
+echo "----";
 print_r($shop_currency_symbol );
+echo "----";
                 $combinedString = "";
                 if ($productdata && isset($productdata->product->variants)) {
                     foreach ($productdata->product->variants as $variant) {
