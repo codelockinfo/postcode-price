@@ -279,6 +279,9 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $productVariantId = getParameterByName('variant');
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
+                                if($productVariantId == undefined || $productVariantId == ""){
+                                    console.log("set default variant id");
+                                }
                                 $productvariantHtml = $("#productvariant").val();
         
                                 var pairs = $productvariantHtml.split(';');
