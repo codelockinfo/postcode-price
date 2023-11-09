@@ -510,7 +510,17 @@ class Client_functions extends common_function {
         }
         return $response_data; 
     }
-    
+    function get_currency_symbol($string){
+        $symbol = '';
+        $length = mb_strlen($string, 'utf-8');
+        for ($i = 0; $i < $length; $i++)
+        {
+            $char = mb_substr($string, $i, 1, 'utf-8');
+            if (!ctype_digit($char) && !ctype_punct($char))
+                $symbol .= $char;
+        }
+        return $symbol;
+    }
     function get_postcode(){
         $comeback = array('outcome' => 'fail', 'msg' => CLS_SOMETHING_WENT_WRONG);
         $shopinfo = $this->current_store_obj;
@@ -539,10 +549,10 @@ class Client_functions extends common_function {
                 $shop_currency = $shopdata->shop->currency;
 echo "<pre>";
 print_r($shop_currency);
-$shop_currency_symbol = Symfony\Component\Intl\Intl::getCurrencyBundle()->getCurrencySymbol($shop_currency);
+$format = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
+$shop_currency_symbol = $format->formatCurrency(123456789, $shop_currency);
 echo "<pre>";
-print_r($shop_currency_symbol);
-
+print_r($shop_currency_symbol );
                 $combinedString = "";
                 if ($productdata && isset($productdata->product->variants)) {
                     foreach ($productdata->product->variants as $variant) {
