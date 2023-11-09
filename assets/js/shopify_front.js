@@ -536,7 +536,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
-        $('input[name="id"]').change(function() {
+        $('input[name="id"],input[name="variant_id"]').change(function() {
             if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                 console.log("cookies");
                 $("form button[type='submit'],.clspayment").attr("disabled",true); 
