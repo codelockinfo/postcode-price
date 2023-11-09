@@ -285,7 +285,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
                                 $productvariantHtml = $("#productvariant").val();
-        console.log($productvariantHtml + "VARIANT IDS HTML VALUE");
                                 var pairs = $productvariantHtml.split(';');
                                 for (var i = 0; i < pairs.length; i++) {
                                     var pair = pairs[i].split(',');
@@ -400,7 +399,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log($currecySymbol);
                                     $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span,.price-list sale-price").css("display","block");
                                     setTimeout(function(){
-                                        $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span,.price-list sale-price").html($currecySymbol[0]+" "+$newPrice);
+                                        $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span,.price-list sale-price,.product-page-info__price .price span").html($currecySymbol[0]+" "+$newPrice);
                                         $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                         $hasClass = $("#clsproductZipcodevalue").html();
                                         if($hasClass == undefined){
