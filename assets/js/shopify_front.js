@@ -275,7 +275,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 console.log($productVariantId + "VVVVVVVVVVVV");
                                 if($productVariantId == undefined || $productVariantId == ""){
                                     console.log("Variant ID ");
-                                    // $productVariantId = $.urlParam('variant'); 
                                     $productVariantId = getParameterByName('variant');
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
@@ -517,10 +516,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_css);
             clearInterval($findbuynowbtn);  
         }
-        }
-        $.urlParam = function(name){
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-            return results[1] || 0;
         }
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
