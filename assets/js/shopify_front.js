@@ -275,8 +275,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 console.log($productVariantId + "VVVVVVVVVVVV");
                                 if($productVariantId == undefined || $productVariantId == ""){
                                     console.log("Variant ID ");
-                                    var urlParams = new URLSearchParams(window.location.search);
-                                    $productVariantId = urlParams.has('variant');
+                                    $productVariantId = $.urlParam('variant'); 
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
                                 $productvariantHtml = $("#productvariant").val();
@@ -518,7 +517,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             clearInterval($findbuynowbtn);  
         }
         }
-
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results[1] || 0;
+        }
         $('input[name="id"]').change(function() {
             if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                 console.log("cookies");
