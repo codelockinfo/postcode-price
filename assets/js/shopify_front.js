@@ -353,6 +353,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $productPriceClass = $('.product-page-info__price .price span');
                                         $productPriceClassHtml = $('.product-page-info__price .price span').html();
                                     }
+                                    console.log($productPriceClassHtml + "SHELLA THEME")
                                     if($productPriceClassHtml == undefined){
                                         $productPriceClass = $('.product-single__meta .product__price');
                                         $productPriceClassHtml = $('.product-single__meta .product__price').html();
