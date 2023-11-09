@@ -273,6 +273,12 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 }
                                 $productVariantId = $('input[name="id"]').val();
                                 console.log($productVariantId + "VVVVVVVVVVVV");
+                                if($productVariantId == undefined || $productVariantId == ""){
+                                    console.log("Variant ID ");
+                                    var urlParams = new URLSearchParams(window.location.search);
+                                    $productVariantId = urlParams.has('variant');
+                                    console.log($productVariantId + "VVVVVVVVVVVV");
+                                }
                                 $productvariantHtml = $("#productvariant").val();
         
                                 var pairs = $productvariantHtml.split(';');
