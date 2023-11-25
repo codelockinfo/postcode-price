@@ -63,6 +63,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                             if(comeback['data'] == '1'){
                                 console.log(comeback['data']);
                                 $(".single-option-selector").addClass("clssingle-option-selector");
+                                console.log(window.location.href.includes("/products_preview?"));
+                                console.log("--------------------------");
                                     if(window.location.href.includes("/products/")){
                                         console.log("product page");
                                         $findbuynowbtn = setInterval(hasbuynowbtn, 5000); 
