@@ -88,7 +88,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                     '</div></br>'+
                                                     '<div>'+
                                                     '</div>');
-                                                $(".product-form,.ProductForm,.product-single__form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">');
+                                                $(".product-form,.ProductForm,.product-single__form,.form").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">');
                                                 getTotalprice();
                                             }
                                         },1000); 
