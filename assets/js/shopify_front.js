@@ -75,7 +75,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                                 popupHtml();
                                             }else{
                                                 console.log("onload event for pdppage");
-                                                console.log(getCookie("postcodeval"));
+                                                console.log(getCookie("postcodeval") + "  POSTCODE-VALUE");
                                                 $(".product__price-container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap,.price--show-badge").append(
                                                     '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                                     ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
