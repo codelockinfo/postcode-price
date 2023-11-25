@@ -403,7 +403,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     setTimeout(function(){
                                         $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review .t4s-product-price,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span,.price-list sale-price,.product-page-info__price .price span").html($currecySymbol[0]+" "+$newPrice);
                                         $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
-                                        $hasClass = $("#clsproductZipcodevalue").html();
+                                        $hasClass = $("#clsproductZipcodevalue").val();
                                         if($hasClass == undefined){
                                             console.log("HASclASS");
                                             $(".product-form,.ProductForm,form[action='/cart/add']").append('<input type="hidden" name="clsproductxipcodevalue" id="clsproductZipcodevalue" value="'+getCookie("postcodeval")+'">');
