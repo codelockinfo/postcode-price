@@ -286,19 +286,21 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $productVariantId = $('input[name="variant_id"]').val();
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
-                                $productvariantHtml = $("#productvariant").val();
-                                var pairs = $productvariantHtml.split(';');
-                                for (var i = 0; i < pairs.length; i++) {
-                                    var pair = pairs[i].split(',');
-                                    if (pair[0] === $productVariantId) {
-                                        $newPrice = pair[1];
-                                        break; // Exit the loop when a match is found
+                                if($productVariantId != undefined){
+                                    $productvariantHtml = $("#productvariant").val();
+                                    var pairs = $productvariantHtml.split(';');
+                                    for (var i = 0; i < pairs.length; i++) {
+                                        var pair = pairs[i].split(',');
+                                        if (pair[0] === $productVariantId) {
+                                            $newPrice = pair[1];
+                                            break; // Exit the loop when a match is found
+                                        }
                                     }
-                                }
-                                if ($newPrice !== null) {
-                                    console.log("Value for " + $productVariantId + " is " + $newPrice);
-                                } else {
-                                    console.log("Value not found for " + $productVariantId);
+                                    if ($newPrice !== null) {
+                                        console.log("Value for " + $productVariantId + " is " + $newPrice);
+                                    } else {
+                                        console.log("Value not found for " + $productVariantId);
+                                    }
                                 }
                                 
                                 $(".custom-model-main").removeClass("model-open");
