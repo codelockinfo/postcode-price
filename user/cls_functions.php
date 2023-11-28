@@ -736,15 +736,14 @@ class Client_functions extends common_function {
             $dynamicOption["$i"] = $option->name;
             $i++;
         }
-        echo "<pre>";
-        print_r($productdata);
-        echo "--------------";
-        print_r($productdata->product->variants);
         if ($productdata && isset($productdata->product->variants)) {
             $variants_count = count($productdata->product->variants);
             foreach ($productdata->product->variants as $variant) {
                 echo "in foreachloop";
+                print_r($variant->id);
+                print_r($productvariantid);
                 if($variant->id == $productvariantid){
+                    echo "in if ";
                     $varianttitle = explode('/', $variant->title);
                     $oldprice =  $variant->price;
                     $variantitle = count($varianttitle);
