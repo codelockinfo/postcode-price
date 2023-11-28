@@ -286,6 +286,13 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $productVariantId = $('input[name="variant_id"]').val();
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
+                                //impulse 
+                                if($productVariantId == undefined || $productVariantId == ""){
+                                    console.log("set default variant id");
+                                    $productVariantId = $('select[name="id"]  option:selected').val()
+                                    console.log($productVariantId + "VVVVVVVVVVVV");
+                                }
+                                //impulse 
                                
                                 $productvariantHtml = $("#productvariant").val();
                                 var pairs = $productvariantHtml.split(';');
@@ -548,6 +555,15 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                 $(".custom-model-main").addClass("model-open");
             }
             console.log("change id");
+            getTotalprice();
+        });
+        $('select[name="id"]').change(function() {
+            console.log("SELECT OPTION CHANGE");
+            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
+                console.log("cookies");
+                $("form button[type='submit'],.clspayment").attr("disabled",true); 
+                $(".custom-model-main").addClass("model-open");
+            }
             getTotalprice();
         });
     });
