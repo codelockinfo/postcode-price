@@ -106,7 +106,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             $(".single-option-selector").attr("disabled",false);
                                         });
                                     
-                                        $(document).on("click","form button[type='submit'],form[action='/cart/add'] input[type='submit']",function (ent) {
+                                        $(document).on("click","form button[type='submit'],.product__section--buttons form[action='/cart/add'] input[type='submit']",function (ent) {
                                             ent.preventDefault();
                                             console.log("Addtocart button click");
                                             addTocartfunc();
