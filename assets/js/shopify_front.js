@@ -403,7 +403,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             console.log("Price not found.");
                                         }
                                     }
-                                    console.log(productPriceClassHtml + "--------");
+                                    console.log($productPriceClassHtml + "--------");
                                     if($productPriceClassHtml == undefined){
                                         console.log("in if....");
                                         $productPriceClass = $('.price-area .current-price');
