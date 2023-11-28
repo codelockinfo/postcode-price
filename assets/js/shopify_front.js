@@ -409,6 +409,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $productPriceClass = $('.price-area .current-price');
                                         $productPriceClassHtml = $('.price-area .current-price').html();
                                     }
+                                    if($productPriceClassHtml == undefined){
+                                        $productPriceClass = $('.price__number .money');
+                                        $productPriceClassHtml = $('.price__number .money').html();
+                                    }
                                     console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                                     $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                                     $currecySymbol = $ProductPriceSymbol.split(' ');
@@ -467,7 +471,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
         }
     
         function addTocartfunc(){
-           
+
             var clsproductId = $('input[name="product-id"]').val();
             var productVariantId = $('input[name="id"]').val();
             $productQtyy = $(".quantity .quantity__input").val();
