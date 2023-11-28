@@ -400,6 +400,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             $productPriceClassHtml = match[0];
                                             console.log($productPriceClassHtml );
                                         } else {
+                                            $productPriceClassHtml = undefined;
                                             console.log("Price not found.");
                                         }
                                     }
