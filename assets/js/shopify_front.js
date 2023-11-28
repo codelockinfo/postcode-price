@@ -546,7 +546,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
-        $(document).on('change', 'input[name="id"],input[name="variant_id"],select[name="id"]', function() {
+        $('input[name="id"],input[name="variant_id"],select[name="id"]').change(function() {
             console.log("CHANGE  id ");
             if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                 console.log("cookies");
