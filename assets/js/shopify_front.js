@@ -478,7 +478,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                     url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {'routine_name': 'get__atc_product' ,'store': shop,'productid':clsproductId,'productvariantid':productVariantId,'postcode':$getpostcode,'productprice':$price},
+                    data: {'routine_name': 'get__atc_product' ,'store': shop,'productid':clsproductId,'productvariantid':$productVariantId,'postcode':$getpostcode,'productprice':$price},
                     success: function (comeback) {
                         console.log(comeback);
                         $.each(comeback.product.variants, function(key, value) {
