@@ -287,12 +287,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
                                
-                                if($productVariantId == undefined || $productVariantId == ""){
-                                    console.log("set selectbox using variant id");
-                                    $productVariantId = $('select[name="id"]  option:selected').val();
-                                    console.log($productVariantId + "VVVVVVVVVVVV");
-                                }
-                               
                                 $productvariantHtml = $("#productvariant").val();
                                 var pairs = $productvariantHtml.split(';');
                                 for (var i = 0; i < pairs.length; i++) {
@@ -546,7 +540,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
-        $('input[name="id"],input[name="variant_id"],select[name="id"]').change(function() {
+        $(document).on('change', 'input[name="id"],input[name="variant_id"]', function() {
             console.log("CHANGE  id ");
             if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                 console.log("cookies");
