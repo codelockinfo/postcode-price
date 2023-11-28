@@ -741,7 +741,9 @@ class Client_functions extends common_function {
             foreach ($productdata->product->variants as $variant) {
                 echo "in foreachloop";
                 print_r($variant->id);
+                echo "-------";
                 print_r($productvariantid);
+                echo "-------";
                 if($variant->id == $productvariantid){
                     echo "in if ";
                     $varianttitle = explode('/', $variant->title);
