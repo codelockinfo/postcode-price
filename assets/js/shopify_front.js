@@ -335,6 +335,7 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             $productPriceClassHtml = match[0];
                                             console.log($productPriceClassHtml );
                                         } else {
+                                            $productPriceClassHtml = undefined;
                                             console.log("Price not found.");
                                         }
                                     }
@@ -404,12 +405,9 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             console.log("Price not found.");
                                         }
                                     }
-                                    console.log($productPriceClassHtml + "--------");
                                     if($productPriceClassHtml == undefined){
-                                        console.log("in if....");
                                         $productPriceClass = $('.price-area .current-price');
                                         $productPriceClassHtml = $('.price-area .current-price').html();
-                                        console.log($productPriceClassHtml  + ".....");
                                     }
                                     console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                                     $ProductPriceSymbol =  $.trim($productPriceClassHtml);
