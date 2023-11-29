@@ -473,6 +473,8 @@ $(document).ready(function() {
                             console.log($currecySymbol);
                             
                             setTimeout(function(){
+                                
+                                $(".price-list.price-list--product sale-price").append($currecySymbol[0]+" "+$newPrice);
                                 $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review .t4s-product-price,.f8pr .f8pr-price,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span,.product-info__price .price-list sale-price,.product-page-info__price .price span,.price-area .current-price,.price__regular .price-item--regular,.price__number .money,div span[data-product-price]").html($currecySymbol[0]+" "+$newPrice);
                                 $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                 $hasClass = $("#clsproductZipcodevalue").val();
