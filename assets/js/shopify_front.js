@@ -367,14 +367,17 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     $productPriceClassHtml = $(".price .price__regular .price-item").html();
                                     $productPriceClass = $(".price .price__regular .price-item");
                                     if($productPriceClassHtml == undefined){
+                                        console.log("1111111");
                                         $productPriceClass = $('.js-price .money');
                                         $productPriceClassHtml = $('.js-price .money').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("2222222");
                                         $productPriceClass = $('.js-price');
                                         $productPriceClassHtml = $('.js-price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("33333333333");
                                         $productPriceClass = $('.product-info__price sale-price');
                                         var $salePriceElement = $('.product-info__price  sale-price');
                                         var priceText = $salePriceElement.text();
@@ -388,63 +391,73 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("4444444444");
                                         $productPriceClass = $('.product-info__price sale-price');
                                         $productPriceClassHtml = $('.product-info__price sale-price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("5555555");
                                         $productPriceClass = $('.product-price span');
                                         $productPriceClassHtml = $('.product-price span').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("666666666666666");
                                         $productPriceClass = $('.t4s-product__price-review .t4s-product-price');
                                         $productPriceClassHtml = $('.t4s-product__price-review .t4s-product-price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("777777777777777777");
                                         $productPriceClass = $('.f8pr .f8pr-price');
                                         $productPriceClassHtml = $('.f8pr .f8pr-price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("88888888888888");
                                         $productPriceClass = $('.product-single__prices .product-single__price');
                                         $productPriceClassHtml = $('.product-single__prices .product-single__price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
-                                        $productPriceClass = $('.product-block--price .product-single__prices');
-                                        $productPriceClassHtml = $('.product-block--price .product-single__prices').html();
-                                    }
-                                    if($productPriceClassHtml == undefined){
+                                        console.log("999999999999999");
                                         $productPriceClass = $('.product-page-info__price .price span');
                                         $productPriceClassHtml = $('.product-page-info__price .price span').html();
                                     }
                                     console.log($productPriceClassHtml + "SHELLA THEME")
                                     if($productPriceClassHtml == undefined){
+                                        console.log("11122222222222");
                                         $productPriceClass = $('.product-single__meta .product__price');
                                         $productPriceClassHtml = $('.product-single__meta .product__price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("00000000");
                                         $productPriceClass = $('.ProductMeta__PriceList .Price');
                                         $productPriceClassHtml = $('.ProductMeta__PriceList .Price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("134134131431");
                                         $productPriceClass = $('.price-review .current_price');
                                         $productPriceClassHtml = $('.price-review .current_price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("3334434343434343");
                                         $productPriceClass = $('.product__price__wrap span');
                                         $productPriceClassHtml = $('.product__price__wrap span').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("898989898989");
                                         $productPriceClass = $('.product__price  .price__container');
                                         $productPriceClassHtml = $('.product__price  .price__container').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("67676767676767");
                                         $productPriceClass = $('.price  .price__container');
                                         $productPriceClassHtml = $('.price  .price__container').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("12001000202002");
                                         $productPriceClass = $('.product-price');
                                         $productPriceClassHtml = $('.product-price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("36456435643564534");
                                         $productPriceClass = $('.price-list sale-price');
                                         var $salePriceElement = $('.price-list sale-price');
                                         $productPriceClassHtml = $salePriceElement.text();
@@ -458,14 +471,17 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         }
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("huhuhuhuhuhuhhu");
                                         $productPriceClass = $('.price-area .current-price');
                                         $productPriceClassHtml = $('.price-area .current-price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("rtyrtryeyreyre");
                                         $productPriceClass = $('.price__number .money');
                                         $productPriceClassHtml = $('.price__number .money').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        console.log("erwewterwetrwetrwt");
                                         $productPriceClass = $('div span[data-product-price]');
                                         $productPriceClassHtml = $('div span[data-product-price]').html();
                                     }
