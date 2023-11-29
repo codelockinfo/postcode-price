@@ -377,8 +377,8 @@ $(document).ready(function() {
                                 $productPriceClassHtml = $('.js-price').html();
                             }
                             if($productPriceClassHtml == undefined){
-                                $productPriceClass = $('.product-info__price sale-price');
-                                var $salePriceElement = $('.product-info__price  sale-price');
+                                $productPriceClass = $('.product-info__price sale-price,.price-list sale-price ');
+                                var $salePriceElement = $('.product-info__price  sale-price,.price-list sale-price ');
                                 var priceText = $salePriceElement.text();
                                 var match = priceText.match(/Rs\. \d+\.\d+/);
                                 if (match) {
