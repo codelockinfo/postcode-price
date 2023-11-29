@@ -589,7 +589,7 @@ $(document).ready(function() {
 
     function  hasbuynowbtn(){
     $hasfindclass  = $("button").hasClass("shopify-payment-button__button");
-    console.log($hasfindclass);
+    console.log($hasfindclass + "...hasbuynowbtn btn");
     if($hasfindclass == true){
         $paytment_Btn_class = $(".shopify-payment-button__button").attr("class");
         $paytment_Btn_text = $(".shopify-payment-button__button").html();
