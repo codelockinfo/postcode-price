@@ -378,8 +378,8 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                     }
                                     if($productPriceClassHtml == undefined){
                                         console.log("33333333333");
-                                        $productPriceClass = $('.product-info__price sale-price');
-                                        var $salePriceElement = $('.product-info__price  sale-price');
+                                        $productPriceClass = $('.product-info__price sale-price,.product-block--price .product-single__prices');
+                                        var $salePriceElement = $('.product-info__price  sale-price,.product-block--price .product-single__prices');
                                         var priceText = $salePriceElement.text();
                                         var match = priceText.match(/Rs\. \d+\.\d+/);
                                         if (match) {
@@ -485,6 +485,11 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $productPriceClass = $('div span[data-product-price]');
                                         $productPriceClassHtml = $('div span[data-product-price]').html();
                                     }
+                                    // if($productPriceClassHtml == undefined){
+                                    //     console.log("erwewterwetrwetrwt");
+                                    //     $productPriceClass = $('.product-block--price .product-single__prices');
+                                    //     $productPriceClassHtml = $('.product-block--price .product-single__prices').html();
+                                    // }
                                     console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                                     $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                                     $currecySymbol = $ProductPriceSymbol.split(' ');
