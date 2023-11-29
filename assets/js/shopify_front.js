@@ -598,7 +598,7 @@ $(document).ready(function() {
         $(".shopify-payment-button__button").css("display","none");
         $(".shopify-payment-button__button").css("cssText", "display: none !important");
         $payment_btn_Html = '<button class="'+ $paytment_Btn_class +' clspayment">'+ $paytment_Btn_text +'</button>';
-        $(".product-form__buttons,.ProductForm,.product__submit__buttons,.payment-buttons,.dynamic-checkout,.buy-buttons .shopify-payment-button,.t4s-product-form__buttons .shopify-payment-button").append($payment_btn_Html);
+        $(".product-form__buttons,.ProductForm,.product__submit__buttons,.payment-buttons,.dynamic-checkout,.buy-buttons .shopify-payment-button,.t4s-product-form__buttons .shopify-payment-button,.flex-buttons .product__cart-functions").append($payment_btn_Html);
         $payment_btn_css = '<style>.clspayment::after {content: none !important;display: none !important;}</style>';
         $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_css);
         clearInterval($findbuynowbtn);  
