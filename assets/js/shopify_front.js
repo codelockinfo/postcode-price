@@ -205,6 +205,7 @@ $(document).ready(function() {
                                     });
 
                                     $(document).on('change', 'input[name="id"],input[name="variant_id"]', function() {
+                                        $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span,.price-list sale-price,.price-area,.price__regular .price-item--regular,.price .price__text,div span[data-product-price]").css("display","none");
                                         console.log("CHANGE  id ");
                                         if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                                             console.log("cookies");
@@ -216,6 +217,7 @@ $(document).ready(function() {
                                     });
 
                                     $('select[name="id"]').change(function() {
+                                        $(".product__price-container .price__regular .price-item,.price__container,.price-wrapper,.product-page-price-wrp,.product-price,.t4s-product__price-review,.f8pr .f8pr-price,.product-single__prices,.product-single__meta .product__price,.ProductMeta__PriceList,.price-review,.product__price__wrap .product__price span,.price-list sale-price,.price-area,.price__regular .price-item--regular,.price .price__text,div span[data-product-price]").css("display","none");
                                         console.log("SELECT OPTION CHANGE");
                                         if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
                                             console.log("cookies");
