@@ -273,12 +273,14 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                 if($hasproductvariant == undefined){
                                     $('input[name="product-id"]').after('<input type="hidden" name="productvariant" id="productvariant" value="'+ $productVariantHtml +'">');
                                 }
-                                $productVariantId = $('input[name="id"]').val();
-                                console.log($productVariantId + "VVVVVVVVVVVV");
                                 if($productVariantId == undefined || $productVariantId == ""){
                                     console.log("Variant ID ");
                                     // $productVariantId = $.urlParam('variant'); 
                                     $productVariantId = getParameterByName('variant');
+                                    console.log($productVariantId + "VVVVVVVVVVVV");
+                                }
+                                if($productVariantId == undefined || $productVariantId == ""){
+                                    $productVariantId = $('input[name="id"]').val();
                                     console.log($productVariantId + "VVVVVVVVVVVV");
                                 }
                                 if($productVariantId == undefined || $productVariantId == ""){
