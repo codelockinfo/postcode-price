@@ -408,6 +408,10 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                         $productPriceClassHtml = $('.product-single__prices .product-single__price').html();
                                     }
                                     if($productPriceClassHtml == undefined){
+                                        $productPriceClass = $('.product-single__prices');
+                                        $productPriceClassHtml = $('.product-single__prices').html();
+                                    }
+                                    if($productPriceClassHtml == undefined){
                                         $productPriceClass = $('.product-page-info__price .price span');
                                         $productPriceClassHtml = $('.product-page-info__price .price span').html();
                                     }
