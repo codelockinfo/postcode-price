@@ -590,19 +590,19 @@ $(document).ready(function() {
     }
 
     function  hasbuynowbtn(){
-    $hasfindclass  = $("button").hasClass("shopify-payment-button__button");
-    console.log($hasfindclass + "...hasbuynowbtn btn");
-    if($hasfindclass == true){
-        $paytment_Btn_class = $(".shopify-payment-button__button").attr("class");
-        $paytment_Btn_text = $(".shopify-payment-button__button").html();
-        $(".shopify-payment-button__button").css("display","none");
-        $(".shopify-payment-button__button").css("cssText", "display: none !important");
-        $payment_btn_Html = '<button class="'+ $paytment_Btn_class +' clspayment">'+ $paytment_Btn_text +'</button>';
-        $(".product-form__buttons,.ProductForm,.product__submit__buttons,.payment-buttons,.dynamic-checkout,.buy-buttons .shopify-payment-button,.t4s-product-form__buttons .shopify-payment-button,.flex-buttons .product__cart-functions").append($payment_btn_Html);
-        $payment_btn_css = '<style>.clspayment::after {content: none !important;display: none !important;}</style>';
-        $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_css);
-        clearInterval($findbuynowbtn);  
-    }
+        $hasfindclass  = $("button").hasClass("shopify-payment-button__button");
+        console.log($hasfindclass + "...hasbuynowbtn btn");
+        if($hasfindclass == true){
+            $paytment_Btn_class = $(".shopify-payment-button__button").attr("class");
+            $paytment_Btn_text = $(".shopify-payment-button__button").html();
+            $(".shopify-payment-button__button").css("display","none");
+            $(".shopify-payment-button__button").css("cssText", "display: none !important");
+            $payment_btn_Html = '<button class="'+ $paytment_Btn_class +' clspayment">'+ $paytment_Btn_text +'</button>';
+            $(".product-form__buttons,.ProductForm,.product__submit__buttons,.payment-buttons,.dynamic-checkout,.buy-buttons .shopify-payment-button,.t4s-product-form__buttons .shopify-payment-button,.product__cart-functions .flex-buttons").append($payment_btn_Html);
+            $payment_btn_css = '<style>.clspayment::after {content: none !important;display: none !important;}</style>';
+            $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_css);
+            clearInterval($findbuynowbtn);  
+        }
     }
 
     $.urlParam = function(name){
