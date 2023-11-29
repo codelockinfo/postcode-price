@@ -180,6 +180,27 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
                                             setCookie('postcodeval',value);
                                         });
 
+                                        $(document).on('change', 'input[name="id"],input[name="variant_id"]', function() {
+                                            console.log("CHANGE  id ");
+                                            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
+                                                console.log("cookies");
+                                                $("form button[type='submit'],.clspayment").attr("disabled",true); 
+                                                $(".custom-model-main").addClass("model-open");
+                                            }
+                                            console.log("change id");
+                                            getTotalprice();
+                                        });
+                                        
+                                        $('select[name="id"]').change(function() {
+                                            console.log("SELECT OPTION CHANGE");
+                                            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
+                                                console.log("cookies");
+                                                $("form button[type='submit'],.clspayment").attr("disabled",true); 
+                                                $(".custom-model-main").addClass("model-open");
+                                            }
+                                            getTotalprice();
+                                        });
+
                                     }
                             }else{
                                 $(".single-option-selector").removeClass("clssingle-option-selector");
@@ -567,25 +588,6 @@ include('https://code.jquery.com/jquery-3.6.0.min.js', function() {
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
-        $(document).on('change', 'input[name="id"],input[name="variant_id"]', function() {
-            console.log("CHANGE  id ");
-            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
-                console.log("cookies");
-                $("form button[type='submit'],.clspayment").attr("disabled",true); 
-                $(".custom-model-main").addClass("model-open");
-            }
-            console.log("change id");
-            getTotalprice();
-        });
-        $('select[name="id"]').change(function() {
-            console.log("SELECT OPTION CHANGE");
-            if(getCookie("postcodeval") == undefined || getCookie("postcodeval") == "" ){
-                console.log("cookies");
-                $("form button[type='submit'],.clspayment").attr("disabled",true); 
-                $(".custom-model-main").addClass("model-open");
-            }
-            getTotalprice();
-        });
     });
 });
          
