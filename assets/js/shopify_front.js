@@ -67,7 +67,7 @@ $(document).ready(function() {
                             console.log("--------------------------");
                                 if(window.location.href.includes("/products/")){
                                     console.log("product page");
-                                    $findbuynowbtn = setInterval(hasbuynowbtn, 5000); 
+                                    $findbuynowbtn = setInterval(hasbuynowbtn, 1); 
                                     setTimeout(function(){
                                         console.log("settimeout function calling ...");
                                         console.log(getCookie("postcodeval") );
