@@ -601,7 +601,11 @@ $(document).ready(function() {
             $(".product-form__buttons,.ProductForm,.product__submit__buttons,.payment-buttons,.dynamic-checkout,.buy-buttons .shopify-payment-button,.t4s-product-form__buttons .shopify-payment-button").append($payment_btn_Html);
             $hasClassclspayment = $(".clspayment").html();
             if($hasClassclspayment == undefined){
-                $(".product__cart-functions .flex-buttons,form .shopify-payment-button").append($payment_btn_Html);
+                $(".product__cart-functions .flex-buttons").append($payment_btn_Html);
+            }
+            $hasClassclspayment = $(".clspayment").html();
+            if($hasClassclspayment == undefined){
+                $("form .shopify-payment-button").append($payment_btn_Html);
             }
             $payment_btn_css = '<style>.clspayment::after {content: none !important;display: none !important;}</style>';
             $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_css);
