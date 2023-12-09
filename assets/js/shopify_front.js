@@ -607,6 +607,10 @@ $(document).ready(function() {
             if($hasClassclspayment == undefined){
                 $("form .shopify-payment-button").append($payment_btn_Html);
             }
+            $hasClassclspayment = $(".clspayment").html();
+            if($hasClassclspayment == undefined){
+                $(".dynamic-payment-buttons").append($payment_btn_Html);
+            }
             $payment_btn_css = '<style>.clspayment::after {content: none !important;display: none !important;}</style>';
             $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_css);
             clearInterval($findbuynowbtn);  
