@@ -74,9 +74,9 @@ $(document).ready(function() {
                                             popupHtml();
                                         }else{
                                             console.log("onload event for pdppage");
-                                            $hasClasspostalholder = $('span.money').next('#postalholder').html();
+                                            $hasClasspostalholder = $('main span.money:first').next('#postalholder').html();
                                             if($hasClasspostalholder == undefined){
-                                                $("span.money").after(
+                                                $("main span.money:first").after(
                                                     '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                                     ' <p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
                                                         '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/5000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
@@ -335,14 +335,14 @@ $(document).ready(function() {
                         setCookie('zoneprice',$zoneprice);
                         
                         if(getCookie("postcodeval") != undefined || getCookie("postcodeval") != "" ){
-                            $productPriceClassHtml = $("span.money").html();
+                            $productPriceClassHtml = $("main span.money:first").html();
                             console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                             $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                             $currecySymbol = $ProductPriceSymbol.split(' ');
                             console.log($currecySymbol);
                             
                             setTimeout(function(){
-                                $("span.money").html($currecySymbol[0]+" "+$newPrice);
+                                $("main span.money:first").html($currecySymbol[0]+" "+$newPrice);
                                 $("#postalholder").css({"opacity":"1","justify-content":"space-between"});
                                 $hasClass = $("#clsproductZipcodevalue").val();
                                 console.log($hasClass);
@@ -352,10 +352,10 @@ $(document).ready(function() {
                                 }else{
                                     console.log("HASCLASS ELSE");
                                 }
-                                $hasClasspostalholder = $('span.money').next('#postalholder').html();
+                                $hasClasspostalholder = $('main span.money:first').next('#postalholder').html();
                                 console.log($hasClasspostalholder + "....$hasClasspostalholder");
                                 if($hasClasspostalholder == undefined){
-                                    $("span.money").after(
+                                    $("main span.money:first").after(
                                         '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
                                         '<p class="pmessage">'+getCookie("postcodeval")+'<i class="icon-ok" style="color:#5b9b30;"></i>'+getCookie("postcodename")+'</p> '+  
                                             '<div class="clsremovezipcode" style="width: 30px;cursor: pointer;"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/5000/svg"><path fill="currentColor" d="M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64h256zm64 0h192v-64H416v64zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32H192zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32zm192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32z"/></svg></div>'+
