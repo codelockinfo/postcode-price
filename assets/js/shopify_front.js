@@ -336,7 +336,6 @@ $(document).ready(function() {
                         
                         if(getCookie("postcodeval") != undefined || getCookie("postcodeval") != "" ){
                             $productPriceClassHtml = $("span.money").html();
-                          
                             console.log($productPriceClassHtml+ "PPPPPPPPPPPPPPPPPPPPPPPPPPPP");
                             $ProductPriceSymbol =  $.trim($productPriceClassHtml);
                             $currecySymbol = $ProductPriceSymbol.split(' ');
@@ -354,6 +353,7 @@ $(document).ready(function() {
                                     console.log("HASCLASS ELSE");
                                 }
                                 $hasClasspostalholder = $("#postalholder").html();
+                                console.log($hasClasspostalholder + "....$hasClasspostalholder");
                                 if($hasClasspostalholder == undefined){
                                     $("span.money:first").after(
                                         '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
@@ -402,7 +402,6 @@ $(document).ready(function() {
         console.log($price);
         console.log($getpostcode + "ZIPCODE");
         if($getpostcode != undefined){
-            var thisObj = this;
             $.ajax({
                 url: "https://postcode.codelocksolutions.com/user/ajax_call.php",
                 type: "POST",
