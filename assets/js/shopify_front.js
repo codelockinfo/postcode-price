@@ -609,7 +609,7 @@ $(document).ready(function() {
             }
             $hasClassclspayment = $(".clspayment").html();
             if($hasClassclspayment == undefined){
-                $(".dynamic-payment-buttons").append($payment_btn_Html);
+                $(".dynamic-payment-buttons").after($payment_btn_Html);
             }
             $payment_btn_css = '<style>.clspayment::after {content: none !important;display: none !important;}</style>';
             $(".product-form__buttons,.ProductForm,.product__submit__buttons").append($payment_btn_css);
