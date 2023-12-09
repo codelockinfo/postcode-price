@@ -74,7 +74,7 @@ $(document).ready(function() {
                                             popupHtml();
                                         }else{
                                             console.log("onload event for pdppage");
-                                            $hasClasspostalholder = $("#postalholder").html();
+                                            $hasClasspostalholder = $('span.money:first').next('#postalholder').html();
                                             if($hasClasspostalholder == undefined){
                                                 $("span.money:first").after(
                                                     '<div id="postalholder" style=" display:flex;width: 300px;border-bottom:2px solid #f5db00;padding:10px 15px 0px 15px;margin-bottom:10px;justify-content:space-between;>'+
@@ -352,7 +352,7 @@ $(document).ready(function() {
                                 }else{
                                     console.log("HASCLASS ELSE");
                                 }
-                                $hasClasspostalholder = $("#postalholder").html();
+                                $hasClasspostalholder = $('span.money:first').next('#postalholder').html();
                                 console.log($hasClasspostalholder + "....$hasClasspostalholder");
                                 if($hasClasspostalholder == undefined){
                                     $("span.money:first").after(
