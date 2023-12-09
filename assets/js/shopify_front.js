@@ -578,8 +578,8 @@ $(document).ready(function() {
                                         window.location.href ='/checkout';
                                     }
                                 },
-                                };
-                                $.ajax(params);
+                            };
+                            $.ajax(params);
                         });
                 }
             });
@@ -595,9 +595,9 @@ $(document).ready(function() {
         if($hasfindclass == true){
             $paytment_Btn_class = $(".shopify-payment-button__button").attr("class");
             $paytment_Btn_text = $(".shopify-payment-button__button").html();
-            $(".shopify-payment-button__button").css("display","none");
+            $(".shopify-payment-button__button,.shopify-payment-button").css("display","none");
             $(".shopify-payment-button__button").css("cssText", "display: none !important");
-            $payment_btn_Html = '<button class="'+ $paytment_Btn_class +' clspayment">'+ $paytment_Btn_text +'</button>';
+            $payment_btn_Html = '<button class="'+ $paytment_Btn_class +' clspayment shopify-payment-button">'+ $paytment_Btn_text +'</button>';
             $(".product-form__buttons:first,.ProductForm,.product__submit__buttons,.payment-buttons,.dynamic-checkout,.buy-buttons .shopify-payment-button,.t4s-product-form__buttons .shopify-payment-button").append($payment_btn_Html);
             $hasClassclspayment = $(".clspayment").html();
             if($hasClassclspayment == undefined){
