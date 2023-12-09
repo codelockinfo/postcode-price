@@ -587,6 +587,7 @@ $(document).ready(function() {
             $("form button[type='submit'],.clspayment").attr("disabled",true); 
             $(".custom-model-main").addClass("model-open");
         }
+        return false;
     }
 
     function  hasbuynowbtn(){
