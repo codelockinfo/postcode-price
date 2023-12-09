@@ -131,14 +131,12 @@ $(document).ready(function() {
                                     });
                                 
                                     $(document).on("click","form button[type='submit'],form[action='/cart/add'] input[type='submit']",function (ent) {
-                                        ent.stopImmediatePropagation(); 
                                         ent.preventDefault();
                                         console.log("Addtocart button click");
                                         addTocartfunc();
                                     });
                                 
                                     $(document).on("click",".shopify-payment-button__button",function (e) {
-                                        e.stopImmediatePropagation(); 
                                         e.preventDefault();
                                         console.log("checkout button lick");
                                         setCookie('buynowbtn', "buynowbutton");
