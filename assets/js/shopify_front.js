@@ -213,7 +213,6 @@ $(document).ready(function() {
                                             $(".custom-model-main").addClass("model-open");
                                         }
                                         console.log("change id");
-                                        getTotalprice();
                                     });
 
                                     $('select[name="id"]').change(function() {
